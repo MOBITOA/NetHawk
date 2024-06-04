@@ -1,5 +1,5 @@
 //
-//  AccessControlViewController.swift
+//  OptionViewController.swift
 //  PackeTracker
 //
 //  Created by mobicom on 6/4/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AccessControlViewController: UIViewController {
+class OptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

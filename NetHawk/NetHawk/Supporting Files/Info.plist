@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>IntelOneMono-Bold.otf</string>
+		<string>IntelOneMono-BoldItalic.otf</string>
+		<string>IntelOneMono-Italic.otf</string>
+		<string>IntelOneMono-Light.otf</string>
+		<string>IntelOneMono-LightItalic.otf</string>
+		<string>IntelOneMono-Medium.otf</string>
+		<string>IntelOneMono-MediumItalic.otf</string>
+		<string>IntelOneMono-Regular.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
