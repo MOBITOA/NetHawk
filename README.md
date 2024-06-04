@@ -1,2 +1,2 @@
-# PackeTracker
-iOS application for Capstone (PackeTracker)
+# NetHawk
+iOS application for Capstone (NetHawk)
