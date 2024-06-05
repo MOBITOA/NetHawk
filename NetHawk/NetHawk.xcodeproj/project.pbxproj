@@ -26,6 +26,8 @@
 		F211F1AD2C0F3B7D004F40B4 /* IntelOneMono-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F211F1A52C0F3B7D004F40B4 /* IntelOneMono-Medium.otf */; };
 		F211F1AE2C0F3B7D004F40B4 /* IntelOneMono-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F211F1A62C0F3B7D004F40B4 /* IntelOneMono-Italic.otf */; };
 		F211F1AF2C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F211F1A72C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf */; };
+		F27C9D282C103BBB00789558 /* WiFiInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C9D272C103BBB00789558 /* WiFiInfo.swift */; };
+		F27C9D2A2C103C8200789558 /* WiFiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C9D292C103C8200789558 /* WiFiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		F211F1A52C0F3B7D004F40B4 /* IntelOneMono-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IntelOneMono-Medium.otf"; sourceTree = "<group>"; };
 		F211F1A62C0F3B7D004F40B4 /* IntelOneMono-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IntelOneMono-Italic.otf"; sourceTree = "<group>"; };
 		F211F1A72C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IntelOneMono-BoldItalic.otf"; sourceTree = "<group>"; };
+		F27C9D272C103BBB00789558 /* WiFiInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiInfo.swift; sourceTree = "<group>"; };
+		F27C9D292C103C8200789558 /* WiFiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +90,8 @@
 				F211F1902C0F11C9004F40B4 /* Models */,
 				F211F1912C0F11EA004F40B4 /* Views */,
 				F211F1922C0F11FE004F40B4 /* Controllers */,
-				F211F1952C0F1252004F40B4 /* Resources */,
-				F211F1942C0F1247004F40B4 /* Helpers */,
 				F211F1932C0F120A004F40B4 /* Services */,
+				F211F1952C0F1252004F40B4 /* Resources */,
 			);
 			path = NetHawk;
 			sourceTree = "<group>";
@@ -97,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				F211F1822C0F0375004F40B4 /* NetHawk.xcdatamodeld */,
+				F27C9D272C103BBB00789558 /* WiFiInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,15 +129,9 @@
 		F211F1932C0F120A004F40B4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F27C9D292C103C8200789558 /* WiFiService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		F211F1942C0F1247004F40B4 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F211F1952C0F1252004F40B4 /* Resources */ = {
@@ -250,8 +248,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F211F17E2C0F0375004F40B4 /* MainViewController.swift in Sources */,
+				F27C9D282C103BBB00789558 /* WiFiInfo.swift in Sources */,
 				F211F1982C0F2282004F40B4 /* LogViewController.swift in Sources */,
 				F211F19E2C0F264C004F40B4 /* AccessViewController.swift in Sources */,
+				F27C9D2A2C103C8200789558 /* WiFiService.swift in Sources */,
 				F211F1842C0F0375004F40B4 /* NetHawk.xcdatamodeld in Sources */,
 				F211F17A2C0F0375004F40B4 /* AppDelegate.swift in Sources */,
 				F211F19C2C0F22A5004F40B4 /* OptionViewController.swift in Sources */,
@@ -334,6 +334,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 항상 위치 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 위치 권한이 필요합니다.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -391,6 +393,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 항상 위치 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 위치 권한이 필요합니다.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -406,11 +410,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NetHawk/NetHawk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5M5VM39FM9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NetHawk/Supporting Files/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 항상 위치 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -438,11 +445,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NetHawk/NetHawk.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5M5VM39FM9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NetHawk/Supporting Files/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 항상 위치 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
