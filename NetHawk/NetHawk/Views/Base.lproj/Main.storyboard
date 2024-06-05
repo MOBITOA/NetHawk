@@ -14,14 +14,14 @@
             <objects>
                 <viewController id="4nf-sv-j8R" customClass="MainViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HLn-JB-omt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahQ-PR-RTN">
-                                <rect key="frame" x="0.0" y="50" width="375" height="1416"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="728"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLf-qd-Cs4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1416"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="842"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAV-27-mqN">
                                                 <rect key="frame" x="16" y="0.0" width="133" height="49.333333333333336"/>
@@ -48,44 +48,105 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" backgroundImage="bell.fill" catalog="system"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4q-dj-EnI">
-                                                <rect key="frame" x="16" y="96" width="99" height="21"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4q-dj-EnI">
+                                                <rect key="frame" x="16.000000000000007" y="96" width="104.66666666666669" height="23.666666666666671"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="MY NETWORK">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="IntelOneMono-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연결된 IP 주소 : ~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlx-GL-JLh">
-                                                <rect key="frame" x="16" y="135" width="121" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihd-bK-CZH">
+                                                <rect key="frame" x="171" y="215" width="32" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="LOG">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="IntelOneMono-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQU-UZ-kds">
+                                                <rect key="frame" x="16.000000000000004" y="127" width="41.333333333333343" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzY-Pq-ZxA">
-                                                <rect key="frame" x="158" y="881.66666666666663" width="59" height="34.333333333333371"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1R6-Cz-h5A">
+                                                <rect key="frame" x="117" y="231" width="140" height="140"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="있다!"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <backgroundConfiguration key="background" image="square.stack.3d.up.fill" catalog="system"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="logBtnTapped:" destination="4nf-sv-j8R" eventType="touchUpInside" id="k7K-fr-3fT"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4EW-1a-VI2">
+                                                <rect key="frame" x="199" y="423" width="147" height="140"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <backgroundConfiguration key="background" image="checkerboard.shield" catalog="system"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRQ-TW-WvQ">
+                                                <rect key="frame" x="235" y="397" width="74" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="IP/Port">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="IntelOneMono-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeI-v5-SYw">
+                                                <rect key="frame" x="84" y="397" width="53" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="STATS">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="IntelOneMono-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eym-BP-1w8">
+                                                <rect key="frame" x="40" y="423" width="140" height="140"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <backgroundConfiguration key="background" image="chart.pie.fill" catalog="system"/>
+                                                </buttonConfiguration>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="G4q-dj-EnI" secondAttribute="trailing" constant="260" id="3wS-C9-Cg1"/>
-                                            <constraint firstAttribute="bottom" secondItem="CAV-27-mqN" secondAttribute="bottom" constant="1366.6700000000001" id="5uf-Rt-vIZ"/>
-                                            <constraint firstAttribute="bottom" secondItem="hzY-Pq-ZxA" secondAttribute="bottom" constant="500" id="DpU-En-ca7"/>
-                                            <constraint firstItem="nlx-GL-JLh" firstAttribute="top" secondItem="G4q-dj-EnI" secondAttribute="bottom" constant="18" id="DzR-yz-1HH"/>
-                                            <constraint firstItem="aEI-r0-0sd" firstAttribute="leading" secondItem="CAV-27-mqN" secondAttribute="trailing" constant="175" id="SCI-IA-N09"/>
                                             <constraint firstItem="CAV-27-mqN" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="Vsf-ol-4rj"/>
+                                            <constraint firstItem="cQU-UZ-kds" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="Zn4-XN-DaD"/>
                                             <constraint firstAttribute="trailing" secondItem="aEI-r0-0sd" secondAttribute="trailing" constant="16" id="aTi-B3-V9V"/>
-                                            <constraint firstItem="nlx-GL-JLh" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="aUZ-kh-TFA"/>
-                                            <constraint firstItem="hzY-Pq-ZxA" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="158" id="eYL-jn-1rV"/>
-                                            <constraint firstItem="aEI-r0-0sd" firstAttribute="leading" secondItem="CAV-27-mqN" secondAttribute="trailing" constant="175" id="gx1-gj-kfQ"/>
                                             <constraint firstItem="CAV-27-mqN" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" id="jbo-Aq-dsF"/>
                                             <constraint firstItem="G4q-dj-EnI" firstAttribute="top" secondItem="CAV-27-mqN" secondAttribute="bottom" constant="46.670000000000002" id="k3H-cK-lHl"/>
-                                            <constraint firstAttribute="bottom" secondItem="G4q-dj-EnI" secondAttribute="bottom" constant="1299" id="k7k-GL-yM7"/>
                                             <constraint firstItem="aEI-r0-0sd" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" constant="5" id="kNe-lN-pG1"/>
-                                            <constraint firstItem="hzY-Pq-ZxA" firstAttribute="centerX" secondItem="oLf-qd-Cs4" secondAttribute="centerX" id="qIU-L3-da1"/>
-                                            <constraint firstAttribute="trailing" secondItem="hzY-Pq-ZxA" secondAttribute="trailing" constant="158" id="s6y-s4-zjE"/>
+                                            <constraint firstItem="cQU-UZ-kds" firstAttribute="top" secondItem="G4q-dj-EnI" secondAttribute="bottom" constant="7.3300000000000001" id="riz-Vp-SKu"/>
                                             <constraint firstItem="G4q-dj-EnI" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="uCp-cU-5AL"/>
-                                            <constraint firstAttribute="bottom" secondItem="aEI-r0-0sd" secondAttribute="bottom" constant="1374" id="vNi-IQ-MYM"/>
+                                            <constraint firstAttribute="bottom" secondItem="aEI-r0-0sd" secondAttribute="bottom" constant="800" id="vNi-IQ-MYM"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -110,20 +171,25 @@
                             <constraint firstItem="ahQ-PR-RTN" firstAttribute="leading" secondItem="Y1C-0i-6XF" secondAttribute="leading" id="x4o-6i-oXs"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="375" height="1500"/>
                     <connections>
                         <outlet property="alertBtn" destination="aEI-r0-0sd" id="Z1G-dR-o6V"/>
+                        <outlet property="ipBtn" destination="4EW-1a-VI2" id="rju-j3-cgf"/>
+                        <outlet property="logBtn" destination="1R6-Cz-h5A" id="xtf-Ze-JqN"/>
+                        <outlet property="statsBtn" destination="Eym-BP-1w8" id="3Sh-DL-t0u"/>
                         <outlet property="titleBtn" destination="CAV-27-mqN" id="zOn-5e-UG0"/>
-                        <outlet property="wifiStatusLabel" destination="nlx-GL-JLh" id="g0L-p3-Q8d"/>
+                        <outlet property="wifiStatusLabel" destination="cQU-UZ-kds" id="KkY-4d-A6Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ke-ca-daB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="148" y="68"/>
+            <point key="canvasLocation" x="148" y="67.980295566502463"/>
         </scene>
     </scenes>
     <resources>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="chart.pie.fill" catalog="system" width="128" height="123"/>
+        <image name="checkerboard.shield" catalog="system" width="128" height="121"/>
+        <image name="square.stack.3d.up.fill" catalog="system" width="120" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

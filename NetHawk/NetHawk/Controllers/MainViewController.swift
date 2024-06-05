@@ -15,6 +15,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var titleBtn: UIButton!
     @IBOutlet weak var alertBtn: UIButton!
     
+    @IBOutlet weak var logBtn: UIButton!
+    @IBOutlet weak var statsBtn: UIButton!
+    @IBOutlet weak var ipBtn: UIButton!
     // MARK: - UI Labels
     @IBOutlet weak var wifiStatusLabel: UILabel!
     
@@ -29,9 +32,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         setupTitleButton()
         setupWifiStatusLabel()
         
+        applyButtonEffect(logBtn)
+        applyButtonEffect(statsBtn)
+        applyButtonEffect(ipBtn)
+    
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        print("viewDidLoad: Requested location authorization")
     }
     
     
@@ -48,7 +54,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     private func setupWifiStatusLabel() {
         wifiStatusLabel.textAlignment = .center
         wifiStatusLabel.numberOfLines = 0
-        wifiStatusLabel.font = UIFont(name: "IntelOneMono-Light", size: 17)
+        wifiStatusLabel.font = UIFont(name: "IntelOneMono-Light", size: 20)
     }
     
     // MARK: - Alert [위치동의]
@@ -67,10 +73,31 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         print("updateWiFiInfo: Checking WiFi information")
         if let ipAddress = wifiService.getWiFiAddress() {
             print("updateWiFiInfo: IP address found - \(ipAddress)")
-            wifiStatusLabel.text = "연결된 IP 주소: \(ipAddress)"
+            wifiStatusLabel.text = "IP : \(ipAddress)"
         } else {
             print("updateWiFiInfo: No WiFi connection found")
             wifiStatusLabel.text = "WiFi 연결 안됨"
+        }
+    }
+    
+    
+    @IBAction func logBtnTapped(_ sender: Any) {
+    }
+    
+    func applyButtonEffect(_ button: UIButton) {
+        button.addTarget(self, action: #selector(buttonTouchDown(_:)), for: .touchDown)
+        button.addTarget(self, action: #selector(buttonTouchUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+    }
+
+    @objc func buttonTouchDown(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.alpha = 0.5
+        }
+    }
+
+    @objc func buttonTouchUp(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.4) {
+            sender.alpha = 1.0
         }
     }
 }
