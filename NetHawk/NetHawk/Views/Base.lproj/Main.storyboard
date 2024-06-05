@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4nf-sv-j8R">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,71 +10,125 @@
     </dependencies>
     <scenes>
         <!--Main View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="tcH-Tv-raZ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                <viewController id="4nf-sv-j8R" customClass="MainViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HLn-JB-omt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAV-27-mqN">
-                                <rect key="frame" x="16" y="50" width="133" height="49.333333333333343"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content=".NETHAWK">
-                                            <attributes>
-                                                <font key="NSFont" size="27" name="IntelOneMono-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEI-r0-0sd">
-                                <rect key="frame" x="324" y="60.333333333333329" width="35" height="36.333333333333329"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahQ-PR-RTN">
+                                <rect key="frame" x="0.0" y="50" width="375" height="1416"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLf-qd-Cs4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1416"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAV-27-mqN">
+                                                <rect key="frame" x="16" y="0.0" width="133" height="49.333333333333336"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Button">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content=".NETHAWK">
+                                                            <attributes>
+                                                                <font key="NSFont" size="27" name="IntelOneMono-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEI-r0-0sd">
+                                                <rect key="frame" x="324" y="5.3333333333333321" width="35" height="36.333333333333343"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="aEI-r0-0sd" secondAttribute="height" multiplier="19:20" id="6GZ-kR-Cb3"/>
+                                                    <constraint firstAttribute="width" constant="35" id="mXo-6Q-rAF"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" backgroundImage="bell.fill" catalog="system"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4q-dj-EnI">
+                                                <rect key="frame" x="16" y="96" width="99" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연결된 IP 주소 : ~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlx-GL-JLh">
+                                                <rect key="frame" x="16" y="135" width="121" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzY-Pq-ZxA">
+                                                <rect key="frame" x="158" y="881.66666666666663" width="59" height="34.333333333333371"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="있다!"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="G4q-dj-EnI" secondAttribute="trailing" constant="260" id="3wS-C9-Cg1"/>
+                                            <constraint firstAttribute="bottom" secondItem="CAV-27-mqN" secondAttribute="bottom" constant="1366.6700000000001" id="5uf-Rt-vIZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="hzY-Pq-ZxA" secondAttribute="bottom" constant="500" id="DpU-En-ca7"/>
+                                            <constraint firstItem="nlx-GL-JLh" firstAttribute="top" secondItem="G4q-dj-EnI" secondAttribute="bottom" constant="18" id="DzR-yz-1HH"/>
+                                            <constraint firstItem="aEI-r0-0sd" firstAttribute="leading" secondItem="CAV-27-mqN" secondAttribute="trailing" constant="175" id="SCI-IA-N09"/>
+                                            <constraint firstItem="CAV-27-mqN" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="Vsf-ol-4rj"/>
+                                            <constraint firstAttribute="trailing" secondItem="aEI-r0-0sd" secondAttribute="trailing" constant="16" id="aTi-B3-V9V"/>
+                                            <constraint firstItem="nlx-GL-JLh" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="aUZ-kh-TFA"/>
+                                            <constraint firstItem="hzY-Pq-ZxA" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="158" id="eYL-jn-1rV"/>
+                                            <constraint firstItem="aEI-r0-0sd" firstAttribute="leading" secondItem="CAV-27-mqN" secondAttribute="trailing" constant="175" id="gx1-gj-kfQ"/>
+                                            <constraint firstItem="CAV-27-mqN" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" id="jbo-Aq-dsF"/>
+                                            <constraint firstItem="G4q-dj-EnI" firstAttribute="top" secondItem="CAV-27-mqN" secondAttribute="bottom" constant="46.670000000000002" id="k3H-cK-lHl"/>
+                                            <constraint firstAttribute="bottom" secondItem="G4q-dj-EnI" secondAttribute="bottom" constant="1299" id="k7k-GL-yM7"/>
+                                            <constraint firstItem="aEI-r0-0sd" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" constant="5" id="kNe-lN-pG1"/>
+                                            <constraint firstItem="hzY-Pq-ZxA" firstAttribute="centerX" secondItem="oLf-qd-Cs4" secondAttribute="centerX" id="qIU-L3-da1"/>
+                                            <constraint firstAttribute="trailing" secondItem="hzY-Pq-ZxA" secondAttribute="trailing" constant="158" id="s6y-s4-zjE"/>
+                                            <constraint firstItem="G4q-dj-EnI" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="uCp-cU-5AL"/>
+                                            <constraint firstAttribute="bottom" secondItem="aEI-r0-0sd" secondAttribute="bottom" constant="1374" id="vNi-IQ-MYM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="aEI-r0-0sd" secondAttribute="height" multiplier="19:20" id="6GZ-kR-Cb3"/>
-                                    <constraint firstAttribute="width" constant="35" id="mXo-6Q-rAF"/>
+                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="height" secondItem="uOw-Bn-Afv" secondAttribute="height" priority="250" id="Gec-Xu-Ua9"/>
+                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="centerX" secondItem="ahQ-PR-RTN" secondAttribute="centerX" id="PZH-rr-FQy"/>
+                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="leading" secondItem="R9p-bB-3ek" secondAttribute="leading" id="U22-Z1-dDa"/>
+                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="bottom" secondItem="R9p-bB-3ek" secondAttribute="bottom" id="dxh-ul-Udk"/>
+                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="trailing" secondItem="R9p-bB-3ek" secondAttribute="trailing" id="iuB-OZ-9b3"/>
+                                    <constraint firstItem="R9p-bB-3ek" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" id="pKT-dG-4Jv"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="bell.fill" catalog="system"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlx-GL-JLh">
-                                <rect key="frame" x="164" y="124.99999999999999" width="47" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <viewLayoutGuide key="contentLayoutGuide" id="R9p-bB-3ek"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="uOw-Bn-Afv"/>
+                            </scrollView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.97254902119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Y1C-0i-6XF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CAV-27-mqN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="4bc-Zi-m2z"/>
-                            <constraint firstItem="nlx-GL-JLh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A7Z-5y-dTc"/>
-                            <constraint firstItem="nlx-GL-JLh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="FR0-8j-faq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aEI-r0-0sd" secondAttribute="trailing" constant="16" id="caf-JE-EXt"/>
-                            <constraint firstItem="aEI-r0-0sd" firstAttribute="top" secondItem="CAV-27-mqN" secondAttribute="top" constant="10" id="fN5-jM-2s8"/>
-                            <constraint firstItem="CAV-27-mqN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rOC-hI-koS"/>
+                            <constraint firstItem="Y1C-0i-6XF" firstAttribute="bottom" secondItem="ahQ-PR-RTN" secondAttribute="bottom" id="EAr-85-okZ"/>
+                            <constraint firstItem="ahQ-PR-RTN" firstAttribute="top" secondItem="Y1C-0i-6XF" secondAttribute="top" id="RhE-cK-VSC"/>
+                            <constraint firstItem="Y1C-0i-6XF" firstAttribute="trailing" secondItem="ahQ-PR-RTN" secondAttribute="trailing" id="v9X-QJ-9wu"/>
+                            <constraint firstItem="ahQ-PR-RTN" firstAttribute="leading" secondItem="Y1C-0i-6XF" secondAttribute="leading" id="x4o-6i-oXs"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="375" height="1500"/>
                     <connections>
-                        <outlet property="alertBtn" destination="aEI-r0-0sd" id="0Wo-DB-gkW"/>
-                        <outlet property="titleBtn" destination="CAV-27-mqN" id="MJ3-hR-RUT"/>
-                        <outlet property="wifiStatusLabel" destination="nlx-GL-JLh" id="cST-lb-WZp"/>
+                        <outlet property="alertBtn" destination="aEI-r0-0sd" id="Z1G-dR-o6V"/>
+                        <outlet property="titleBtn" destination="CAV-27-mqN" id="zOn-5e-UG0"/>
+                        <outlet property="wifiStatusLabel" destination="nlx-GL-JLh" id="g0L-p3-Q8d"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ke-ca-daB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.40000000000001" y="-2.2167487684729066"/>
+            <point key="canvasLocation" x="148" y="68"/>
         </scene>
     </scenes>
     <resources>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
