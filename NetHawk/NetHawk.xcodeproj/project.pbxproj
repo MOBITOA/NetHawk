@@ -29,9 +29,9 @@
 		F28AF82C2C118C36001290CC /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28AF82B2C118C36001290CC /* ConnectionViewController.swift */; };
 		F28AF8302C118F75001290CC /* NetHawkLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F28AF82F2C118F75001290CC /* NetHawkLogo.png */; };
 		F28AF8322C119023001290CC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28AF8312C119023001290CC /* SplashViewController.swift */; };
-		F28AF8342C119061001290CC /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F28AF8332C119061001290CC /* Splash.storyboard */; };
 		F2AA54252C11F7E200D5C52C /* MQTTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AA54242C11F7E200D5C52C /* MQTTService.swift */; };
 		F2AA54272C12015400D5C52C /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AA54262C12015400D5C52C /* KeyChainService.swift */; };
+		F2AA54292C12185300D5C52C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2AA54282C12185300D5C52C /* Splash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,9 +59,9 @@
 		F28AF82B2C118C36001290CC /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		F28AF82F2C118F75001290CC /* NetHawkLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NetHawkLogo.png; sourceTree = "<group>"; };
 		F28AF8312C119023001290CC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		F28AF8332C119061001290CC /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		F2AA54242C11F7E200D5C52C /* MQTTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTService.swift; sourceTree = "<group>"; };
 		F2AA54262C12015400D5C52C /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
+		F2AA54282C12185300D5C52C /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 		F211F1912C0F11EA004F40B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F28AF8332C119061001290CC /* Splash.storyboard */,
+				F2AA54282C12185300D5C52C /* Splash.storyboard */,
 				F211F17F2C0F0375004F40B4 /* Main.storyboard */,
 			);
 			path = Views;
@@ -249,7 +249,7 @@
 				F211F1AC2C0F3B7D004F40B4 /* IntelOneMono-Regular.otf in Resources */,
 				F211F1AB2C0F3B7D004F40B4 /* IntelOneMono-Bold.otf in Resources */,
 				F211F1A92C0F3B7D004F40B4 /* IntelOneMono-LightItalic.otf in Resources */,
-				F28AF8342C119061001290CC /* Splash.storyboard in Resources */,
+				F2AA54292C12185300D5C52C /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

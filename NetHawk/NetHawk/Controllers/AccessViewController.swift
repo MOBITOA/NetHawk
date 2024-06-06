@@ -11,7 +11,10 @@ class AccessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        print("viewDidLoad : AccessView")
     }
     
+    @IBAction func dissmissBtnTapped(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }

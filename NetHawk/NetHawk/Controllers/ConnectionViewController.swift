@@ -113,6 +113,7 @@ class ConnectionViewController: UIViewController {
                 print("NavigationController 있음")
                 navigationController.pushViewController(mainViewController, animated: true)
             } else {
+                print("NavigationController 없음")
                 mainViewController.modalPresentationStyle = .fullScreen
                 present(mainViewController, animated: true, completion: nil)
             }
@@ -129,7 +130,6 @@ class ConnectionViewController: UIViewController {
                 }
         
     }
-    
 }
 
 extension ConnectionViewController: UITextFieldDelegate {

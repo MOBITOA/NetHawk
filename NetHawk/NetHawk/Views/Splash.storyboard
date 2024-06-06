@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tov-fZ-ijg">
-                                <rect key="frame" x="83" y="739" width="209" height="24"/>
+                                <rect key="frame" x="83" y="739.33333333333337" width="209" height="23.666666666666629"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Developed by MOBITOA">
                                         <attributes>
@@ -45,6 +45,7 @@
                             <constraint firstItem="KQ1-mj-Uo9" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="ysf-RN-tTM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3W4-aD-7gl"/>
                     <connections>
                         <outlet property="developedLabel" destination="tov-fZ-ijg" id="nw5-8F-hbI"/>
                         <outlet property="logoImageView" destination="KQ1-mj-Uo9" id="eBd-QV-5Df"/>
@@ -52,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="5"/>
+            <point key="canvasLocation" x="1079.2" y="4.4334975369458132"/>
         </scene>
     </scenes>
     <resources>
