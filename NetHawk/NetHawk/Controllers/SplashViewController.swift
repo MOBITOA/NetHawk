@@ -17,6 +17,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("viewDidLoad : SplashView")
         self.logoImageView.alpha = 0.0
         self.developedLabel.alpha = 0.0
         
