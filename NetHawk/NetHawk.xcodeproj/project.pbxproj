@@ -13,7 +13,6 @@
 		F211F1812C0F0375004F40B4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F211F1802C0F0375004F40B4 /* Base */; };
 		F211F1842C0F0375004F40B4 /* NetHawk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F211F1822C0F0375004F40B4 /* NetHawk.xcdatamodeld */; };
 		F211F1862C0F0377004F40B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F211F1852C0F0377004F40B4 /* Assets.xcassets */; };
-		F211F1892C0F0377004F40B4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F211F1882C0F0377004F40B4 /* Base */; };
 		F211F1982C0F2282004F40B4 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F211F1972C0F2282004F40B4 /* LogViewController.swift */; };
 		F211F19A2C0F2298004F40B4 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F211F1992C0F2298004F40B4 /* StatViewController.swift */; };
 		F211F19C2C0F22A5004F40B4 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F211F19B2C0F22A5004F40B4 /* OptionViewController.swift */; };
@@ -28,6 +27,10 @@
 		F211F1AF2C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F211F1A72C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf */; };
 		F27C9D282C103BBB00789558 /* WiFiInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C9D272C103BBB00789558 /* WiFiInfo.swift */; };
 		F27C9D2A2C103C8200789558 /* WiFiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C9D292C103C8200789558 /* WiFiService.swift */; };
+		F28AF82C2C118C36001290CC /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28AF82B2C118C36001290CC /* ConnectionViewController.swift */; };
+		F28AF8302C118F75001290CC /* NetHawkLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F28AF82F2C118F75001290CC /* NetHawkLogo.png */; };
+		F28AF8322C119023001290CC /* LauchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28AF8312C119023001290CC /* LauchScreenViewController.swift */; };
+		F28AF8342C119061001290CC /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F28AF8332C119061001290CC /* Splash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +41,6 @@
 		F211F1802C0F0375004F40B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F211F1832C0F0375004F40B4 /* PackeTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PackeTracker.xcdatamodel; sourceTree = "<group>"; };
 		F211F1852C0F0377004F40B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F211F1882C0F0377004F40B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F211F18A2C0F0377004F40B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F211F1972C0F2282004F40B4 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		F211F1992C0F2298004F40B4 /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,10 @@
 		F211F1A72C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IntelOneMono-BoldItalic.otf"; sourceTree = "<group>"; };
 		F27C9D272C103BBB00789558 /* WiFiInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiInfo.swift; sourceTree = "<group>"; };
 		F27C9D292C103C8200789558 /* WiFiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiService.swift; sourceTree = "<group>"; };
+		F28AF82B2C118C36001290CC /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
+		F28AF82F2C118F75001290CC /* NetHawkLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NetHawkLogo.png; sourceTree = "<group>"; };
+		F28AF8312C119023001290CC /* LauchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchScreenViewController.swift; sourceTree = "<group>"; };
+		F28AF8332C119061001290CC /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +114,7 @@
 		F211F1912C0F11EA004F40B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F211F1872C0F0377004F40B4 /* LaunchScreen.storyboard */,
+				F28AF8332C119061001290CC /* Splash.storyboard */,
 				F211F17F2C0F0375004F40B4 /* Main.storyboard */,
 			);
 			path = Views;
@@ -117,6 +123,8 @@
 		F211F1922C0F11FE004F40B4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F28AF8312C119023001290CC /* LauchScreenViewController.swift */,
+				F28AF82B2C118C36001290CC /* ConnectionViewController.swift */,
 				F211F17D2C0F0375004F40B4 /* MainViewController.swift */,
 				F211F1972C0F2282004F40B4 /* LogViewController.swift */,
 				F211F1992C0F2298004F40B4 /* StatViewController.swift */,
@@ -137,6 +145,7 @@
 		F211F1952C0F1252004F40B4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F28AF82F2C118F75001290CC /* NetHawkLogo.png */,
 				F211F19F2C0F3B64004F40B4 /* Fonts */,
 			);
 			path = Resources;
@@ -227,16 +236,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F211F1AE2C0F3B7D004F40B4 /* IntelOneMono-Italic.otf in Resources */,
+				F28AF8302C118F75001290CC /* NetHawkLogo.png in Resources */,
 				F211F1862C0F0377004F40B4 /* Assets.xcassets in Resources */,
 				F211F1AA2C0F3B7D004F40B4 /* IntelOneMono-Light.otf in Resources */,
 				F211F1AF2C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf in Resources */,
 				F211F1AD2C0F3B7D004F40B4 /* IntelOneMono-Medium.otf in Resources */,
-				F211F1892C0F0377004F40B4 /* Base in Resources */,
 				F211F1812C0F0375004F40B4 /* Base in Resources */,
 				F211F1A82C0F3B7D004F40B4 /* IntelOneMono-MediumItalic.otf in Resources */,
 				F211F1AC2C0F3B7D004F40B4 /* IntelOneMono-Regular.otf in Resources */,
 				F211F1AB2C0F3B7D004F40B4 /* IntelOneMono-Bold.otf in Resources */,
 				F211F1A92C0F3B7D004F40B4 /* IntelOneMono-LightItalic.otf in Resources */,
+				F28AF8342C119061001290CC /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F211F17E2C0F0375004F40B4 /* MainViewController.swift in Sources */,
+				F28AF82C2C118C36001290CC /* ConnectionViewController.swift in Sources */,
+				F28AF8322C119023001290CC /* LauchScreenViewController.swift in Sources */,
 				F27C9D282C103BBB00789558 /* WiFiInfo.swift in Sources */,
 				F211F1982C0F2282004F40B4 /* LogViewController.swift in Sources */,
 				F211F19E2C0F264C004F40B4 /* AccessViewController.swift in Sources */,
@@ -269,14 +281,6 @@
 				F211F1802C0F0375004F40B4 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F211F1872C0F0377004F40B4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F211F1882C0F0377004F40B4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -419,10 +423,10 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 항상 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Splash.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,10 +458,10 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 항상 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 위치 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Splash.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
