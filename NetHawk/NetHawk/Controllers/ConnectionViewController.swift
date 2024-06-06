@@ -20,6 +20,7 @@ class ConnectionViewController: UIViewController {
     @IBOutlet weak var pairingBtn: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad : ConnectionView")
@@ -96,6 +97,39 @@ class ConnectionViewController: UIViewController {
             self.logoImageView.alpha = 0.1
         }, completion: nil)
     }
+    
+    
+    @IBAction func pairingBtnTapped(_ sender: UIButton) {
+        let broker = brokerTextField.text ?? ""
+        let mac = macTextField.text ?? ""
+        
+        KeychainManager.shared.save(broker: broker, mac: mac)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
+            print("MainViewController 인스턴스 생성 성공")
+            
+            if let navigationController = navigationController {
+                print("NavigationController 있음")
+                navigationController.pushViewController(mainViewController, animated: true)
+            } else {
+                mainViewController.modalPresentationStyle = .fullScreen
+                present(mainViewController, animated: true, completion: nil)
+            }
+        } else {
+            print("MainViewController 인스턴스 생성 실패")
+        }
+        
+        if let (broker, mac) = KeychainManager.shared.load() {
+                    print("Broker: \(broker)")
+                    print("MAC: \(mac)")
+                    // 로드된 값을 사용하여 필요한 작업 수행
+                } else {
+                    print("Keychain에서 값을 찾을 수 없습니다.")
+                }
+        
+    }
+    
 }
 
 extension ConnectionViewController: UITextFieldDelegate {
@@ -159,5 +193,5 @@ extension ConnectionViewController: UITextFieldDelegate {
         
         return formattedMACAddress
     }
-
+    
 }

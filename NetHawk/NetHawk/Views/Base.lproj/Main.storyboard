@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tL9-3I-bNi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="S6u-zF-efr">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -14,10 +14,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Main View Controller-->
+        <!--MainViewController-->
         <scene sceneID="tcH-Tv-raZ">
             <objects>
-                <viewController id="4nf-sv-j8R" customClass="MainViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4nf-sv-j8R" customClass="MainViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HLn-JB-omt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,6 +177,7 @@
                             <constraint firstItem="ahQ-PR-RTN" firstAttribute="leading" secondItem="Y1C-0i-6XF" secondAttribute="leading" id="x4o-6i-oXs"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="5N8-Uh-dYs"/>
                     <connections>
                         <outlet property="alertBtn" destination="aEI-r0-0sd" id="Z1G-dR-o6V"/>
                         <outlet property="ipBtn" destination="4EW-1a-VI2" id="rju-j3-cgf"/>
@@ -188,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ke-ca-daB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="68"/>
+            <point key="canvasLocation" x="3084" y="67.980295566502463"/>
         </scene>
         <!--Connection View Controller-->
         <scene sceneID="gzw-VA-Njq">
@@ -322,6 +323,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="pairingBtnTapped:" destination="tL9-3I-bNi" eventType="touchUpInside" id="c3B-jK-bO2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sk3-BJ-KVJ"/>
@@ -346,6 +350,8 @@
                             <constraint firstItem="m4l-PH-87k" firstAttribute="centerX" secondItem="X7B-gs-rjh" secondAttribute="centerX" id="ysJ-1t-jLE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="enU-Mt-NvO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="brokerTextField" destination="JuP-Ph-ZFb" id="7SI-oL-4wl"/>
                         <outlet property="inputLabelOne" destination="6gZ-Nf-Y7p" id="EXk-do-c41"/>
@@ -360,7 +366,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNV-a7-RmE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-527.20000000000005" y="67.980295566502463"/>
+            <point key="canvasLocation" x="2300" y="67.980295566502463"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ee7-JV-3eL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="S6u-zF-efr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RNH-ta-JpJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tL9-3I-bNi" kind="relationship" relationship="rootViewController" id="uEz-zA-Lof"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TKc-J0-qwe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1357.5999999999999" y="67.980295566502463"/>
         </scene>
     </scenes>
     <resources>
