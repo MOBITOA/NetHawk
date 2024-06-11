@@ -48,6 +48,8 @@ class AccessViewController: UIViewController {
         self.openContainer.alpha = 0.0
         self.banTextView.alpha = 0.0
         self.openTextView.alpha = 0.0
+        self.openBtn.isEnabled = false
+        self.banBtn.isEnabled = false
         
         frameConfig(to: ipFrame)
         frameConfig(to: portFrame)
@@ -62,7 +64,7 @@ class AccessViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // 1초 지연 후에 애니메이션 시작
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.applyAnimations()
         }
     }
@@ -95,28 +97,28 @@ class AccessViewController: UIViewController {
     }
     
     func applyAnimations() {
-        UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.05, options: .curveEaseInOut, animations: {
             self.titleLogo.alpha = 1.0
         }, completion: nil)
         
-        UIView.animate(withDuration: 1, delay: 0.3, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
             self.ipLogo.alpha = 1.0
             self.ipFrame.alpha = 1.0
             self.ipTextField.alpha = 1.0
         }, completion: nil)
         
-        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.3, options: .curveEaseInOut, animations: {
             self.portLogo.alpha = 1.0
             self.portFrame.alpha = 1.0
             self.portTextField.alpha = 1.0
         }, completion: nil)
         
-        UIView.animate(withDuration: 1, delay: 0.7, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseInOut, animations: {
             self.openBtn.alpha = 1.0
             self.banBtn.alpha = 1.0
         }, completion: nil)
         
-        UIView.animate(withDuration: 1, delay: 0.9, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.7, options: .curveEaseInOut, animations: {
             self.banTextView.alpha = 1.0
             self.banContainer.alpha = 1.0
             self.openTextView.alpha = 1.0
@@ -131,61 +133,40 @@ class AccessViewController: UIViewController {
 
 extension AccessViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // 텍스트 필드 값이 변경된 후의 텍스트 계산
+        let updatedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        
+        // 버튼 활성화 여부 결정
+        var ipTextIsEmpty = ipTextField.text?.isEmpty ?? true
+        var portTextIsEmpty = portTextField.text?.isEmpty ?? true
+        
         if textField == ipTextField {
-            // 브로커 텍스트필드 입력 시 버튼 숨김 여부 결정
-            let ipTextIsEmpty = ipTextField.text?.isEmpty ?? true
-            let portTextIsEmpty = portTextField.text?.isEmpty ?? true
-            
-            if ipTextIsEmpty {
-                openBtn.isEnabled = false
-            } else {
-                openBtn.isEnabled = true
-            }
-            
-            if portTextIsEmpty {
-                banBtn.isEnabled = false
-            } else {
-                banBtn.isEnabled = true
-            }
-            
-            return true
-            
+            ipTextIsEmpty = updatedText?.isEmpty ?? true
         } else if textField == portTextField {
-            let currentText = textField.text ?? ""
-            let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            portTextIsEmpty = updatedText?.isEmpty ?? true
             
-            _ = "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+            // MAC 주소 포맷팅
+            let formattedText = updatedText?.replacingOccurrences(of: ":", with: "").replacingOccurrences(of: "-", with: "")
             
-            let formattedText = prospectiveText.replacingOccurrences(of: ":", with: "").replacingOccurrences(of: "-", with: "")
-            
-            if formattedText.count > 12 {
+            if let count = formattedText?.count, count > 12 {
                 return false
             }
             
-            let macAddress = formatMACAddress(formattedText)
-            
+            let macAddress = formatMACAddress(formattedText ?? "")
             textField.text = macAddress
-            
-            // MAC 텍스트필드 입력 시 버튼 숨김 여부 결정
-            let ipTextIsEmpty = ipTextField.text?.isEmpty ?? true
-            let portTextIsEmpty = portTextField.text?.isEmpty ?? true
-            
-            if ipTextIsEmpty {
-                openBtn.isEnabled = false
-            } else {
-                openBtn.isEnabled = true
-            }
-            
-            if portTextIsEmpty {
-                banBtn.isEnabled = false
-            } else {
-                banBtn.isEnabled = true
-            }
-            
-            return false
         }
-        return true
+        
+        if !ipTextIsEmpty || !portTextIsEmpty {
+            openBtn.isEnabled = true
+            banBtn.isEnabled = true
+        } else {
+            openBtn.isEnabled = false
+            banBtn.isEnabled = false
+        }
+        
+        return textField == ipTextField
     }
+    
     func formatMACAddress(_ macAddress: String) -> String {
         var formattedMACAddress = ""
         var index = 0
@@ -202,6 +183,5 @@ extension AccessViewController: UITextFieldDelegate {
         
         return formattedMACAddress
     }
+    
 }
-
-

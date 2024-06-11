@@ -28,6 +28,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLf-qd-Cs4">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="842"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="wRK-Nu-05Y">
+                                                <rect key="frame" x="-301" y="-91" width="1000" height="950"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAV-27-mqN">
                                                 <rect key="frame" x="16" y="0.0" width="117" height="49.333333333333336"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -88,7 +92,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1R6-Cz-h5A">
                                                 <rect key="frame" x="117" y="231" width="140" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background" image="square.stack.3d.up.fill" catalog="system"/>
@@ -100,7 +104,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4EW-1a-VI2">
                                                 <rect key="frame" x="199" y="423" width="147" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background" image="checkerboard.shield" catalog="system"/>
@@ -138,7 +142,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eym-BP-1w8">
                                                 <rect key="frame" x="40" y="423" width="140" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background" image="chart.pie.fill" catalog="system"/>
@@ -150,10 +154,10 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="CAV-27-mqN" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="Vsf-ol-4rj"/>
+                                            <constraint firstItem="CAV-27-mqN" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" id="DuD-yC-cML"/>
+                                            <constraint firstItem="CAV-27-mqN" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="YPZ-qv-LiQ"/>
                                             <constraint firstItem="cQU-UZ-kds" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="Zn4-XN-DaD"/>
                                             <constraint firstAttribute="trailing" secondItem="aEI-r0-0sd" secondAttribute="trailing" constant="16" id="aTi-B3-V9V"/>
-                                            <constraint firstItem="CAV-27-mqN" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" id="jbo-Aq-dsF"/>
                                             <constraint firstItem="G4q-dj-EnI" firstAttribute="top" secondItem="CAV-27-mqN" secondAttribute="bottom" constant="46.670000000000002" id="k3H-cK-lHl"/>
                                             <constraint firstItem="aEI-r0-0sd" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" constant="5" id="kNe-lN-pG1"/>
                                             <constraint firstItem="cQU-UZ-kds" firstAttribute="top" secondItem="G4q-dj-EnI" secondAttribute="bottom" constant="7.3300000000000001" id="riz-Vp-SKu"/>
@@ -408,6 +412,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="y7G-bC-gpV"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="BAN"/>
                             </button>
@@ -524,12 +529,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="6IL-Sj-v72">
+                                <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="6qg-jb-1vQ"/>
+                                    <constraint firstAttribute="height" constant="300" id="f0b-Xg-RFi"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I6e-0W-t0P"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rQP-qI-Scq" firstAttribute="centerX" secondItem="BZM-iT-X5x" secondAttribute="centerX" id="282-KK-O9V"/>
                             <constraint firstItem="d72-hP-rKe" firstAttribute="top" secondItem="VNr-mJ-UCB" secondAttribute="bottom" constant="22" id="2zq-e1-ve5"/>
+                            <constraint firstItem="6IL-Sj-v72" firstAttribute="centerY" secondItem="BZM-iT-X5x" secondAttribute="centerY" id="6i1-yO-2RC"/>
+                            <constraint firstItem="6IL-Sj-v72" firstAttribute="centerX" secondItem="BZM-iT-X5x" secondAttribute="centerX" id="7ee-Di-oIO"/>
                             <constraint firstItem="jqb-qS-sEY" firstAttribute="centerX" secondItem="BZM-iT-X5x" secondAttribute="centerX" id="BTL-gc-UQc"/>
                             <constraint firstItem="TKL-Bk-2so" firstAttribute="top" secondItem="d72-hP-rKe" secondAttribute="bottom" constant="54" id="DLz-y0-L3o"/>
                             <constraint firstItem="I6e-0W-t0P" firstAttribute="trailing" secondItem="hDn-vS-0i2" secondAttribute="trailing" constant="106" id="G5C-Tp-k9G"/>
@@ -633,6 +647,13 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-u0-tJc">
+                                <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Cth-nw-HOz"/>
+                                    <constraint firstAttribute="width" constant="300" id="kv6-St-bnl"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9GB-xJ-ySQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -640,9 +661,11 @@
                             <constraint firstItem="D3a-UW-N11" firstAttribute="top" secondItem="9GB-xJ-ySQ" secondAttribute="top" constant="36" id="9F3-6e-bFX"/>
                             <constraint firstItem="xNg-Cf-HcS" firstAttribute="centerX" secondItem="nhr-Sg-OoH" secondAttribute="centerX" id="Bjb-Os-6SA"/>
                             <constraint firstItem="W0y-CE-xfg" firstAttribute="leading" secondItem="9GB-xJ-ySQ" secondAttribute="leading" constant="16" id="Dbz-tU-9Yh"/>
+                            <constraint firstItem="tYz-u0-tJc" firstAttribute="centerY" secondItem="nhr-Sg-OoH" secondAttribute="centerY" id="MHU-xZ-Cuc"/>
                             <constraint firstItem="xNg-Cf-HcS" firstAttribute="top" secondItem="D3a-UW-N11" secondAttribute="bottom" constant="19" id="cCE-5v-b8o"/>
                             <constraint firstItem="W0y-CE-xfg" firstAttribute="top" secondItem="9GB-xJ-ySQ" secondAttribute="top" id="cbi-Ko-mJ3"/>
                             <constraint firstItem="D3a-UW-N11" firstAttribute="centerX" secondItem="nhr-Sg-OoH" secondAttribute="centerX" id="mxe-VQ-3BS"/>
+                            <constraint firstItem="tYz-u0-tJc" firstAttribute="centerX" secondItem="nhr-Sg-OoH" secondAttribute="centerX" id="uEH-gW-vgd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zcV-jj-tYi"/>
@@ -688,6 +711,13 @@
                                     <action selector="dissmissBtnTapped:" destination="PbL-RZ-pfR" eventType="touchUpInside" id="nOC-yI-ctc"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="gK5-ca-YCW">
+                                <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="3zn-Y2-0aJ"/>
+                                    <constraint firstAttribute="width" constant="300" id="v8N-Ke-UjY"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dhB-ut-PDa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -696,6 +726,8 @@
                             <constraint firstItem="wA9-dz-E77" firstAttribute="leading" secondItem="dhB-ut-PDa" secondAttribute="leading" constant="16" id="BX9-ZN-FBl"/>
                             <constraint firstItem="W5h-6Z-kzI" firstAttribute="centerX" secondItem="VN1-YC-QbR" secondAttribute="centerX" id="Xaw-0Z-QmW"/>
                             <constraint firstItem="W5h-6Z-kzI" firstAttribute="top" secondItem="dhB-ut-PDa" secondAttribute="top" constant="36" id="emn-Ka-gcT"/>
+                            <constraint firstItem="gK5-ca-YCW" firstAttribute="centerY" secondItem="VN1-YC-QbR" secondAttribute="centerY" id="pIX-09-Gvb"/>
+                            <constraint firstItem="gK5-ca-YCW" firstAttribute="centerX" secondItem="VN1-YC-QbR" secondAttribute="centerX" id="xOR-VT-fLf"/>
                         </constraints>
                     </view>
                 </viewController>
