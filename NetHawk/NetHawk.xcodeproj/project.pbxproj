@@ -25,6 +25,9 @@
 		F211F1AD2C0F3B7D004F40B4 /* IntelOneMono-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F211F1A52C0F3B7D004F40B4 /* IntelOneMono-Medium.otf */; };
 		F211F1AE2C0F3B7D004F40B4 /* IntelOneMono-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F211F1A62C0F3B7D004F40B4 /* IntelOneMono-Italic.otf */; };
 		F211F1AF2C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F211F1A72C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf */; };
+		F2776B572C181377007700AB /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = F2776B562C181377007700AB /* CocoaMQTT */; };
+		F2776B592C181377007700AB /* CocoaMQTTWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = F2776B582C181377007700AB /* CocoaMQTTWebSocket */; };
+		F2776B5C2C181444007700AB /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = F2776B5B2C181444007700AB /* Starscream */; };
 		F27C9D2A2C103C8200789558 /* WiFiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C9D292C103C8200789558 /* WiFiService.swift */; };
 		F28AF82C2C118C36001290CC /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28AF82B2C118C36001290CC /* ConnectionViewController.swift */; };
 		F28AF8302C118F75001290CC /* NetHawkLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F28AF82F2C118F75001290CC /* NetHawkLogo.png */; };
@@ -69,6 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2776B592C181377007700AB /* CocoaMQTTWebSocket in Frameworks */,
+				F2776B572C181377007700AB /* CocoaMQTT in Frameworks */,
+				F2776B5C2C181444007700AB /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +202,11 @@
 			dependencies = (
 			);
 			name = NetHawk;
+			packageProductDependencies = (
+				F2776B562C181377007700AB /* CocoaMQTT */,
+				F2776B582C181377007700AB /* CocoaMQTTWebSocket */,
+				F2776B5B2C181444007700AB /* Starscream */,
+			);
 			productName = PackeTracker;
 			productReference = F211F1762C0F0375004F40B4 /* NetHawk.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +235,10 @@
 				Base,
 			);
 			mainGroup = F211F16D2C0F0375004F40B4;
+			packageReferences = (
+				F2776B552C181377007700AB /* XCRemoteSwiftPackageReference "CocoaMQTT" */,
+				F2776B5A2C181444007700AB /* XCRemoteSwiftPackageReference "Starscream" */,
+			);
 			productRefGroup = F211F1772C0F0375004F40B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -505,6 +520,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F2776B552C181377007700AB /* XCRemoteSwiftPackageReference "CocoaMQTT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/emqx/CocoaMQTT";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.8;
+			};
+		};
+		F2776B5A2C181444007700AB /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream";
+			requirement = {
+				kind = exactVersion;
+				version = 4.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F2776B562C181377007700AB /* CocoaMQTT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2776B552C181377007700AB /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTT;
+		};
+		F2776B582C181377007700AB /* CocoaMQTTWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2776B552C181377007700AB /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTTWebSocket;
+		};
+		F2776B5B2C181444007700AB /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2776B5A2C181444007700AB /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		F211F1822C0F0375004F40B4 /* NetHawk.xcdatamodeld */ = {
