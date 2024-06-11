@@ -67,6 +67,7 @@ class ConnectionViewController: UIViewController {
         view.layer.shadowOffset = shadowOffset
         view.layer.shadowRadius = shadowRadius
     }
+    
     func applyAnimations() {
         UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
             self.logoLabel.alpha = 1.0

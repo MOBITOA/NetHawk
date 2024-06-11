@@ -19,6 +19,7 @@ class LogViewController: UIViewController {
         logTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         logTextView.isEditable = false
         
+        containerView.backgroundColor = .white
         containerView.layer.cornerRadius = 10
         containerView.layer.shadowColor = UIColor.black.cgColor
         containerView.layer.shadowOpacity = 0.3
