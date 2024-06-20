@@ -191,10 +191,15 @@
                     <connections>
                         <outlet property="alertBtn" destination="aEI-r0-0sd" id="Z1G-dR-o6V"/>
                         <outlet property="ipBtn" destination="4EW-1a-VI2" id="rju-j3-cgf"/>
+                        <outlet property="ipPortLabel" destination="BRQ-TW-WvQ" id="YVR-ig-V3g"/>
                         <outlet property="logBtn" destination="1R6-Cz-h5A" id="xtf-Ze-JqN"/>
+                        <outlet property="logLabel" destination="Ihd-bK-CZH" id="llj-hO-P23"/>
+                        <outlet property="logo" destination="wRK-Nu-05Y" id="YZH-T7-7ch"/>
                         <outlet property="statsBtn" destination="Eym-BP-1w8" id="3Sh-DL-t0u"/>
+                        <outlet property="statsLabel" destination="jeI-v5-SYw" id="65v-KW-IAg"/>
                         <outlet property="titleBtn" destination="CAV-27-mqN" id="zOn-5e-UG0"/>
                         <outlet property="wifiStatusLabel" destination="cQU-UZ-kds" id="KkY-4d-A6Y"/>
+                        <outlet property="wifiStatusTitle" destination="G4q-dj-EnI" id="kfa-gk-JMD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ke-ca-daB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -403,23 +408,41 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d72-hP-rKe">
-                                <rect key="frame" x="106" y="444" width="69" height="35"/>
+                                <rect key="frame" x="105.99999999999999" y="442.66666666666669" width="63.333333333333329" height="36.333333333333314"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="OPEN"/>
+                                <buttonConfiguration key="configuration" style="tinted">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="OPEN">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="IntelOneMono-Medium"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDn-vS-0i2">
-                                <rect key="frame" x="200" y="444" width="69" height="35"/>
+                                <rect key="frame" x="201" y="442.66666666666669" width="69" height="36.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="y7G-bC-gpV"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="BAN"/>
+                                <buttonConfiguration key="configuration" style="gray">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="BAN">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="IntelOneMono-Medium"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFf-h8-CAr" userLabel="frame1">
-                                <rect key="frame" x="37.666666666666657" y="272" width="300" height="51"/>
+                                <rect key="frame" x="37.666666666666657" y="270.66666666666669" width="300" height="51"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="ex. 192.168.0.1:8080" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vIM-gd-OJL">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="ex. 192.168.0.1 .." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vIM-gd-OJL">
                                         <rect key="frame" x="8" y="8" width="284" height="35"/>
                                         <color key="backgroundColor" red="0.93584877379999998" green="0.94252150270000001" blue="0.96253968919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText">
@@ -444,13 +467,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VNr-mJ-UCB" userLabel="frame2">
-                                <rect key="frame" x="37.666666666666657" y="371" width="300" height="51"/>
+                                <rect key="frame" x="37.666666666666657" y="369.66666666666669" width="300" height="51"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="ex. 00:11:22:33:44:55" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AaK-dL-i7y">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="ex. 8080 .." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AaK-dL-i7y">
                                         <rect key="frame" x="8" y="8" width="284" height="35"/>
                                         <color key="backgroundColor" red="0.93584877379999998" green="0.94252150270000001" blue="0.96253968919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="11:22:00 ...">
+                                            <fragment content="8080 ..">
                                                 <attributes>
                                                     <font key="NSFont" size="18" name="IntelOneMono-Bold"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -470,7 +493,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9k-CW-4Sd">
-                                <rect key="frame" x="135" y="245" width="105" height="24"/>
+                                <rect key="frame" x="135" y="243.66666666666666" width="105" height="23.999999999999972"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Desired IP">
                                         <attributes>
@@ -482,7 +505,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQP-qI-Scq">
-                                <rect key="frame" x="124.66666666666669" y="344" width="126" height="24"/>
+                                <rect key="frame" x="124.66666666666669" y="342.66666666666669" width="126" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Desired Port">
                                         <attributes>
@@ -507,26 +530,40 @@
                                     <constraint firstAttribute="width" constant="157" id="ScJ-1q-1Ep"/>
                                 </constraints>
                             </containerView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="&lt;Banned List&gt;" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6uk-sh-Qsa">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6uk-sh-Qsa">
                                 <rect key="frame" x="26" y="533" width="157" height="237"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="qYc-3I-P1W"/>
                                     <constraint firstAttribute="height" constant="237" id="wgb-49-RID"/>
                                 </constraints>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="&lt;Banned List&gt;">
+                                        <attributes>
+                                            <color key="NSColor" systemColor="labelColor"/>
+                                            <font key="NSFont" size="14" name="IntelOneMono-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="&lt;Opened List&gt;" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PZj-Pp-7SI">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PZj-Pp-7SI">
                                 <rect key="frame" x="191" y="533" width="157" height="237"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="aIa-uk-o6k"/>
                                     <constraint firstAttribute="height" constant="237" id="uaL-cb-MgU"/>
                                 </constraints>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="&lt;Opened List&gt;">
+                                        <attributes>
+                                            <color key="NSColor" systemColor="labelColor"/>
+                                            <font key="NSFont" size="14" name="IntelOneMono-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="6IL-Sj-v72">
@@ -546,7 +583,7 @@
                             <constraint firstItem="6IL-Sj-v72" firstAttribute="centerX" secondItem="BZM-iT-X5x" secondAttribute="centerX" id="7ee-Di-oIO"/>
                             <constraint firstItem="jqb-qS-sEY" firstAttribute="centerX" secondItem="BZM-iT-X5x" secondAttribute="centerX" id="BTL-gc-UQc"/>
                             <constraint firstItem="TKL-Bk-2so" firstAttribute="top" secondItem="d72-hP-rKe" secondAttribute="bottom" constant="54" id="DLz-y0-L3o"/>
-                            <constraint firstItem="I6e-0W-t0P" firstAttribute="trailing" secondItem="hDn-vS-0i2" secondAttribute="trailing" constant="106" id="G5C-Tp-k9G"/>
+                            <constraint firstItem="I6e-0W-t0P" firstAttribute="trailing" secondItem="hDn-vS-0i2" secondAttribute="trailing" constant="105" id="G5C-Tp-k9G"/>
                             <constraint firstItem="wKd-Pd-g1v" firstAttribute="leading" secondItem="I6e-0W-t0P" secondAttribute="leading" constant="16" id="Iln-Sa-SYQ"/>
                             <constraint firstItem="6uk-sh-Qsa" firstAttribute="top" secondItem="BZM-iT-X5x" secondAttribute="top" constant="533" id="Mph-dF-mHh"/>
                             <constraint firstItem="d72-hP-rKe" firstAttribute="leading" secondItem="I6e-0W-t0P" secondAttribute="leading" constant="106" id="N7p-gf-jk4"/>
@@ -638,7 +675,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">[DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : UDP Flooding  ---------------------------------  [DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : DNS Spoofing  ---------------------------------  [DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : TCP SYN Flood ---------------------------------  [DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : URL Phishing ---------------------------------  [DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : URL Phishing</string>
+                                        <string key="content">[DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : UDP Flooding  --------------------------------  [DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : DNS Spoofing  --------------------------------  [DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : TCP SYN Flood --------------------------------  [DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : URL Phishing --------------------------------  [DETECTED &amp; BLOCKED]                                  TimeStamp : 2024-06-07 10:23:45 Source : 192.168.1.10 Destination : 172.25.19.8 Activity : URL Phishing</string>
                                         <attributes>
                                             <color key="NSColor" systemColor="labelColor"/>
                                             <font key="NSFont" size="14" name="IntelOneMono-Medium"/>
@@ -687,7 +724,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5h-6Z-kzI">
-                                <rect key="frame" x="76.666666666666686" y="86" width="222" height="50"/>
+                                <rect key="frame" x="77.000000000000014" y="86" width="221.33333333333337" height="50"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Statistics">
                                         <attributes>

@@ -145,15 +145,6 @@ extension AccessViewController: UITextFieldDelegate {
         } else if textField == portTextField {
             portTextIsEmpty = updatedText?.isEmpty ?? true
             
-            // MAC 주소 포맷팅
-            let formattedText = updatedText?.replacingOccurrences(of: ":", with: "").replacingOccurrences(of: "-", with: "")
-            
-            if let count = formattedText?.count, count > 12 {
-                return false
-            }
-            
-            let macAddress = formatMACAddress(formattedText ?? "")
-            textField.text = macAddress
         }
         
         if !ipTextIsEmpty || !portTextIsEmpty {
@@ -164,24 +155,6 @@ extension AccessViewController: UITextFieldDelegate {
             banBtn.isEnabled = false
         }
         
-        return textField == ipTextField
+        return true
     }
-    
-    func formatMACAddress(_ macAddress: String) -> String {
-        var formattedMACAddress = ""
-        var index = 0
-        
-        for char in macAddress {
-            formattedMACAddress.append(char)
-            
-            if (index + 1) % 2 == 0 && index < macAddress.count - 1 {
-                formattedMACAddress.append(":")
-            }
-            
-            index += 1
-        }
-        
-        return formattedMACAddress
-    }
-    
 }

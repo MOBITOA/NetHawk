@@ -11,16 +11,22 @@ import SystemConfiguration
 
 class MainViewController: UIViewController, CLLocationManagerDelegate {
     
-    // MARK: - UI Buttons
+    // MARK: - UI Outlets
     @IBOutlet weak var titleBtn: UIButton!
     @IBOutlet weak var alertBtn: UIButton!
     
     @IBOutlet weak var logBtn: UIButton!
     @IBOutlet weak var statsBtn: UIButton!
     @IBOutlet weak var ipBtn: UIButton!
-    // MARK: - UI Labels
+    
+    @IBOutlet weak var wifiStatusTitle: UILabel!
     @IBOutlet weak var wifiStatusLabel: UILabel!
     
+    @IBOutlet weak var logLabel: UILabel!
+    @IBOutlet weak var statsLabel: UILabel!
+    @IBOutlet weak var ipPortLabel: UILabel!
+    
+    @IBOutlet weak var logo: UIImageView!
     // MARK: - Properties
     let locationManager = CLLocationManager()
     let wifiService = WiFiService()
@@ -35,13 +41,33 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         applyButtonEffect(logBtn)
         applyButtonEffect(statsBtn)
         applyButtonEffect(ipBtn)
-    
+        
         addShadowToButton(logBtn)
         addShadowToButton(statsBtn)
         addShadowToButton(ipBtn)
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        
+        titleBtn.alpha = 0.0
+        alertBtn.alpha = 0.0
+        logBtn.alpha = 0.0
+        statsBtn.alpha = 0.0
+        ipBtn.alpha = 0.0
+        wifiStatusLabel.alpha = 0.0
+        wifiStatusTitle.alpha = 0.0
+        logLabel.alpha = 0.0
+        statsLabel.alpha = 0.0
+        ipPortLabel.alpha = 0.0
+        logo.alpha = 0.0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 0.1초 지연 후에 애니메이션 시작
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.applyAnimations()
+        }
     }
     
     
@@ -67,6 +93,35 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         button.layer.shadowOpacity = 0.5
         button.layer.shadowRadius = 4
         button.layer.masksToBounds = false
+    }
+    
+    func applyAnimations() {
+        UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
+            self.logo.alpha = 0.15
+            
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseInOut, animations: {
+            self.titleBtn.alpha = 1.0
+            self.alertBtn.alpha = 1.0
+
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 1, delay: 0.7, options: .curveEaseInOut, animations: {
+            self.wifiStatusLabel.alpha = 1.0
+            self.wifiStatusTitle.alpha = 1.0
+
+        }, completion: nil)
+
+        
+        UIView.animate(withDuration: 1, delay: 0.9, options: .curveEaseInOut, animations: {
+            self.logBtn.alpha = 1.0
+            self.logLabel.alpha = 1.0
+            self.statsBtn.alpha = 1.0
+            self.statsLabel.alpha = 1.0
+            self.ipBtn.alpha = 1.0
+            self.ipPortLabel.alpha = 1.0
+        }, completion: nil)
     }
     
     // MARK: - Alert [위치동의]
@@ -100,7 +155,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             present(logVC, animated: true, completion: nil)
         }
     }
-
+    
     @IBAction func statBtntapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let statVC = storyboard.instantiateViewController(withIdentifier: "StatViewController") as? StatViewController {
@@ -108,7 +163,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             present(statVC, animated: true, completion: nil)
         }
     }
-
+    
     @IBAction func ipBtnTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let accessVC = storyboard.instantiateViewController(withIdentifier: "AccessViewController") as? AccessViewController {
@@ -122,13 +177,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         button.addTarget(self, action: #selector(buttonTouchDown(_:)), for: .touchDown)
         button.addTarget(self, action: #selector(buttonTouchUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
     }
-
+    
     @objc func buttonTouchDown(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1) {
             sender.alpha = 0.5
         }
     }
-
+    
     @objc func buttonTouchUp(_ sender: UIButton) {
         UIView.animate(withDuration: 0.4) {
             sender.alpha = 1.0
