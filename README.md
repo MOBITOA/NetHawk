@@ -38,14 +38,17 @@
 - 비정상 패킷의 통계적 지표를 제공합니다.
   
 ## Installation
+### 1. 
 ```
 git clone https://github.com/yourusername/NetHawk.git
 ```
-```
-open NetHawk.xcodeproj
-```
+### 2. 
+~~~ 
+open NetHawk.xcodeproj 
+~~~
 
-`and.. Build -> run the app using Xcode`
+
+and.. **Build** -> **run** the app using Xcode
 
 ## Architecture
 🛠️
