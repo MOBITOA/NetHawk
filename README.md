@@ -1,6 +1,6 @@
 # NetHawk
 
-<img src="imgs/NetHawkLogo_round.png" width="30%" height="30%">
+![Alt text](NetHawk-Title.png)
 
 ## Summary
 `NetHawk`는 ['24 한밭대학교 컴퓨터공학과 캡스톤디자인](https://github.com/HBNU-SWUNIV/come-capstone24-mobitoa)의  
