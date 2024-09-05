@@ -38,6 +38,10 @@
 ### IP/Port 블랙리스트 & 화이트리스트
 - 특정 IP/Port에 대해 차단 혹은 오픈할 수 있는 기능을 제공합니다.
   
+
+## Architecture
+![Alt text](/imgs/SystemArch.png)
+
 ## Installation
 ### 1. 
 ```
@@ -50,15 +54,13 @@ open NetHawk.xcodeproj
 
 and.. **Build** -> **run** the app using Xcode
 
-## Architecture
-![Alt text](/imgs/SystemArch.png)
-
 
 ## Code Style Guide
 - [Swift Style Guide](https://github.com/StyleShare/swift-style-guide)
 
 ## Fonts
 - [Intel One Mono](https://github.com/intel/intel-one-mono)
+
 
 ## Contact
 ✉️ [accc45@outlook.com](mailto:accc45@outlook.com)
