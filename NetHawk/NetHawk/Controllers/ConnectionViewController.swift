@@ -122,6 +122,7 @@ class ConnectionViewController: UIViewController {
             print("MainViewController 인스턴스 생성 실패")
         }
         
+        // 키체인화 
         if let (broker, mac) = KeychainManager.shared.load() {
                     print("Broker: \(broker)")
                     print("MAC: \(mac)")

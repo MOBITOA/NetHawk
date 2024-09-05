@@ -42,6 +42,8 @@
 
 ## Architecture
 ![Alt text](/imgs/SystemArch.png)
+![Alt text](<imgs/API 명세.png>)
+
 
 ## Installation
 **1. Clone Projects**

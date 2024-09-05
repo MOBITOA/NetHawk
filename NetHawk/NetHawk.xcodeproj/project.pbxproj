@@ -115,9 +115,6 @@
 		F211F1902C0F11C9004F40B4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F27C9D292C103C8200789558 /* WiFiService.swift */,
-				F2AA54242C11F7E200D5C52C /* MQTTService.swift */,
-				F2AA54262C12015400D5C52C /* KeyChainService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,6 +145,9 @@
 		F211F1932C0F120A004F40B4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F27C9D292C103C8200789558 /* WiFiService.swift */,
+				F2AA54242C11F7E200D5C52C /* MQTTService.swift */,
+				F2AA54262C12015400D5C52C /* KeyChainService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
