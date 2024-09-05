@@ -44,16 +44,14 @@
 ![Alt text](/imgs/SystemArch.png)
 
 ## Installation
-### 1. 
+**1. Clone Projects**
 ```
 git clone https://github.com/yourusername/NetHawk.git
 ```
-### 2. 
+**2. Open and Build/Run**
 ~~~ 
 open NetHawk.xcodeproj 
 ~~~
-
-and.. **Build** -> **run** the app using Xcode
 
 
 ## Code Style Guide
