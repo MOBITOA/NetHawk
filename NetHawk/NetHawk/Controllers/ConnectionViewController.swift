@@ -26,8 +26,8 @@ class ConnectionViewController: UIViewController {
 
     // MARK: - LifeCycle and UI Design
     override func viewDidLoad() {
-
         super.viewDidLoad()
+        print("----------------")
         print("viewDidLoad : ConnectionView")
         self.logoLabel.alpha = 0.0
         self.inputLabelOne.alpha = 0.0

@@ -48,9 +48,17 @@ class MQTTService: CocoaMQTTDelegate {
             print("MQTT connected")
             onConnectionSuccess?()
 
-            // 연결 성공 시, 구독할 내용
-            subscribe(topic: "your/topic")
-            
+            // 키체인 MAC주소 로드 & 토픽 구독
+            if let credentials = KeychainManager.shared.load() {
+                let mac = credentials.mac
+                // 연결된 필터 알림 수신
+                subscribe(topic: "\(mac)/alarm")
+                // 블랙리스트 & 화이트리스트
+                subscribe(topic: "\(mac)/blacklist")
+                subscribe(topic: "\(mac)/whitelist")
+                subscribe(topic: "\(mac)/refreshBW")
+            }
+
         } else {
             print("MQTT connection failed")
             onConnectionFailure?()

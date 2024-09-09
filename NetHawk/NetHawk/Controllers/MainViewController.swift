@@ -34,6 +34,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("----------------")
         print("viewDidLoad : MainView")
         setupTitleButton()
         setupWifiStatusLabel()
