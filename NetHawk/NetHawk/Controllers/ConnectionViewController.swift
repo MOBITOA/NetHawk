@@ -112,9 +112,15 @@ class ConnectionViewController: UIViewController {
         // 브로커 정보 저장
         KeychainManager.shared.save(ip: ip, port: port, mac: mac)
 
-        // MQTT Broker IP/Port
-        // host : 203.230.104.207
-        // port : 80
+        /* 
+        MQTT Broker IP/Port - 학교망 외부에서
+        host : 203.230.104.207
+        port : 80
+
+        MQTT Broker IP/Port - 학교망 내부에서
+        host : 203.230.104.207
+        port : 14025
+        */
         mqttService = MQTTService(clientID: mac, host: ip, port: UInt16(port)!)
         mqttService?.connect()
 
