@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CocoaMQTT
 
 class ConnectionViewController: UIViewController {
     
@@ -23,6 +24,7 @@ class ConnectionViewController: UIViewController {
     
     private var mqttService: MQTTService?
 
+    // MARK: - LifeCycle and UI Design
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -45,13 +47,14 @@ class ConnectionViewController: UIViewController {
         brokerPortTextField.delegate = self
         macTextField.delegate = self
     }
-    
-    // SplashView에서 DispatchQueue.main.asyncAfter를 사용하여
-    // 일정 시간 지연 후에 본 페이지로 오기 때문에 타이밍 문제가 존재했음.
-    // viewDidAppear로 이전 타이밍이 끝나고 본 작업을 시행
+
+    /* 
+    SplashView에서 DispatchQueue.main.asyncAfter를 사용하여
+    일정 시간 지연 후에 본 페이지로 오기 때문에 타이밍 문제가 존재했음.
+    viewDidAppear로 이전 타이밍이 끝나고 본 작업을 시행
+    */
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // 1초 지연 후에 애니메이션 시작
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.applyAnimations()
         }
@@ -102,8 +105,10 @@ class ConnectionViewController: UIViewController {
             self.logoImageView.alpha = 0.1
         }, completion: nil)
     }
-    
-    
+
+    // MARK: - Methods
+
+    // 페어링 버튼 클릭 메서드
     @IBAction func pairingBtnTapped(_ sender: UIButton) {
         let ip = brokerIpTextField.text ?? ""
         let port = brokerPortTextField.text ?? ""
@@ -122,12 +127,32 @@ class ConnectionViewController: UIViewController {
         port : 14025
         */
         mqttService = MQTTService(clientID: mac, host: ip, port: UInt16(port)!)
+        mqttService?.onConnectionSuccess = { [weak self] in
+            DispatchQueue.main.async {
+                self?.navigateToMainViewController()
+            }
+        }
+        mqttService?.onConnectionFailure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.presentConnectionErrorAlert()
+            }
+        }
         mqttService?.connect()
 
         // navigateToMainViewController()
     }
+    // 연결 실패 시, 알림창
+    func presentConnectionErrorAlert() {
 
-    // MARK: - MainViewController로 이동하는 메서드
+        let alert = UIAlertController(title: "Connection Error", message: "Unable to connect to MQTT broker. Please check the details and try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
+            self?.pairingBtnTapped(UIButton())
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+
+    // MainView 이동 메서드
     private func navigateToMainViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
@@ -138,7 +163,7 @@ class ConnectionViewController: UIViewController {
                 mainViewController.modalPresentationStyle = .fullScreen
                 present(mainViewController, animated: true, completion: nil)
             }
-        } else { }
+        } else {}
     }
 }
 
@@ -205,3 +230,5 @@ extension ConnectionViewController: UITextFieldDelegate {
     }
     
 }
+
+

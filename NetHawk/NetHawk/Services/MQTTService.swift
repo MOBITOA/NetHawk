@@ -7,11 +7,14 @@
 
 import CocoaMQTT
 import Foundation
+import UIKit
 
 class MQTTService: CocoaMQTTDelegate {
     
     private var mqtt: CocoaMQTT?
-    
+    var onConnectionSuccess: (() -> Void)?
+    var onConnectionFailure: (() -> Void)?
+
     init(clientID: String, host: String = "localhost", port: UInt16 = 1883) {
         mqtt = CocoaMQTT(clientID: clientID, host: host, port: port)
         mqtt?.delegate = self
@@ -43,13 +46,17 @@ class MQTTService: CocoaMQTTDelegate {
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         if ack == .accept {
             print("MQTT connected")
-            // Subscribe to topics after successful connection
+            onConnectionSuccess?()
+
+            // 연결 성공 시, 구독할 내용
             subscribe(topic: "your/topic")
+            
         } else {
             print("MQTT connection failed")
+            onConnectionFailure?()
         }
     }
-    
+
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
         print("MQTT message published: \(message.string ?? ""), id: \(id)")
     }
@@ -76,14 +83,15 @@ class MQTTService: CocoaMQTTDelegate {
     }
     
     func mqttDidPing(_ mqtt: CocoaMQTT) {
-        print("MQTT ping")
+        print("MQTT ping!")
     }
     
     func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
-        print("MQTT pong")
+        print("MQTT pong~")
     }
     
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         print("MQTT disconnected: \(err?.localizedDescription ?? "")")
+        onConnectionFailure?()
     }
 }
