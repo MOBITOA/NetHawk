@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tL9-3I-bNi">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -243,11 +242,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4l-PH-87k">
                                 <rect key="frame" x="37.666666666666657" y="429" width="300" height="51"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="ex. 192.168.0.1:8080" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JuP-Ph-ZFb">
-                                        <rect key="frame" x="8" y="8" width="284" height="35"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="ex. 192.168.0.1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JuP-Ph-ZFb" userLabel="Broker IP Text Field">
+                                        <rect key="frame" x="8" y="8" width="221" height="35"/>
                                         <color key="backgroundColor" red="0.93584877379999998" green="0.94252150270000001" blue="0.96253968919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="221" id="bqp-lc-vfP"/>
+                                        </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="192.168.">
+                                            <fragment content="192.168.0.1">
                                                 <attributes>
                                                     <font key="NSFont" size="18" name="IntelOneMono-Bold"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -256,15 +258,31 @@
                                         </attributedString>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="80" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HJK-gl-Hkc" userLabel="Broker Port Text Field">
+                                        <rect key="frame" x="236" y="8" width="56" height="35"/>
+                                        <color key="backgroundColor" red="0.93584877379999998" green="0.94252150270000001" blue="0.96253968919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="1833">
+                                                <attributes>
+                                                    <font key="NSFont" size="18" name="IntelOneMono-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="JuP-Ph-ZFb" firstAttribute="leading" secondItem="m4l-PH-87k" secondAttribute="leading" constant="8" id="4I5-aP-87i"/>
                                     <constraint firstAttribute="width" constant="300" id="DLA-42-iac"/>
+                                    <constraint firstAttribute="bottom" secondItem="JuP-Ph-ZFb" secondAttribute="bottom" constant="8" id="EFb-HI-gSA"/>
                                     <constraint firstAttribute="height" constant="51" id="Hgw-OK-xPg"/>
-                                    <constraint firstItem="JuP-Ph-ZFb" firstAttribute="top" secondItem="m4l-PH-87k" secondAttribute="top" constant="8" id="SHO-vZ-UzI"/>
-                                    <constraint firstAttribute="bottom" secondItem="JuP-Ph-ZFb" secondAttribute="bottom" constant="8" id="VJx-i9-1wD"/>
-                                    <constraint firstAttribute="trailing" secondItem="JuP-Ph-ZFb" secondAttribute="trailing" constant="8" id="sAg-DQ-brg"/>
+                                    <constraint firstItem="JuP-Ph-ZFb" firstAttribute="leading" secondItem="m4l-PH-87k" secondAttribute="leading" constant="8" id="KT6-ir-O0x"/>
+                                    <constraint firstItem="JuP-Ph-ZFb" firstAttribute="top" secondItem="m4l-PH-87k" secondAttribute="top" constant="8" id="Mey-wK-esG"/>
+                                    <constraint firstAttribute="bottom" secondItem="HJK-gl-Hkc" secondAttribute="bottom" constant="8" id="YHz-Zl-zce"/>
+                                    <constraint firstAttribute="trailing" secondItem="HJK-gl-Hkc" secondAttribute="trailing" constant="8" id="aMc-GI-dub"/>
+                                    <constraint firstItem="HJK-gl-Hkc" firstAttribute="top" secondItem="m4l-PH-87k" secondAttribute="top" constant="8" id="bMc-yP-KSK"/>
+                                    <constraint firstItem="HJK-gl-Hkc" firstAttribute="leading" secondItem="JuP-Ph-ZFb" secondAttribute="trailing" constant="7" id="uii-oV-hLm"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR OWN MAC ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joW-vH-394">
@@ -327,8 +345,8 @@
                                     <action selector="pairingBtnTapped:" destination="tL9-3I-bNi" eventType="touchUpInside" id="c3B-jK-bO2"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="sjm-RR-cbo">
-                                <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="sjm-RR-cbo">
+                                <rect key="frame" x="37" y="-102" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="BgT-9Z-Cza"/>
                                     <constraint firstAttribute="width" constant="300" id="Qey-N9-tGf"/>
@@ -357,7 +375,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="enU-Mt-NvO"/>
                     <connections>
-                        <outlet property="brokerTextField" destination="JuP-Ph-ZFb" id="7SI-oL-4wl"/>
+                        <outlet property="brokerIpTextField" destination="JuP-Ph-ZFb" id="7SI-oL-4wl"/>
+                        <outlet property="brokerPortTextField" destination="HJK-gl-Hkc" id="tds-qh-ylT"/>
                         <outlet property="inputLabelOne" destination="6gZ-Nf-Y7p" id="EXk-do-c41"/>
                         <outlet property="inputLabelTwo" destination="joW-vH-394" id="bXk-wj-eDf"/>
                         <outlet property="logoImageView" destination="sjm-RR-cbo" id="0x4-zv-YKf"/>
@@ -370,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNV-a7-RmE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="67.980295566502463"/>
+            <point key="canvasLocation" x="2264.8000000000002" y="67.980295566502463"/>
         </scene>
         <!--Access View Controller-->
         <scene sceneID="k0z-Oj-qmd">

@@ -155,7 +155,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             present(logVC, animated: true, completion: nil)
         }
     }
-    
+
     @IBAction func statBtntapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let statVC = storyboard.instantiateViewController(withIdentifier: "StatViewController") as? StatViewController {

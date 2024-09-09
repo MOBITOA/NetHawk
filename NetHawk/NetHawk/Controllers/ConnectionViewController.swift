@@ -15,13 +15,16 @@ class ConnectionViewController: UIViewController {
     @IBOutlet weak var inputLabelTwo: UILabel!
     @IBOutlet weak var tfFrameOne: UIView!
     @IBOutlet weak var tfFrameTwo: UIView!
-    @IBOutlet weak var brokerTextField: UITextField!
+    @IBOutlet weak var brokerIpTextField: UITextField!
+    @IBOutlet weak var brokerPortTextField: UITextField!
     @IBOutlet weak var macTextField: UITextField!
     @IBOutlet weak var pairingBtn: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     
-    
+    private var mqttService: MQTTService?
+
     override func viewDidLoad() {
+
         super.viewDidLoad()
         print("viewDidLoad : ConnectionView")
         self.logoLabel.alpha = 0.0
@@ -31,15 +34,16 @@ class ConnectionViewController: UIViewController {
         self.tfFrameTwo.alpha = 0.0
         self.pairingBtn.alpha = 0.0
         self.logoImageView.alpha = 0.0
-        self.brokerTextField.text = ""
+        self.brokerIpTextField.text = ""
+        self.brokerPortTextField.text = ""
         self.macTextField.text = ""
         
         frameConfig(to: tfFrameOne)
         frameConfig(to: tfFrameTwo)
         
-        brokerTextField.delegate = self
+        brokerIpTextField.delegate = self
+        brokerPortTextField.delegate = self
         macTextField.delegate = self
-        
     }
     
     // SplashView에서 DispatchQueue.main.asyncAfter를 사용하여
@@ -101,44 +105,42 @@ class ConnectionViewController: UIViewController {
     
     
     @IBAction func pairingBtnTapped(_ sender: UIButton) {
-        let broker = brokerTextField.text ?? ""
+        let ip = brokerIpTextField.text ?? ""
+        let port = brokerPortTextField.text ?? ""
         let mac = macTextField.text ?? ""
-        
-        KeychainManager.shared.save(broker: broker, mac: mac)
-        
+
+        // 브로커 정보 저장
+        KeychainManager.shared.save(ip: ip, port: port, mac: mac)
+
+        // MQTT Broker IP/Port
+        // host : 203.230.104.207
+        // port : 80
+        mqttService = MQTTService(clientID: mac, host: ip, port: UInt16(port)!)
+        mqttService?.connect()
+
+        // navigateToMainViewController()
+    }
+
+    // MARK: - MainViewController로 이동하는 메서드
+    private func navigateToMainViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
-            print("MainViewController 인스턴스 생성 성공")
-            
+
             if let navigationController = navigationController {
-                print("NavigationController 있음")
                 navigationController.pushViewController(mainViewController, animated: true)
             } else {
-                print("NavigationController 없음")
                 mainViewController.modalPresentationStyle = .fullScreen
                 present(mainViewController, animated: true, completion: nil)
             }
-        } else {
-            print("MainViewController 인스턴스 생성 실패")
-        }
-        
-        // 키체인화 
-        if let (broker, mac) = KeychainManager.shared.load() {
-                    print("Broker: \(broker)")
-                    print("MAC: \(mac)")
-                    // 로드된 값을 사용하여 필요한 작업 수행
-                } else {
-                    print("Keychain에서 값을 찾을 수 없습니다.")
-                }
-        
+        } else { }
     }
 }
 
 extension ConnectionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == brokerTextField {
+        if textField == brokerIpTextField {
             // 브로커 텍스트필드 입력 시 버튼 숨김 여부 결정
-            let brokerTextIsEmpty = brokerTextField.text?.isEmpty ?? true
+            let brokerTextIsEmpty = brokerIpTextField.text?.isEmpty ?? true
             let macTextIsEmpty = macTextField.text?.isEmpty ?? true
             
             if brokerTextIsEmpty || macTextIsEmpty {
@@ -166,7 +168,7 @@ extension ConnectionViewController: UITextFieldDelegate {
             textField.text = macAddress
             
             // MAC 텍스트필드 입력 시 버튼 숨김 여부 결정
-            let brokerTextIsEmpty = brokerTextField.text?.isEmpty ?? true
+            let brokerTextIsEmpty = brokerIpTextField.text?.isEmpty ?? true
             let macTextIsEmpty = macTextField.text?.isEmpty ?? true
             
             if brokerTextIsEmpty || macTextIsEmpty {
