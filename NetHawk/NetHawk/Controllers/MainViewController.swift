@@ -13,15 +13,21 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
             self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
-            self.pagerView.itemSize = CGSize(width:220, height: 150)
-            self.pagerView.interitemSpacing = 16
-            self.pagerView.isInfinite = true // 무한 스크롤 가능
-            self.pagerView.transformer = FSPagerViewTransformer(type: .ferrisWheel)
+
+            // 화면 크기에 비례한 아이템 크기 설정
+            let screenWidth = UIScreen.main.bounds.width
+            let itemWidth = screenWidth * 0.6
+            let itemHeight = itemWidth * 125/155
+            self.pagerView.itemSize = CGSize(width: itemWidth, height: itemHeight)
+            self.pagerView.interitemSpacing = 50
+
+            self.pagerView.isInfinite = true
+            self.pagerView.transformer = FSPagerViewTransformer(type: .linear)
         }
+
     }
 
-    let images = ["list.bullet.clipboard", "chart.bar.xaxis", "shield.lefthalf.filled.slash", "gearshape"]
-    let titles = ["Log", "Statistics", "Black/White List", "Option"]
+    let images = ["loger", "stat", "bw", "option"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,36 +45,16 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
         // SF Symbol 이미지 설정
         if let imageView = cell.imageView {
-            imageView.image = UIImage(systemName: images[index])
-            imageView.contentMode = .scaleAspectFit // 이미지의 비율을 유지하면서 셀에 맞춤
-        }
-
-        // 레이블 설정
-        if let textLabel = cell.textLabel {
-            textLabel.text = titles[index]
-            textLabel.textAlignment = .center
-            textLabel.textColor = .darkGray
-            textLabel.font = UIFont(name: "IntelOneMono-Medium", size: 16)
-
-            if let superview = textLabel.superview {
-                superview.backgroundColor = UIColor.clear // 배경색을 투명하게 설정
-                superview.translatesAutoresizingMaskIntoConstraints = false
-
-                // 슈퍼뷰의 새로운 제약 조건 설정 (아래로 20 포인트 이동)
-                NSLayoutConstraint.activate([
-                    superview.topAnchor.constraint(equalTo: superview.superview!.topAnchor, constant: 140), // 상단에서 20포인트 떨어짐
-                    superview.leadingAnchor.constraint(equalTo: superview.superview!.leadingAnchor),
-                    superview.trailingAnchor.constraint(equalTo: superview.superview!.trailingAnchor),
-                    superview.heightAnchor.constraint(equalToConstant: textLabel.frame.size.height)
-                ])
-            }
+            imageView.image = UIImage(named: images[index])
+            imageView.contentMode = .scaleAspectFill
+            imageView.layer.cornerRadius = 10 // 이미지도 모서리를 둥글게
+            imageView.layer.masksToBounds = true
         }
 
         return cell
     }
 
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-
         pagerView.deselectItem(at: index, animated: true) // 선택된 상태 해제
         print("Selected page index: \(index)")
 
