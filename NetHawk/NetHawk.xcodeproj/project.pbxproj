@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4443D8B577C30E1A8E927CB /* Pods_NetHawk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9396532BEBF785318EAA02B4 /* Pods_NetHawk.framework */; };
 		F211F17A2C0F0375004F40B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F211F1792C0F0375004F40B4 /* AppDelegate.swift */; };
 		F211F17C2C0F0375004F40B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F211F17B2C0F0375004F40B4 /* SceneDelegate.swift */; };
 		F211F17E2C0F0375004F40B4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F211F17D2C0F0375004F40B4 /* MainViewController.swift */; };
@@ -39,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A418393EBA8857F269448B1 /* Pods-NetHawk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetHawk.debug.xcconfig"; path = "Target Support Files/Pods-NetHawk/Pods-NetHawk.debug.xcconfig"; sourceTree = "<group>"; };
+		826F7515095EDA90EB25E0F1 /* Pods-NetHawk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetHawk.release.xcconfig"; path = "Target Support Files/Pods-NetHawk/Pods-NetHawk.release.xcconfig"; sourceTree = "<group>"; };
+		9396532BEBF785318EAA02B4 /* Pods_NetHawk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetHawk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F211F1762C0F0375004F40B4 /* NetHawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetHawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F211F1792C0F0375004F40B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F211F17B2C0F0375004F40B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,17 +81,38 @@
 				F2776B592C181377007700AB /* CocoaMQTTWebSocket in Frameworks */,
 				F2776B572C181377007700AB /* CocoaMQTT in Frameworks */,
 				F2776B5C2C181444007700AB /* Starscream in Frameworks */,
+				B4443D8B577C30E1A8E927CB /* Pods_NetHawk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		521856BCA8B7C024D7517717 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9396532BEBF785318EAA02B4 /* Pods_NetHawk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB8908896AD8EC013E48D61B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2A418393EBA8857F269448B1 /* Pods-NetHawk.debug.xcconfig */,
+				826F7515095EDA90EB25E0F1 /* Pods-NetHawk.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F211F16D2C0F0375004F40B4 = {
 			isa = PBXGroup;
 			children = (
 				F211F1782C0F0375004F40B4 /* NetHawk */,
 				F211F1772C0F0375004F40B4 /* Products */,
+				BB8908896AD8EC013E48D61B /* Pods */,
+				521856BCA8B7C024D7517717 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,9 +221,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F211F18D2C0F0377004F40B4 /* Build configuration list for PBXNativeTarget "NetHawk" */;
 			buildPhases = (
+				26C519C08BFFE54325170CBB /* [CP] Check Pods Manifest.lock */,
 				F211F1722C0F0375004F40B4 /* Sources */,
 				F211F1732C0F0375004F40B4 /* Frameworks */,
 				F211F1742C0F0375004F40B4 /* Resources */,
+				917E0EDD3CF9C357F92B5189 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -273,6 +300,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26C519C08BFFE54325170CBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NetHawk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		917E0EDD3CF9C357F92B5189 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NetHawk/Pods-NetHawk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NetHawk/Pods-NetHawk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NetHawk/Pods-NetHawk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F211F1722C0F0375004F40B4 /* Sources */ = {
@@ -434,6 +503,7 @@
 		};
 		F211F18E2C0F0377004F40B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A418393EBA8857F269448B1 /* Pods-NetHawk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -469,6 +539,7 @@
 		};
 		F211F18F2C0F0377004F40B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 826F7515095EDA90EB25E0F1 /* Pods-NetHawk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
