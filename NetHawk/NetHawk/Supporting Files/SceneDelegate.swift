@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SplashViewController")
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController2")
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
 
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
