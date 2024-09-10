@@ -13,10 +13,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--MainViewController-->
+        <!--MainViewController2-->
         <scene sceneID="tcH-Tv-raZ">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" title="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4nf-sv-j8R" customClass="MainViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController2" title="MainViewController2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4nf-sv-j8R" customClass="MainViewController2" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HLn-JB-omt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ke-ca-daB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3084" y="67.980295566502463"/>
+            <point key="canvasLocation" x="3092" y="781"/>
         </scene>
         <!--Connection View Controller-->
         <scene sceneID="gzw-VA-Njq">
@@ -734,10 +734,10 @@
             </objects>
             <point key="canvasLocation" x="3912.8000000000002" y="67.980295566502463"/>
         </scene>
-        <!--MainViewController2-->
+        <!--MainViewController-->
         <scene sceneID="GhV-Wg-Drm">
             <objects>
-                <viewController storyboardIdentifier="MainViewController2" title="MainViewController2" id="9hm-U5-OYh" customClass="MainViewController2" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="MainViewController" id="9hm-U5-OYh" customClass="MainViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="07i-yv-2MM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -802,12 +802,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="pagerView" destination="oQS-Wu-44D" id="yYr-ZA-KvK"/>
+                        <outlet property="pagerView" destination="oQS-Wu-44D" id="rwE-wL-89j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evx-l6-HQc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3073" y="754"/>
+            <point key="canvasLocation" x="3092" y="68"/>
         </scene>
         <!--Stat View Controller-->
         <scene sceneID="6ci-b7-kys">
@@ -865,6 +865,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJx-mg-j3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3907" y="714"/>
+        </scene>
+        <!--OptionViewController-->
+        <scene sceneID="S1d-7s-KH8">
+            <objects>
+                <viewController storyboardIdentifier="OptionViewController" title="OptionViewController" id="vlZ-5J-kNo" customClass="OptionViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n3I-PF-Z6P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qi9-Af-Lyg">
+                                <rect key="frame" x="121.33333333333333" y="86" width="132.66666666666669" height="50"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Option">
+                                        <attributes>
+                                            <font key="NSFont" size="36" name="IntelOneMono-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlp-qT-ooi">
+                                <rect key="frame" x="16" y="50" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JrW-FD-7xj"/>
+                                    <constraint firstAttribute="width" constant="30" id="Zhg-56-Vmy"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="delete.backward.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="dissmissBtnTapped:" destination="vlZ-5J-kNo" eventType="touchUpInside" id="ekH-Aq-XAP"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Rn-u1-k59">
+                                <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="iTG-pO-tfg"/>
+                                    <constraint firstAttribute="height" constant="300" id="trC-V7-oIh"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PsQ-U8-sJy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Qi9-Af-Lyg" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="4Dy-k6-TEj"/>
+                            <constraint firstItem="1Rn-u1-k59" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="5uU-Yh-fTB"/>
+                            <constraint firstItem="Xlp-qT-ooi" firstAttribute="top" secondItem="n3I-PF-Z6P" secondAttribute="topMargin" id="EAF-de-l3s"/>
+                            <constraint firstItem="Xlp-qT-ooi" firstAttribute="leading" secondItem="PsQ-U8-sJy" secondAttribute="leading" constant="16" id="Fp7-dJ-LQF"/>
+                            <constraint firstItem="1Rn-u1-k59" firstAttribute="centerY" secondItem="n3I-PF-Z6P" secondAttribute="centerY" id="ID5-0V-3Ig"/>
+                            <constraint firstItem="Qi9-Af-Lyg" firstAttribute="top" secondItem="PsQ-U8-sJy" secondAttribute="top" constant="36" id="Nl4-1h-R8d"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="duE-Z4-ba2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4758" y="68"/>
         </scene>
     </scenes>
     <resources>
