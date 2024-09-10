@@ -734,6 +734,81 @@
             </objects>
             <point key="canvasLocation" x="3912.8000000000002" y="67.980295566502463"/>
         </scene>
+        <!--MainViewController2-->
+        <scene sceneID="GhV-Wg-Drm">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController2" title="MainViewController2" id="9hm-U5-OYh" customClass="MainViewController2" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="07i-yv-2MM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQS-Wu-44D" customClass="FSPagerView" customModule="FSPagerView">
+                                <rect key="frame" x="0.0" y="50" width="375" height="728"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgd-Nt-K1P">
+                                        <rect key="frame" x="16" y="0.0" width="117" height="49.333333333333336"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="NETHAWK">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="27" name="IntelOneMono-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fb-HJ-PKZ">
+                                        <rect key="frame" x="324" y="4.9999999999999964" width="35" height="36.333333333333343"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="2ci-en-1j6"/>
+                                            <constraint firstAttribute="width" secondItem="9fb-HJ-PKZ" secondAttribute="height" multiplier="19:20" id="gks-u9-YSX"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="q5o-ui-wyw"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="bell.fill" catalog="system"/>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="bgt-0E-PCd">
+                                        <rect key="frame" x="37.666666666666657" y="420" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="41s-GV-fTv"/>
+                                            <constraint firstAttribute="height" constant="300" id="IRQ-h8-Y7i"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="9fb-HJ-PKZ" firstAttribute="width" secondItem="9fb-HJ-PKZ" secondAttribute="height" multiplier="19:20" id="27k-hH-F5v"/>
+                                    <constraint firstAttribute="bottom" secondItem="bgt-0E-PCd" secondAttribute="bottom" constant="8" id="PmZ-tN-B0O"/>
+                                    <constraint firstItem="9fb-HJ-PKZ" firstAttribute="top" secondItem="oQS-Wu-44D" secondAttribute="top" constant="4.6699999999999999" id="aSd-YT-5s8"/>
+                                    <constraint firstItem="bgt-0E-PCd" firstAttribute="centerX" secondItem="oQS-Wu-44D" secondAttribute="centerX" id="crx-r4-w1l"/>
+                                    <constraint firstAttribute="trailing" secondItem="9fb-HJ-PKZ" secondAttribute="trailing" constant="16" id="gIM-5y-etN"/>
+                                    <constraint firstItem="Dgd-Nt-K1P" firstAttribute="top" secondItem="oQS-Wu-44D" secondAttribute="top" id="kZc-Yc-dRF"/>
+                                    <constraint firstItem="Dgd-Nt-K1P" firstAttribute="leading" secondItem="oQS-Wu-44D" secondAttribute="leading" constant="16" id="vSM-qA-reQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zOz-Es-Ru7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zOz-Es-Ru7" firstAttribute="trailing" secondItem="oQS-Wu-44D" secondAttribute="trailing" id="bDN-mz-aRF"/>
+                            <constraint firstItem="oQS-Wu-44D" firstAttribute="top" secondItem="zOz-Es-Ru7" secondAttribute="top" id="fFh-If-hlI"/>
+                            <constraint firstItem="zOz-Es-Ru7" firstAttribute="bottom" secondItem="oQS-Wu-44D" secondAttribute="bottom" id="mtI-kT-ajM"/>
+                            <constraint firstItem="oQS-Wu-44D" firstAttribute="leading" secondItem="zOz-Es-Ru7" secondAttribute="leading" id="som-X4-0rv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pagerView" destination="oQS-Wu-44D" id="yYr-ZA-KvK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="evx-l6-HQc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3073" y="754"/>
+        </scene>
         <!--Stat View Controller-->
         <scene sceneID="6ci-b7-kys">
             <objects>
