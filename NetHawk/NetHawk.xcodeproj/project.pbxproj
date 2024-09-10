@@ -102,7 +102,6 @@
 				2A418393EBA8857F269448B1 /* Pods-NetHawk.debug.xcconfig */,
 				826F7515095EDA90EB25E0F1 /* Pods-NetHawk.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -511,6 +510,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5M5VM39FM9;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NetHawk/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 항상 위치 권한이 필요합니다.";
@@ -547,6 +547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5M5VM39FM9;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NetHawk/Supporting Files/Info.plist";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "앱에서 Wi-Fi 정보를 가져오기 위해 항상 위치 권한이 필요합니다.";
