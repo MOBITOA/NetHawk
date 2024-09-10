@@ -12,98 +12,59 @@ class KeychainManager {
     static let shared = KeychainManager()
     private init() {}
 
-    func save(ip: String, port: String, mac: String) {
-        let formattedMac = mac.replacingOccurrences(of: ":", with: "").replacingOccurrences(of: "-", with: "")
+    func save(serialNumber: String, alias: String) {
+        let serialData = Data(serialNumber.utf8)
+        let aliasData = Data(alias.utf8)
 
-        let ipData = Data(ip.utf8)
-        let portData = Data(port.utf8)
-        let macData = Data(formattedMac.utf8)
-
-        let ipQuery: [String: Any] = [
+        let serialQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: "IPAddress",
-            kSecValueData as String: ipData
+            kSecAttrAccount as String: "SerialNumber",
+            kSecValueData as String: serialData
         ]
 
-        let portQuery: [String: Any] = [
+        let aliasQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: "PortNumber",
-            kSecValueData as String: portData
-        ]
-
-        let macQuery: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: "MACAddress",
-            kSecValueData as String: macData
+            kSecAttrAccount as String: "Alias",
+            kSecValueData as String: aliasData
         ]
 
         // 기존 키 체인 항목을 업데이트하거나 추가
-        SecItemDelete(ipQuery as CFDictionary)
-        SecItemAdd(ipQuery as CFDictionary, nil)
+        SecItemDelete(serialQuery as CFDictionary)
+        SecItemAdd(serialQuery as CFDictionary, nil)
 
-        SecItemDelete(portQuery as CFDictionary)
-        SecItemAdd(portQuery as CFDictionary, nil)
+        SecItemDelete(aliasQuery as CFDictionary)
+        SecItemAdd(aliasQuery as CFDictionary, nil)
 
-        SecItemDelete(macQuery as CFDictionary)
-        SecItemAdd(macQuery as CFDictionary, nil)
-
-        print("Keychain Saved: IP \(ip), Port \(port), MAC \(formattedMac)")
+        print("Keychain Saved: SerialNumber \(serialNumber), Alias \(alias)")
     }
 
-    func load() -> (ip: String, port: String, mac: String)? {
-        let ipQuery: [String: Any] = [
+    func load() -> (serialNumber: String, alias: String)? {
+        let serialQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: "IPAddress",
+            kSecAttrAccount as String: "SerialNumber",
             kSecReturnData as String: true
         ]
 
-        let portQuery: [String: Any] = [
+        let aliasQuery: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: "PortNumber",
+            kSecAttrAccount as String: "Alias",
             kSecReturnData as String: true
         ]
 
-        let macQuery: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: "MACAddress",
-            kSecReturnData as String: true
-        ]
+        var serialData: AnyObject?
+        var aliasData: AnyObject?
 
-        var ipData: AnyObject?
-        var portData: AnyObject?
-        var macData: AnyObject?
+        let serialStatus = SecItemCopyMatching(serialQuery as CFDictionary, &serialData)
+        let aliasStatus = SecItemCopyMatching(aliasQuery as CFDictionary, &aliasData)
 
-        let ipStatus = SecItemCopyMatching(ipQuery as CFDictionary, &ipData)
-        let portStatus = SecItemCopyMatching(portQuery as CFDictionary, &portData)
-        let macStatus = SecItemCopyMatching(macQuery as CFDictionary, &macData)
-
-        if ipStatus == errSecSuccess, let ipData = ipData as? Data,
-           portStatus == errSecSuccess, let portData = portData as? Data,
-           macStatus == errSecSuccess, let macData = macData as? Data {
-            let ip = String(data: ipData, encoding: .utf8) ?? ""
-            let port = String(data: portData, encoding: .utf8) ?? ""
-            let formattedMac = String(data: macData, encoding: .utf8) ?? ""
-            let mac = formatMACAddress(formattedMac)
-            return (ip, port, mac)
+        if serialStatus == errSecSuccess, let serialData = serialData as? Data,
+           aliasStatus == errSecSuccess, let aliasData = aliasData as? Data {
+            let serialNumber = String(data: serialData, encoding: .utf8) ?? ""
+            let alias = String(data: aliasData, encoding: .utf8) ?? ""
+            return (serialNumber, alias)
         }
 
         return nil
     }
-
-    private func formatMACAddress(_ macAddress: String) -> String {
-        var formattedMACAddress = ""
-        var index = 0
-
-        for char in macAddress {
-            formattedMACAddress.append(char)
-
-            if (index + 1) % 2 == 0 && index < macAddress.count - 1 {
-                formattedMACAddress.append(":")
-            }
-
-            index += 1
-        }
-
-        return formattedMACAddress
-    }
 }
+

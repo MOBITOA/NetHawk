@@ -16,13 +16,13 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
             // 화면 크기에 비례한 아이템 크기 설정
             let screenWidth = UIScreen.main.bounds.width
-            let itemWidth = screenWidth * 0.6
+            let itemWidth = screenWidth * 0.75
             let itemHeight = itemWidth * 125/155
             self.pagerView.itemSize = CGSize(width: itemWidth, height: itemHeight)
             self.pagerView.interitemSpacing = 50
 
             self.pagerView.isInfinite = true
-            self.pagerView.transformer = FSPagerViewTransformer(type: .linear)
+            self.pagerView.transformer = FSPagerViewTransformer(type: .invertedFerrisWheel)
         }
 
     }

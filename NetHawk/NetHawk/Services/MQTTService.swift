@@ -48,15 +48,15 @@ class MQTTService: CocoaMQTTDelegate {
             print("MQTT connected")
             onConnectionSuccess?()
 
-            // 키체인 MAC주소 로드 & 토픽 구독
+            // 키체인에서 시리얼 넘버와 별칭 로드 & 토픽 구독
             if let credentials = KeychainManager.shared.load() {
-                let mac = credentials.mac
+                let serialNumber = credentials.serialNumber
                 // 연결된 필터 알림 수신
-                subscribe(topic: "\(mac)/alarm")
+                subscribe(topic: "\(serialNumber)/alarm")
                 // 블랙리스트 & 화이트리스트
-                subscribe(topic: "\(mac)/blacklist")
-                subscribe(topic: "\(mac)/whitelist")
-                subscribe(topic: "\(mac)/refreshBW")
+                subscribe(topic: "\(serialNumber)/blacklist")
+                subscribe(topic: "\(serialNumber)/whitelist")
+                subscribe(topic: "\(serialNumber)/refreshBW")
             }
 
         } else {
