@@ -37,6 +37,7 @@
 		F2AA54252C11F7E200D5C52C /* MQTTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AA54242C11F7E200D5C52C /* MQTTService.swift */; };
 		F2AA54272C12015400D5C52C /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AA54262C12015400D5C52C /* KeyChainService.swift */; };
 		F2AA54292C12185300D5C52C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2AA54282C12185300D5C52C /* Splash.storyboard */; };
+		F2B7C1AD2C902312004373A9 /* MainViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7C1AC2C902312004373A9 /* MainViewController2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		F2AA54242C11F7E200D5C52C /* MQTTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTService.swift; sourceTree = "<group>"; };
 		F2AA54262C12015400D5C52C /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		F2AA54282C12185300D5C52C /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		F2B7C1AC2C902312004373A9 /* MainViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				F28AF8312C119023001290CC /* SplashViewController.swift */,
 				F28AF82B2C118C36001290CC /* ConnectionViewController.swift */,
 				F211F17D2C0F0375004F40B4 /* MainViewController.swift */,
+				F2B7C1AC2C902312004373A9 /* MainViewController2.swift */,
 				F211F1972C0F2282004F40B4 /* LogViewController.swift */,
 				F211F1992C0F2298004F40B4 /* StatViewController.swift */,
 				F211F19D2C0F264C004F40B4 /* AccessViewController.swift */,
@@ -353,6 +356,7 @@
 				F28AF8322C119023001290CC /* SplashViewController.swift in Sources */,
 				F211F1982C0F2282004F40B4 /* LogViewController.swift in Sources */,
 				F211F19E2C0F264C004F40B4 /* AccessViewController.swift in Sources */,
+				F2B7C1AD2C902312004373A9 /* MainViewController2.swift in Sources */,
 				F2AA54252C11F7E200D5C52C /* MQTTService.swift in Sources */,
 				F27C9D2A2C103C8200789558 /* WiFiService.swift in Sources */,
 				F211F1842C0F0375004F40B4 /* NetHawk.xcdatamodeld in Sources */,
