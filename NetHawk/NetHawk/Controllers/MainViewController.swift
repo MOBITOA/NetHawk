@@ -16,7 +16,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
             // 화면 크기에 비례한 아이템 크기 설정
             let screenWidth = UIScreen.main.bounds.width
-            let itemWidth = screenWidth * 0.75
+            let itemWidth = screenWidth * 0.55
             let itemHeight = itemWidth * 125/155
             self.pagerView.itemSize = CGSize(width: itemWidth, height: itemHeight)
             self.pagerView.interitemSpacing = 50
@@ -26,15 +26,31 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         }
 
     }
-
+    @IBOutlet weak var statusView: UIView!
+    
     let images = ["loger", "stat", "bw", "option"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pagerView.dataSource = self
         self.pagerView.delegate = self
-    }
 
+        frameConfig(to: statusView)
+    }
+    func frameConfig(to view: UIView) {
+        let cornerRadius: CGFloat = 10
+        let shadowColor: UIColor = .black
+        let shadowOpacity: Float = 0.3
+        let shadowOffset: CGSize = CGSize(width: 0, height: 2)
+        let shadowRadius: CGFloat = 4
+
+        view.layer.cornerRadius = cornerRadius
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = shadowColor.cgColor
+        view.layer.shadowOpacity = shadowOpacity
+        view.layer.shadowOffset = shadowOffset
+        view.layer.shadowRadius = shadowRadius
+    }
     // FSPagerViewDataSource methods
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return images.count // 총 4개의 페이지

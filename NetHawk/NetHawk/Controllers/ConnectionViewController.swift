@@ -128,6 +128,8 @@ class ConnectionViewController: UIViewController {
          MQTT Broker IP/Port - 학교망 내부에서
          host : 203.230.104.207
          port : 14025
+
+         S/N : 8FB18CAE5EDC65C6
          */
         mqttService = MQTTService(clientID: alias, host: "203.230.104.207", port: 14025)
         mqttService?.onConnectionSuccess = { [weak self] in
