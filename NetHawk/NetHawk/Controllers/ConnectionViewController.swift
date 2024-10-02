@@ -50,6 +50,8 @@ class ConnectionViewController: UIViewController {
         // X 버튼 활성화
         serialNumberTextField.clearButtonMode = .whileEditing
         aliasTextField.clearButtonMode = .whileEditing
+
+        self.serialNumberTextField.text = "8FB18CAE5EDC65C6"
     }
 
     /*
@@ -61,6 +63,16 @@ class ConnectionViewController: UIViewController {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.applyAnimations()
+        }
+
+        // 키체인에 저장된 S/N과 ip 불러오기
+        if let credentials = KeychainManager.shared.load() {
+            let serialNumber = credentials.serialNumber
+            let alias = credentials.alias
+
+            if !serialNumber.isEmpty && !alias.isEmpty {
+                connectToMQTTBroker(serialNumber: serialNumber, alias: alias)
+            }
         }
     }
 
@@ -120,6 +132,10 @@ class ConnectionViewController: UIViewController {
         // 브로커 정보 저장
         KeychainManager.shared.save(serialNumber: serialNumber, alias: alias)
 
+        connectToMQTTBroker(serialNumber: serialNumber, alias: alias)
+    }
+
+    func connectToMQTTBroker(serialNumber: String, alias: String) {
         /*
          MQTT Broker IP/Port - 학교망 외부에서
          host : 203.230.104.207
@@ -132,6 +148,7 @@ class ConnectionViewController: UIViewController {
          S/N : 8FB18CAE5EDC65C6
          */
         mqttService = MQTTService(clientID: alias, host: "203.230.104.207", port: 14025)
+        mqttService?.connect()
         mqttService?.onConnectionSuccess = { [weak self] in
             DispatchQueue.main.async {
                 self?.navigateToMainViewController()
@@ -142,10 +159,8 @@ class ConnectionViewController: UIViewController {
                 self?.presentConnectionErrorAlert()
             }
         }
-        mqttService?.connect()
-
-        // navigateToMainViewController()
     }
+
     // 연결 실패 시, 알림창
     func presentConnectionErrorAlert() {
 

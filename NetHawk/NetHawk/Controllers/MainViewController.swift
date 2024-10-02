@@ -27,13 +27,22 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
     }
     @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var deviceLabel: UILabel!
     
     let images = ["loger", "stat", "bw", "option"]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pagerView.dataSource = self
         self.pagerView.delegate = self
+
+        if let credentials = KeychainManager.shared.load() {
+            // let serialNumber = credentials.serialNumber
+            let alias = credentials.alias
+
+            deviceLabel.text = "My Device : \(alias)"
+        }
 
         frameConfig(to: statusView)
     }
