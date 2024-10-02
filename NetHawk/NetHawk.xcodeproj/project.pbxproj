@@ -29,7 +29,6 @@
 		F2776B592C181377007700AB /* CocoaMQTTWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = F2776B582C181377007700AB /* CocoaMQTTWebSocket */; };
 		F2776B5C2C181444007700AB /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = F2776B5B2C181444007700AB /* Starscream */; };
 		F2776B5E2C182A90007700AB /* NetHawkLogo_round.png in Resources */ = {isa = PBXBuildFile; fileRef = F2776B5D2C182A90007700AB /* NetHawkLogo_round.png */; };
-		F27C9D2A2C103C8200789558 /* WiFiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C9D292C103C8200789558 /* WiFiService.swift */; };
 		F28AF82C2C118C36001290CC /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28AF82B2C118C36001290CC /* ConnectionViewController.swift */; };
 		F28AF8302C118F75001290CC /* NetHawkLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F28AF82F2C118F75001290CC /* NetHawkLogo.png */; };
 		F28AF8322C119023001290CC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28AF8312C119023001290CC /* SplashViewController.swift */; };
@@ -63,7 +62,6 @@
 		F211F1A62C0F3B7D004F40B4 /* IntelOneMono-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IntelOneMono-Italic.otf"; sourceTree = "<group>"; };
 		F211F1A72C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IntelOneMono-BoldItalic.otf"; sourceTree = "<group>"; };
 		F2776B5D2C182A90007700AB /* NetHawkLogo_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NetHawkLogo_round.png; sourceTree = "<group>"; };
-		F27C9D292C103C8200789558 /* WiFiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiService.swift; sourceTree = "<group>"; };
 		F28AF82B2C118C36001290CC /* ConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		F28AF82F2C118F75001290CC /* NetHawkLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NetHawkLogo.png; sourceTree = "<group>"; };
 		F28AF8312C119023001290CC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			children = (
 				F2AA54242C11F7E200D5C52C /* MQTTService.swift */,
 				F2AA54262C12015400D5C52C /* KeyChainService.swift */,
-				F27C9D292C103C8200789558 /* WiFiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -354,7 +351,6 @@
 				F211F19E2C0F264C004F40B4 /* AccessViewController.swift in Sources */,
 				F2B7C1AD2C902312004373A9 /* MainViewController.swift in Sources */,
 				F2AA54252C11F7E200D5C52C /* MQTTService.swift in Sources */,
-				F27C9D2A2C103C8200789558 /* WiFiService.swift in Sources */,
 				F211F1842C0F0375004F40B4 /* NetHawk.xcdatamodeld in Sources */,
 				F211F17A2C0F0375004F40B4 /* AppDelegate.swift in Sources */,
 				F211F19C2C0F22A5004F40B4 /* OptionViewController.swift in Sources */,
