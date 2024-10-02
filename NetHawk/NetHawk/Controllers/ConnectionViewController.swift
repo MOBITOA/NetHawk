@@ -21,8 +21,6 @@ class ConnectionViewController: UIViewController {
     @IBOutlet weak var pairingBtn: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
 
-    private var mqttService: MQTTService?
-
     // MARK: - LifeCycle and UI Design
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,28 +42,13 @@ class ConnectionViewController: UIViewController {
         serialNumberTextField.delegate = self
         aliasTextField.delegate = self
 
-        // 탭 제스처 추가: 화면의 다른 부분을 터치했을 때 키보드를 닫음
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
-        // X 버튼 활성화
+
         serialNumberTextField.clearButtonMode = .whileEditing
         aliasTextField.clearButtonMode = .whileEditing
 
-        self.serialNumberTextField.text = "8FB18CAE5EDC65C6"
-    }
-
-    /*
-     SplashView에서 DispatchQueue.main.asyncAfter를 사용하여
-     일정 시간 지연 후에 본 페이지로 오기 때문에 타이밍 문제가 존재했음.
-     viewDidAppear로 이전 타이밍이 끝나고 본 작업을 시행
-     */
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.applyAnimations()
-        }
-
-        // 키체인에 저장된 S/N과 ip 불러오기
+        // 만약 이미 저장된 정보가 있으면 MQTT 연결 시도
         if let credentials = KeychainManager.shared.load() {
             let serialNumber = credentials.serialNumber
             let alias = credentials.alias
@@ -76,6 +59,14 @@ class ConnectionViewController: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.applyAnimations()
+        }
+    }
+
+    // MARK: - UI 설정 함수들
     func frameConfig(to view: UIView) {
         let cornerRadius: CGFloat = 10
         let shadowColor: UIColor = .black
@@ -122,39 +113,31 @@ class ConnectionViewController: UIViewController {
         }, completion: nil)
     }
 
-    // MARK: - Methods
+    // MARK: - MQTT 연결 및 관련 메서드
 
-    // 페어링 버튼 클릭 메서드
     @IBAction func pairingBtnTapped(_ sender: UIButton) {
         let serialNumber = serialNumberTextField.text ?? ""
         let alias = aliasTextField.text ?? ""
 
-        // 브로커 정보 저장
+        // 키체인에 S/N과 별칭 저장
         KeychainManager.shared.save(serialNumber: serialNumber, alias: alias)
 
         connectToMQTTBroker(serialNumber: serialNumber, alias: alias)
     }
 
+    // MQTT 브로커 연결
     func connectToMQTTBroker(serialNumber: String, alias: String) {
-        /*
-         MQTT Broker IP/Port - 학교망 외부에서
-         host : 203.230.104.207
-         port : 80
+        // MQTT 설정
+        MQTTService.shared.configure(clientID: alias, host: "203.230.104.207", port: 14025)
+        MQTTService.shared.connect()
 
-         MQTT Broker IP/Port - 학교망 내부에서
-         host : 203.230.104.207
-         port : 14025
-
-         S/N : 8FB18CAE5EDC65C6
-         */
-        mqttService = MQTTService(clientID: alias, host: "203.230.104.207", port: 14025)
-        mqttService?.connect()
-        mqttService?.onConnectionSuccess = { [weak self] in
+        MQTTService.shared.onConnectionSuccess = { [weak self] in
             DispatchQueue.main.async {
                 self?.navigateToMainViewController()
             }
         }
-        mqttService?.onConnectionFailure = { [weak self] in
+
+        MQTTService.shared.onConnectionFailure = { [weak self] in
             DispatchQueue.main.async {
                 self?.presentConnectionErrorAlert()
             }
@@ -163,7 +146,6 @@ class ConnectionViewController: UIViewController {
 
     // 연결 실패 시, 알림창
     func presentConnectionErrorAlert() {
-
         let alert = UIAlertController(title: "Connection Error", message: "Unable to connect to MQTT broker. Please check the details and try again.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
             self?.pairingBtnTapped(UIButton())
@@ -172,43 +154,31 @@ class ConnectionViewController: UIViewController {
         present(alert, animated: true)
     }
 
-    // MainView 이동 메서드
+    // MainViewController로 이동
     private func navigateToMainViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
-
             if let navigationController = navigationController {
                 navigationController.pushViewController(mainViewController, animated: true)
             } else {
                 mainViewController.modalPresentationStyle = .fullScreen
                 present(mainViewController, animated: true, completion: nil)
             }
-        } else {}
+        }
     }
 }
 
+// UITextFieldDelegate 확장
 extension ConnectionViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // 시리얼 넘버 텍스트 필드 입력 시
-        if textField == serialNumberTextField || textField == aliasTextField {
-            let serialNumberIsEmpty = serialNumberTextField.text?.isEmpty ?? true
-            let aliasIsEmpty = aliasTextField.text?.isEmpty ?? true
+        let serialNumberIsEmpty = serialNumberTextField.text?.isEmpty ?? true
+        let aliasIsEmpty = aliasTextField.text?.isEmpty ?? true
 
-            // 두 텍스트 필드가 모두 채워져 있으면 버튼 활성화
-            if serialNumberIsEmpty || aliasIsEmpty {
-                pairingBtn.isEnabled = false
-            } else {
-                pairingBtn.isEnabled = true
-            }
-            return true
-        }
+        pairingBtn.isEnabled = !(serialNumberIsEmpty || aliasIsEmpty)
         return true
     }
-    // 키보드를 숨기는 메서드
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }
-
-
-

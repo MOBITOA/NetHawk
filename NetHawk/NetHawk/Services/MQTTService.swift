@@ -10,39 +10,52 @@ import Foundation
 import UIKit
 
 class MQTTService: CocoaMQTTDelegate {
-    
+
+    static let shared = MQTTService() // 싱글톤 인스턴스
+
     private var mqtt: CocoaMQTT?
     var onConnectionSuccess: (() -> Void)?
     var onConnectionFailure: (() -> Void)?
+    var onPingReceived: (() -> Void)?
+    var onPongReceived: (() -> Void)?
+    var onDisconnected: (() -> Void)?
 
-    init(clientID: String, host: String = "localhost", port: UInt16 = 1883) {
+    // private init을 통해 외부에서 새로운 인스턴스를 생성하지 못하게 막음
+    private init() { }
+
+    // MQTT 클라이언트를 설정하는 함수
+    func configure(clientID: String, host: String, port: UInt16) {
         mqtt = CocoaMQTT(clientID: clientID, host: host, port: port)
         mqtt?.delegate = self
-        mqtt?.keepAlive = 60
+        mqtt?.keepAlive = 30
     }
-    
+
     func connect() {
         mqtt?.connect()
     }
-    
+
     func disconnect() {
         mqtt?.disconnect()
     }
-    
+
+    func isConnected() -> Bool {
+            return mqtt?.connState == .connected
+        }
+
     func subscribe(topic: String, qos: CocoaMQTTQoS = .qos1) {
         mqtt?.subscribe(topic, qos: qos)
     }
-    
+
     func unsubscribe(topic: String) {
         mqtt?.unsubscribe(topic)
     }
-    
+
     func publish(topic: String, message: String, qos: CocoaMQTTQoS = .qos1, retained: Bool = false) {
         mqtt?.publish(topic, withString: message, qos: qos, retained: retained)
     }
-    
+
     // MARK: - CocoaMQTTDelegate
-    
+
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         if ack == .accept {
             print("MQTT connected")
@@ -68,38 +81,35 @@ class MQTTService: CocoaMQTTDelegate {
     func mqtt(_ mqtt: CocoaMQTT, didPublishMessage message: CocoaMQTTMessage, id: UInt16) {
         print("MQTT message published: \(message.string ?? ""), id: \(id)")
     }
-    
+
     func mqtt(_ mqtt: CocoaMQTT, didPublishAck id: UInt16) {
         print("MQTT message published with ACK: \(id)")
     }
-    
+
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
         print("MQTT message received: \(message.string ?? ""), id: \(id)")
-        // Handle received message here
     }
-    
+
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {
-        print(("topic: \(success)"))
+        print("Successfully subscribed to topics: \(success)")
     }
-    
+
     func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopics topics: [String]) {
-        print("MQTT subscribed to topics: \(topics)")
+        print("Successfully unsubscribed from topics: \(topics)")
     }
-    
-    func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopic topic: String) {
-        print("MQTT unsubscribed from topic: \(topic)")
-    }
-    
+
     func mqttDidPing(_ mqtt: CocoaMQTT) {
-        print("MQTT ping!")
+        print("ping")
     }
-    
+
     func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
-        print("MQTT pong~")
+        print("pong")
+        onPongReceived?()
     }
-    
+
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         print("MQTT disconnected: \(err?.localizedDescription ?? "")")
+        onDisconnected?()
         onConnectionFailure?()
     }
 }

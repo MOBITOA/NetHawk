@@ -821,6 +821,7 @@
                     <connections>
                         <outlet property="deviceLabel" destination="e1S-9B-F95" id="c6J-U7-Yaz"/>
                         <outlet property="pagerView" destination="oQS-Wu-44D" id="rwE-wL-89j"/>
+                        <outlet property="statusLabel" destination="tHP-WA-8rj" id="q6X-qe-Kr2"/>
                         <outlet property="statusView" destination="I1T-Ov-FEN" id="LZH-Zk-m9I"/>
                     </connections>
                 </viewController>

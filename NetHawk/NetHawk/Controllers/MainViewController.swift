@@ -10,6 +10,7 @@ import FSPagerView
 
 class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDelegate {
 
+    // MARK: - FSPagerView
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
             self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -26,41 +27,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         }
 
     }
-    @IBOutlet weak var statusView: UIView!
-    @IBOutlet weak var deviceLabel: UILabel!
-    
-    let images = ["loger", "stat", "bw", "option"]
 
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.pagerView.dataSource = self
-        self.pagerView.delegate = self
-
-        if let credentials = KeychainManager.shared.load() {
-            // let serialNumber = credentials.serialNumber
-            let alias = credentials.alias
-
-            deviceLabel.text = "My Device : \(alias)"
-        }
-
-        frameConfig(to: statusView)
-    }
-    func frameConfig(to view: UIView) {
-        let cornerRadius: CGFloat = 10
-        let shadowColor: UIColor = .black
-        let shadowOpacity: Float = 0.3
-        let shadowOffset: CGSize = CGSize(width: 0, height: 2)
-        let shadowRadius: CGFloat = 4
-
-        view.layer.cornerRadius = cornerRadius
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = shadowColor.cgColor
-        view.layer.shadowOpacity = shadowOpacity
-        view.layer.shadowOffset = shadowOffset
-        view.layer.shadowRadius = shadowRadius
-    }
-    // FSPagerViewDataSource methods
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return images.count // 총 4개의 페이지
     }
@@ -111,6 +78,85 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             }
         default:
             break
+        }
+    }
+
+    @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var deviceLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+
+    let images = ["loger", "stat", "bw", "option"]
+
+    // MARK: - UI
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.pagerView.dataSource = self
+        self.pagerView.delegate = self
+
+        if let credentials = KeychainManager.shared.load() {
+            // let serialNumber = credentials.serialNumber
+            let alias = credentials.alias
+
+            deviceLabel.text = "My Device : \(alias)"
+        }
+
+        frameConfig(to: statusView)
+
+        // MQTTService에서 상태 콜백 등록
+        setupMQTTStatusCallbacks()
+
+        // MQTT 초기 상태 업데이트
+        updateStatusLabel()
+    }
+    func frameConfig(to view: UIView) {
+        let cornerRadius: CGFloat = 10
+        let shadowColor: UIColor = .black
+        let shadowOpacity: Float = 0.3
+        let shadowOffset: CGSize = CGSize(width: 0, height: 2)
+        let shadowRadius: CGFloat = 4
+
+        view.layer.cornerRadius = cornerRadius
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = shadowColor.cgColor
+        view.layer.shadowOpacity = shadowOpacity
+        view.layer.shadowOffset = shadowOffset
+        view.layer.shadowRadius = shadowRadius
+    }
+
+    // MARK: - MQTT 상태 설정
+    func setupMQTTStatusCallbacks() {
+        MQTTService.shared.onPingReceived = { [weak self] in
+            DispatchQueue.main.async {
+                print("Checking connection...")
+                self?.statusLabel.text = "Checking connection..."
+                self?.statusLabel.textColor = .gray
+            }
+        }
+
+        MQTTService.shared.onPongReceived = { [weak self] in
+            DispatchQueue.main.async {
+                print("Connected")
+                self?.statusLabel.text = "Server Online 🟢"
+                self?.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            }
+        }
+
+        MQTTService.shared.onDisconnected = { [weak self] in
+            DispatchQueue.main.async {
+                print("Disconnected")
+                self?.statusLabel.text = "Server Offline 🔴"
+                self?.statusLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            }
+        }
+    }
+
+    func updateStatusLabel() {
+        if MQTTService.shared.isConnected() {
+            statusLabel.text = "Server Online 🟢"
+            statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        } else {
+            statusLabel.text = "Server Offline 🔴"
+            statusLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         }
     }
 }
