@@ -21,7 +21,7 @@
 🛠️
 
 ## Features
-![Alt text](/imgs/MainFeatures.png)
+![Alt text](/imgs/MainFeatures.ver2.png)
 ### 라우터 연동
 - `Broker Server 주소`와 사용자 소유의 `라우터 MAC 주소`를 입력하여 라우터와 기기를 연동합니다. 
 - 기 연결된 유저는 자동 로그인 체크 시 메인 페이지로 이동합니다.
@@ -41,7 +41,7 @@
   
 
 ## Architecture
-![Alt text](/imgs/SystemArch.png)
+![Alt text](imgs/SystemArch.ver2.png)
 ![Alt text](<imgs/API 명세.png>)
 
 
