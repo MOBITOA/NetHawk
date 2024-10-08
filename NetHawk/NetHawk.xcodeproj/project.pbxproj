@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B4443D8B577C30E1A8E927CB /* Pods_NetHawk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9396532BEBF785318EAA02B4 /* Pods_NetHawk.framework */; };
+		F210D8402CB4FD8000A99441 /* DetectionMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = F210D83F2CB4FD8000A99441 /* DetectionMessage.xib */; };
+		F210D8422CB5043900A99441 /* DetectionMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F210D8412CB5043900A99441 /* DetectionMessageCell.swift */; };
 		F211F17A2C0F0375004F40B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F211F1792C0F0375004F40B4 /* AppDelegate.swift */; };
 		F211F17C2C0F0375004F40B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F211F17B2C0F0375004F40B4 /* SceneDelegate.swift */; };
 		F211F1812C0F0375004F40B4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F211F1802C0F0375004F40B4 /* Base */; };
@@ -42,6 +44,8 @@
 		2A418393EBA8857F269448B1 /* Pods-NetHawk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetHawk.debug.xcconfig"; path = "Target Support Files/Pods-NetHawk/Pods-NetHawk.debug.xcconfig"; sourceTree = "<group>"; };
 		826F7515095EDA90EB25E0F1 /* Pods-NetHawk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetHawk.release.xcconfig"; path = "Target Support Files/Pods-NetHawk/Pods-NetHawk.release.xcconfig"; sourceTree = "<group>"; };
 		9396532BEBF785318EAA02B4 /* Pods_NetHawk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetHawk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F210D83F2CB4FD8000A99441 /* DetectionMessage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetectionMessage.xib; sourceTree = "<group>"; };
+		F210D8412CB5043900A99441 /* DetectionMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionMessageCell.swift; sourceTree = "<group>"; };
 		F211F1762C0F0375004F40B4 /* NetHawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetHawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F211F1792C0F0375004F40B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F211F17B2C0F0375004F40B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 		F211F1902C0F11C9004F40B4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F210D83F2CB4FD8000A99441 /* DetectionMessage.xib */,
+				F210D8412CB5043900A99441 /* DetectionMessageCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 				F28AF8302C118F75001290CC /* NetHawkLogo.png in Resources */,
 				F211F1862C0F0377004F40B4 /* Assets.xcassets in Resources */,
 				F211F1AA2C0F3B7D004F40B4 /* IntelOneMono-Light.otf in Resources */,
+				F210D8402CB4FD8000A99441 /* DetectionMessage.xib in Resources */,
 				F211F1AF2C0F3B7D004F40B4 /* IntelOneMono-BoldItalic.otf in Resources */,
 				F211F1AD2C0F3B7D004F40B4 /* IntelOneMono-Medium.otf in Resources */,
 				F211F1812C0F0375004F40B4 /* Base in Resources */,
@@ -346,6 +353,7 @@
 			files = (
 				F2AA54272C12015400D5C52C /* KeyChainService.swift in Sources */,
 				F28AF82C2C118C36001290CC /* ConnectionViewController.swift in Sources */,
+				F210D8422CB5043900A99441 /* DetectionMessageCell.swift in Sources */,
 				F28AF8322C119023001290CC /* SplashViewController.swift in Sources */,
 				F211F1982C0F2282004F40B4 /* LogViewController.swift in Sources */,
 				F211F19E2C0F264C004F40B4 /* AccessViewController.swift in Sources */,
