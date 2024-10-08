@@ -39,8 +39,8 @@ class MQTTService: CocoaMQTTDelegate {
     }
 
     func isConnected() -> Bool {
-            return mqtt?.connState == .connected
-        }
+        return mqtt?.connState == .connected
+    }
 
     func subscribe(topic: String, qos: CocoaMQTTQoS = .qos1) {
         mqtt?.subscribe(topic, qos: qos)
@@ -60,6 +60,9 @@ class MQTTService: CocoaMQTTDelegate {
         if ack == .accept {
             print("MQTT connected")
             onConnectionSuccess?()
+
+            // 로그 초기화하기 (임시)
+            LoggingService.shared.clearLogs()
 
             // 키체인에서 시리얼 넘버와 별칭 로드 & 토픽 구독
             if let credentials = KeychainManager.shared.load() {
@@ -87,7 +90,27 @@ class MQTTService: CocoaMQTTDelegate {
     }
 
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
-        print("MQTT message received: \(message.string ?? ""), id: \(id)")
+        if let messageString = message.string {
+            if let parsedData = parseMQTTMessage(messageString) {
+                if let data = parsedData["data"] as? [String: Any],
+                   let timestamp = data["timestamp"] as? String,
+                   let type = data["type"] as? String,
+                   let invaderAddress = data["invader_address"] as? String?, // null 값을 고려하여 옵셔널 처리
+                   let victimAddress = data["victim_address"] as? String,
+                   let victimName = data["victim_name"] as? String {
+
+                    let logEntry = Log(timestamp: timestamp, type: type, invaderAddress: invaderAddress, victimAddress: victimAddress, victimName: victimName)
+
+                    // 로깅 서비스에 LogEntry 구조체로 저장
+                    LoggingService.shared.logMessage(logEntry)
+
+                    // NotificationCenter로 로그 추가 알림
+                    NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
+
+                    print("received new thang")
+                }
+            }
+        }
     }
 
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {
@@ -111,5 +134,19 @@ class MQTTService: CocoaMQTTDelegate {
         print("MQTT disconnected: \(err?.localizedDescription ?? "")")
         onDisconnected?()
         onConnectionFailure?()
+    }
+
+    // MARK: - Log 관련
+    // 로그 파싱 함수
+    func parseMQTTMessage(_ message: String) -> [String: Any]? {
+        if let data = message.data(using: .utf8) {
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                return json
+            } catch {
+                print("Error parsing MQTT message: \(error)")
+            }
+        }
+        return nil
     }
 }

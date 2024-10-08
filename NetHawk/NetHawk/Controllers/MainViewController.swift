@@ -17,13 +17,13 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
             // 화면 크기에 비례한 아이템 크기 설정
             let screenWidth = UIScreen.main.bounds.width
-            let itemWidth = screenWidth * 0.55
-            let itemHeight = itemWidth * 125/155
+            let itemWidth = screenWidth * 0.65
+            let itemHeight = itemWidth * 135/155
             self.pagerView.itemSize = CGSize(width: itemWidth, height: itemHeight)
             self.pagerView.interitemSpacing = 50
 
             self.pagerView.isInfinite = true
-            self.pagerView.transformer = FSPagerViewTransformer(type: .invertedFerrisWheel)
+            self.pagerView.transformer = FSPagerViewTransformer(type: .ferrisWheel)
         }
 
     }
@@ -39,7 +39,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         if let imageView = cell.imageView {
             imageView.image = UIImage(named: images[index])
             imageView.contentMode = .scaleAspectFill
-            imageView.layer.cornerRadius = 10 // 이미지도 모서리를 둥글게
+            imageView.layer.cornerRadius = 8 // 이미지도 모서리를 둥글게
             imageView.layer.masksToBounds = true
         }
 

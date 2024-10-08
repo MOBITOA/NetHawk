@@ -64,24 +64,29 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pca-zL-68O">
-                        <rect key="frame" x="85.666666666666657" y="76" width="127.66666666666666" height="81"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Pca-zL-68O">
+                        <rect key="frame" x="85.666666666666671" y="75" width="156.66666666666663" height="83"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Domain Phishing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odO-fH-cqm">
-                                <rect key="frame" x="0.0" y="0.0" width="127.66666666666667" height="20.333333333333332"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odO-fH-cqm">
+                                <rect key="frame" x="0.0" y="0.0" width="156.66666666666666" height="23.666666666666668"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Domain Phishing">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="IntelOneMono-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.24.233.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EI-BA-I2g">
-                                <rect key="frame" x="0.0" y="30.333333333333329" width="127.66666666666667" height="20.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="29.666666666666671" width="156.66666666666666" height="23.666666666666671"/>
+                                <fontDescription key="fontDescription" name="IntelOneMono-Regular" family="Intel One Mono" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="192.168.0.1:123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kt-uM-HSb">
-                                <rect key="frame" x="0.0" y="60.666666666666664" width="127.66666666666667" height="20.333333333333336"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="59.333333333333336" width="156.66666666666666" height="23.666666666666664"/>
+                                <fontDescription key="fontDescription" name="IntelOneMono-Regular" family="Intel One Mono" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -93,7 +98,7 @@
                     <constraint firstItem="h47-eN-ZcW" firstAttribute="top" secondItem="TEy-t2-P9F" secondAttribute="top" constant="8" id="81L-q6-VSD"/>
                     <constraint firstItem="h47-eN-ZcW" firstAttribute="leading" secondItem="TEy-t2-P9F" secondAttribute="leading" constant="8" id="DD9-Rp-s43"/>
                     <constraint firstItem="fTr-fB-G3N" firstAttribute="leading" secondItem="h47-eN-ZcW" secondAttribute="trailing" constant="17" id="KTT-FF-Hth"/>
-                    <constraint firstItem="Pca-zL-68O" firstAttribute="top" secondItem="qBv-mT-elx" secondAttribute="bottom" constant="9.6699999999999999" id="Nwf-wM-1DK"/>
+                    <constraint firstItem="Pca-zL-68O" firstAttribute="top" secondItem="qBv-mT-elx" secondAttribute="bottom" constant="8.6700000762939453" id="Nwf-wM-1DK"/>
                     <constraint firstItem="fTr-fB-G3N" firstAttribute="top" secondItem="TEy-t2-P9F" secondAttribute="top" constant="11" id="RTl-Ts-bWJ"/>
                     <constraint firstItem="YNO-0g-5nI" firstAttribute="top" secondItem="h47-eN-ZcW" secondAttribute="bottom" constant="8" symbolic="YES" id="VwT-6N-JIC"/>
                     <constraint firstItem="Pca-zL-68O" firstAttribute="leading" secondItem="YNO-0g-5nI" secondAttribute="trailing" constant="8" id="hg8-6B-NEw"/>
@@ -103,7 +108,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addressOfInvaderLabel" destination="7EI-BA-I2g" id="94v-fh-0K0"/>
+                <outlet property="addressOfVictimLabel" destination="5Kt-uM-HSb" id="ezM-bW-MdC"/>
                 <outlet property="attackImage" destination="h47-eN-ZcW" id="tEh-N7-QFX"/>
+                <outlet property="timeStampLabel" destination="qBv-mT-elx" id="rgx-5Z-Sn5"/>
+                <outlet property="typeOfAttackLabel" destination="odO-fH-cqm" id="otV-IJ-5LV"/>
+                <outlet property="victimDeviceLabel" destination="fTr-fB-G3N" id="N4T-cG-1KH"/>
             </connections>
             <point key="canvasLocation" x="-20.610687022900763" y="85.563380281690144"/>
         </tableViewCell>
