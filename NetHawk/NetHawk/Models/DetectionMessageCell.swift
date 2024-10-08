@@ -21,6 +21,12 @@ class DetectionMessageCell: UITableViewCell {
 
         print("awakeFromNib() called")
 
+        print(typeOfAttackLabel.text!)
+        if (typeOfAttackLabel.text!) == "Domain Phishing" {
+            attackImage.image = #imageLiteral(resourceName: "phishing")
+        } else {
+            attackImage.image = #imageLiteral(resourceName: "tcp")
+        }
         attackImage.layer.cornerRadius = attackImage.frame.width / 2
 
     }
