@@ -106,27 +106,30 @@ class MQTTService: CocoaMQTTDelegate {
 
                     // NotificationCenter로 로그 추가 알림
                     NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
+                    
+                    print("Time Stamp: \(timestamp)\nType: \(type)\nInvader Address: \(String(describing: invaderAddress!))\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------")
 
-                    print("received new thang")
                 }
             }
         }
     }
 
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {
-        print("Successfully subscribed to topics: \(success)")
+        // print("Successfully subscribed to topics: \(success)")
     }
 
     func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopics topics: [String]) {
-        print("Successfully unsubscribed from topics: \(topics)")
+        // print("Successfully unsubscribed from topics: \(topics)")
     }
 
     func mqttDidPing(_ mqtt: CocoaMQTT) {
+        print("-------Server Checking-------")
         print("ping")
     }
 
     func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
         print("pong")
+        print("-----------------------------")
         onPongReceived?()
     }
 

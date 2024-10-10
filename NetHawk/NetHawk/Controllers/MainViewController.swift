@@ -48,7 +48,6 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         pagerView.deselectItem(at: index, animated: true) // 선택된 상태 해제
-        print("Selected page index: \(index)")
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         switch index {
@@ -127,7 +126,6 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
     func setupMQTTStatusCallbacks() {
         MQTTService.shared.onPingReceived = { [weak self] in
             DispatchQueue.main.async {
-                print("Checking connection...")
                 self?.statusLabel.text = "Checking connection..."
                 self?.statusLabel.textColor = .gray
             }
@@ -135,7 +133,6 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
         MQTTService.shared.onPongReceived = { [weak self] in
             DispatchQueue.main.async {
-                print("Connected")
                 self?.statusLabel.text = "Server Online 🟢"
                 self?.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
             }
@@ -143,7 +140,6 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
         MQTTService.shared.onDisconnected = { [weak self] in
             DispatchQueue.main.async {
-                print("Disconnected")
                 self?.statusLabel.text = "Server Offline 🔴"
                 self?.statusLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
             }

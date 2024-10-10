@@ -19,9 +19,6 @@ class DetectionMessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        print("awakeFromNib() called")
-
-        print(typeOfAttackLabel.text!)
         if (typeOfAttackLabel.text!) == "Domain Phishing" {
             attackImage.image = #imageLiteral(resourceName: "phishing")
         } else {

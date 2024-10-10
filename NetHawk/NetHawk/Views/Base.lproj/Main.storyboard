@@ -237,7 +237,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4l-PH-87k">
                                 <rect key="frame" x="70" y="429.66666666666669" width="235" height="51"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="ex. 1a2b3c4d" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JuP-Ph-ZFb" userLabel="Broker IP Text Field">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Enter Device S/N" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JuP-Ph-ZFb" userLabel="Broker IP Text Field">
                                         <rect key="frame" x="8" y="8" width="219" height="35"/>
                                         <color key="backgroundColor" red="0.93584877379999998" green="0.94252150270000001" blue="0.96253968919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText"/>
@@ -304,7 +304,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vb-c0-UIY">
                                 <rect key="frame" x="70" y="527" width="235" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="ex. kimjeonghun" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L8-40-hZu">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Enter Own Alias" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L8-40-hZu">
                                         <rect key="frame" x="8" y="8" width="219" height="34"/>
                                         <color key="backgroundColor" red="0.93584877379999998" green="0.94252150270000001" blue="0.96253968919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText"/>

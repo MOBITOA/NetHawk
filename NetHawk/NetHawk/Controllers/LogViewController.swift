@@ -25,7 +25,7 @@ class LogViewController: UIViewController {
         self.logTableView.dataSource = self
 
         // UserDefaults에서 초기 로그 로드
-        self.contentArray = LoggingService.shared.getLogs() // 더 이상 파싱할 필요 없음
+        self.contentArray = LoggingService.shared.getLogs()
 
         // MQTT 메시지가 로깅될 때마다 테이블 뷰를 업데이트하도록 NotificationCenter 추가
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNewLog(_:)), name: NSNotification.Name("NewLogReceived"), object: nil)
