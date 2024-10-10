@@ -61,11 +61,13 @@ extension LogViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = logTableView.dequeueReusableCell(withIdentifier: "DetectionMessageCell", for: indexPath) as! DetectionMessageCell
         let log = contentArray[indexPath.row]
         // 로그 데이터 업로드
-        cell.addressOfInvaderLabel.text = log.invaderAddress ?? "Unknown"
+        cell.addressOfInvaderLabel.text = log.invaderAddress
         cell.addressOfVictimLabel.text = log.victimAddress
         cell.victimDeviceLabel.text = log.victimName
         cell.timeStampLabel.text = log.timestamp
         cell.typeOfAttackLabel.text = log.type
+
+        cell.configureCell(with: log)
 
         return cell
     }

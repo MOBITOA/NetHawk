@@ -27,6 +27,7 @@ class MQTTService: CocoaMQTTDelegate {
     func configure(clientID: String, host: String, port: UInt16) {
         mqtt = CocoaMQTT(clientID: clientID, host: host, port: port)
         mqtt?.delegate = self
+        mqtt?.autoReconnect = true
         mqtt?.keepAlive = 30
     }
 
@@ -90,36 +91,34 @@ class MQTTService: CocoaMQTTDelegate {
     }
 
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
+
         if let messageString = message.string {
             if let parsedData = parseMQTTMessage(messageString) {
-                if let data = parsedData["data"] as? [String: Any],
-                   let timestamp = data["timestamp"] as? String,
-                   let type = data["type"] as? String,
-                   let invaderAddress = data["invader_address"] as? String?, // null 값을 고려하여 옵셔널 처리
-                   let victimAddress = data["victim_address"] as? String,
-                   let victimName = data["victim_name"] as? String {
 
-                    let logEntry = Log(timestamp: timestamp, type: type, invaderAddress: invaderAddress, victimAddress: victimAddress, victimName: victimName)
+                print(parsedData)
 
-                    // 로깅 서비스에 LogEntry 구조체로 저장
-                    LoggingService.shared.logMessage(logEntry)
-
-                    // NotificationCenter로 로그 추가 알림
-                    NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
-                    
-                    print("Time Stamp: \(timestamp)\nType: \(type)\nInvader Address: \(String(describing: invaderAddress!))\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------")
-
+                if let type = parsedData["type"] as? String, let data = parsedData["data"] as? [String: Any] {
+                    switch type {
+                    case "Domain phishing":
+                        handleDomainSpoof(data: data)
+                    case "TCP-Flooding":
+                        handleTCPFlooding(data: data)
+                    case "UDP-Flooding":
+                        handleUDPFlooding(data: data)
+                    default:
+                        print("알 수 없는 공격 유형: \(type)")
+                    }
                 }
             }
         }
     }
 
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {
-        // print("Successfully subscribed to topics: \(success)")
+        print("Successfully subscribed to topics: \(success)")
     }
 
     func mqtt(_ mqtt: CocoaMQTT, didUnsubscribeTopics topics: [String]) {
-        // print("Successfully unsubscribed from topics: \(topics)")
+        print("Successfully unsubscribed from topics: \(topics)")
     }
 
     func mqttDidPing(_ mqtt: CocoaMQTT) {
@@ -139,7 +138,7 @@ class MQTTService: CocoaMQTTDelegate {
         onConnectionFailure?()
     }
 
-    // MARK: - Log 관련
+    // MARK: - Log 파싱
     // 로그 파싱 함수
     func parseMQTTMessage(_ message: String) -> [String: Any]? {
         if let data = message.data(using: .utf8) {
@@ -151,5 +150,132 @@ class MQTTService: CocoaMQTTDelegate {
             }
         }
         return nil
+    }
+
+    func handleDomainSpoof(data: [String: Any]) {
+        if let timestamp = data["timestamp"] as? String,
+           let invaderAddress = data["invader_address"] as? String?,
+           let victimAddress = data["victim_address"] as? String,
+           let victimName = data["victim_name"] as? String {
+
+            let logEntry = Log(timestamp: timestamp, type: "Domain phishing", invaderAddress: invaderAddress, victimAddress: victimAddress, victimName: victimName)
+
+            // 로그 저장 및 처리
+            LoggingService.shared.logMessage(logEntry)
+
+            // 로컬 알림 전송
+            sendLocalNotification(for: logEntry)
+
+            // NotificationCenter로 로그 추가 알림
+            NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
+
+            print("도메인 피싱 공격 탐지:")
+            print("Time Stamp: \(timestamp)\nInvader Address: \(String(describing: invaderAddress))\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------")
+        }
+    }
+
+    func handleTCPFlooding(data: [String: Any]) {
+        if let timestamp = data["timestamp"] as? String,
+           let victimAddress = data["victim_address"] as? String,
+           let victimName = data["victim_name"] as? String {
+
+            let logEntry = Log(timestamp: timestamp, type: "TCP-Flooding", invaderAddress: "-", victimAddress: victimAddress, victimName: victimName)
+
+            // 로그 저장 및 처리
+            LoggingService.shared.logMessage(logEntry)
+
+            // 로컬 알림 전송
+            sendLocalNotification(for: logEntry)
+
+            // NotificationCenter로 로그 추가 알림
+            NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
+
+            print("TCP 플러딩 공격 탐지:")
+            print("Time Stamp: \(timestamp)\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------")
+        }
+    }
+
+    func handleUDPFlooding(data: [String: Any]) {
+        if let timestamp = data["timestamp"] as? String,
+           let victimAddress = data["victim_address"] as? String,
+           let victimName = data["victim_name"] as? String {
+
+            let logEntry = Log(timestamp: timestamp, type: "UDP-Flooding", invaderAddress: "-", victimAddress: victimAddress, victimName: victimName)
+
+            // 로그 저장 및 처리
+            LoggingService.shared.logMessage(logEntry)
+
+            // 로컬 알림 전송
+            sendLocalNotification(for: logEntry)
+
+            // NotificationCenter로 로그 추가 알림
+            NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
+
+            print("UDP 플러딩 공격 탐지:")
+            print("Time Stamp: \(timestamp)\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------")
+        }
+    }
+
+    // MARK: - 백그라운드 작업
+    // MQTT Ping을 주기적으로 보내는 함수
+    func startMQTTPing() {
+        guard let mqttClient = mqtt else { return }
+
+        // 백그라운드 작업을 시작
+        var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+
+        backgroundTask = UIApplication.shared.beginBackgroundTask {
+            // 백그라운드 시간이 만료되면 호출
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            backgroundTask = .invalid
+        }
+
+        // Ping 메시지를 보냄
+        if backgroundTask != .invalid {
+            mqttClient.ping()  // Ping 전송
+            print("MQTT Ping sent.")
+
+            // 작업이 종료되면 다시 백그라운드 작업을 시작해 반복적으로 Ping 전송
+            DispatchQueue.global().asyncAfter(deadline: .now() + 60) { [weak self] in
+                if backgroundTask != .invalid {
+                    UIApplication.shared.endBackgroundTask(backgroundTask)
+                    backgroundTask = .invalid
+                }
+                // 백그라운드 작업이 끝나면 다시 시작
+                self?.startMQTTPing()
+            }
+        }
+    }
+
+
+
+    // 포그라운드 복귀 시 MQTT 연결 상태 확인
+    func checkConnection() {
+        guard let mqttClient = mqtt else { return }
+
+        if ((onDisconnected?()) != nil) {
+            print("MQTT 연결이 끊어졌습니다. 재연결 시도 중...")
+            mqttClient.connect()  // 연결이 끊겼으면 다시 연결
+        } else {
+            print("MQTT 연결이 유지되고 있습니다.")
+        }
+    }
+
+    // MARK: - 알림
+    func sendLocalNotification(for log: Log) {
+        let content = UNMutableNotificationContent()
+        content.title = "New Attack Detected."
+        content.body = "Type: \(log.type)\nVictim: \(log.victimName)\nAddress: \(log.victimAddress)"
+        content.sound = .default
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Failed to send notification: \(error)")
+            }
+        }
     }
 }

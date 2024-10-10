@@ -10,22 +10,23 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var backgroundTask: UIBackgroundTaskIdentifier = .invalid
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-//        
+        //
         let storyboard = UIStoryboard(name: "Splash", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "SplashViewController")
 
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
 
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-        
+
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
@@ -49,6 +50,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+
+        // 백그라운드 작업이 끝나면 종료 처리
+        if backgroundTask != .invalid {
+            UIApplication.shared.endBackgroundTask(self.backgroundTask)
+            self.backgroundTask = .invalid
+        }
+
+        // 포그라운드에서 다시 MQTT 연결 상태 확인
+        MQTTService.shared.checkConnection()  // 포그라운드 복귀 시 연결 확인
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -58,8 +68,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+
+        print("백그라운드 상태 진입")
+
+        backgroundTask = UIApplication.shared.beginBackgroundTask {
+            UIApplication.shared.endBackgroundTask(self.backgroundTask)
+            self.backgroundTask = .invalid
+        }
+        if backgroundTask != .invalid {
+            print("백그라운드에서 mqtt연결을 시도합니다.")
+            MQTTService.shared.startMQTTPing()
+        }
+
     }
-
-
 }
 
