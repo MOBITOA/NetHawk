@@ -15,7 +15,6 @@ class LogViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad : LogView")
 
         let myTableViewCellNib = UINib(nibName: "DetectionMessage", bundle: nil)
         self.logTableView.register(myTableViewCellNib, forCellReuseIdentifier: "DetectionMessageCell")

@@ -561,6 +561,15 @@
                                     <constraint firstAttribute="height" constant="300" id="f0b-Xg-RFi"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="snX-SI-20H">
+                                <rect key="frame" x="162" y="191" width="50" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="refreshBtnTapped:" destination="KL7-jD-btO" eventType="touchUpInside" id="WO8-Ce-xvy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I6e-0W-t0P"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -610,6 +619,7 @@
                         <outlet property="portFrame" destination="VNr-mJ-UCB" id="dwr-Gb-h24"/>
                         <outlet property="portLogo" destination="rQP-qI-Scq" id="sca-gS-U2j"/>
                         <outlet property="portTextField" destination="AaK-dL-i7y" id="LgP-fH-E2t"/>
+                        <outlet property="refreshBtn" destination="snX-SI-20H" id="Mxw-Ex-cu2"/>
                         <outlet property="titleLogo" destination="jqb-qS-sEY" id="DOs-lB-SGP"/>
                     </connections>
                 </viewController>
@@ -923,6 +933,7 @@
     </scenes>
     <resources>
         <image name="NetHawkLogo.png" width="1024" height="1024"/>
+        <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="113"/>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="123"/>

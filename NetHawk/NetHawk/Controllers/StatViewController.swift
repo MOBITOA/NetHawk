@@ -11,7 +11,7 @@ class StatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad : StatView")
+
         
     }
     

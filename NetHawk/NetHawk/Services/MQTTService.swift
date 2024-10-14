@@ -59,7 +59,6 @@ class MQTTService: CocoaMQTTDelegate {
 
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         if ack == .accept {
-            print("MQTT connected")
             onConnectionSuccess?()
 
             // 로그 초기화하기 (임시)
@@ -68,16 +67,15 @@ class MQTTService: CocoaMQTTDelegate {
             // 키체인에서 시리얼 넘버와 별칭 로드 & 토픽 구독
             if let credentials = KeychainManager.shared.load() {
                 let serialNumber = credentials.serialNumber
+                let alias = credentials.alias
                 // 연결된 필터 알림 수신
                 subscribe(topic: "\(serialNumber)/alarm")
                 // 블랙리스트 & 화이트리스트
-                subscribe(topic: "\(serialNumber)/blacklist")
-                subscribe(topic: "\(serialNumber)/whitelist")
-                subscribe(topic: "\(serialNumber)/refreshBW")
+                subscribe(topic: "\(serialNumber)")
+                subscribe(topic: "\(alias)")
             }
 
         } else {
-            print("MQTT connection failed")
             onConnectionFailure?()
         }
     }
@@ -94,8 +92,9 @@ class MQTTService: CocoaMQTTDelegate {
 
         if let messageString = message.string {
             if let parsedData = parseMQTTMessage(messageString) {
-
-                print(parsedData)
+                print("-------[Received Data]-------")
+                print("Parsed Data : \n\(parsedData)")
+                print("")
 
                 if let type = parsedData["type"] as? String, let data = parsedData["data"] as? [String: Any] {
                     switch type {
@@ -122,13 +121,15 @@ class MQTTService: CocoaMQTTDelegate {
     }
 
     func mqttDidPing(_ mqtt: CocoaMQTT) {
-        print("-------Server Checking-------")
-        print("ping")
+        print(" ------Server Checking------")
+        print("|           ping            |")
     }
 
     func mqttDidReceivePong(_ mqtt: CocoaMQTT) {
-        print("pong")
-        print("-----------------------------")
+        print("|           pong            |")
+        print("|          its ok.          |")
+        print(" ---------------------------")
+        print("")
         onPongReceived?()
     }
 
@@ -170,7 +171,7 @@ class MQTTService: CocoaMQTTDelegate {
             NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
 
             print("도메인 피싱 공격 탐지:")
-            print("Time Stamp: \(timestamp)\nInvader Address: \(String(describing: invaderAddress))\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------")
+            print("Time Stamp: \(timestamp)\nInvader Address: \(String(describing: invaderAddress!))\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------\n")
         }
     }
 
@@ -191,7 +192,7 @@ class MQTTService: CocoaMQTTDelegate {
             NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
 
             print("TCP 플러딩 공격 탐지:")
-            print("Time Stamp: \(timestamp)\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------")
+            print("Time Stamp: \(timestamp)\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------\n")
         }
     }
 
@@ -212,7 +213,7 @@ class MQTTService: CocoaMQTTDelegate {
             NotificationCenter.default.post(name: NSNotification.Name("NewLogReceived"), object: nil, userInfo: ["log": logEntry])
 
             print("UDP 플러딩 공격 탐지:")
-            print("Time Stamp: \(timestamp)\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------")
+            print("Time Stamp: \(timestamp)\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------\n")
         }
     }
 
@@ -254,9 +255,11 @@ class MQTTService: CocoaMQTTDelegate {
         guard let mqttClient = mqtt else { return }
 
         if ((onDisconnected?()) != nil) {
+            print("-----------------------------")
             print("MQTT 연결이 끊어졌습니다. 재연결 시도 중...")
             mqttClient.connect()  // 연결이 끊겼으면 다시 연결
         } else {
+            print("-----------------------------")
             print("MQTT 연결이 유지되고 있습니다.")
         }
     }

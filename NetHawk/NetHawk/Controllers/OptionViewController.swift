@@ -11,7 +11,7 @@ class OptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad : OptionView")
+
     }
 
     @IBAction func dissmissBtnTapped(_ sender: UIButton) {

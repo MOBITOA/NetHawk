@@ -12,27 +12,23 @@ class AccessViewController: UIViewController {
     // MARK: - UI Outlets
     
     @IBOutlet weak var titleLogo: UILabel!
-    
     @IBOutlet weak var ipLogo: UILabel!
     @IBOutlet weak var ipFrame: UIView!
     @IBOutlet weak var ipTextField: UITextField!
-    
     @IBOutlet weak var portLogo: UILabel!
     @IBOutlet weak var portFrame: UIView!
     @IBOutlet weak var portTextField: UITextField!
-    
-    @IBOutlet weak var openBtn: UIButton!
-    @IBOutlet weak var banBtn: UIButton!
-    
     @IBOutlet weak var banTextView: UITextView!
     @IBOutlet weak var openTextView: UITextView!
-    
     @IBOutlet weak var banContainer: UIView!
     @IBOutlet weak var openContainer: UIView!
-    
+
+    @IBOutlet weak var refreshBtn: UIButton!
+    @IBOutlet weak var openBtn: UIButton!
+    @IBOutlet weak var banBtn: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad : AccessView")
         self.titleLogo.alpha = 0.0
         self.ipLogo.alpha = 0.0
         self.ipFrame.alpha = 0.0
@@ -68,7 +64,97 @@ class AccessViewController: UIViewController {
             self.applyAnimations()
         }
     }
+    // MARK: - B/W functions
+
+    @IBAction func refreshBtnTapped(_ sender: UIButton) {
+        acquireBlackAndWhitelist()
+    }
     
+    /*
+     <<블랙리스트 획득>>
+     {
+        "command": "blacklist_acquire"
+        "parameters": {}
+     }
+     {
+        "return": ["blacklisted_ip", "blacklisted_ip", ...] (현재 블랙리스트)
+     }
+
+
+     <<블랙리스트 수정>>
+     {
+        "command": "blacklist_modify"
+        "parameters": {
+           "ip_list": ["to_blacklist_ip", "to_blacklist_ip", ...] (변경할 블랙리스트)
+        }
+     }
+     {
+        "return": ["blacklisted_ip", "blacklisted_ip", ...] (업데이트 후 블랙리스트)
+     }
+
+
+     <<화이트리스트 획득>>
+     {
+        "command": "whitelist_acquire"
+        "parameters": {}
+     }
+     {
+        "return": ["blacklisted_ip", "blacklisted_ip", ...] (현재 화이트리스트)
+     }
+
+
+     <<화이트리스트 수정>>
+     {
+        "command": "whitelist_modify"
+        "parameters": {
+           "ip_list": ["to_whitelist_ip", "to_whitelist_ip", ...] (변경할 화이트리스트)
+        }
+     }
+     {
+        "return": ["whitelisted_ip", "whitelisted_ip", ...] (업데이트 후 화이트리스트)
+     }
+
+     */
+
+    func acquireBlackAndWhitelist() {
+        if let credentials = KeychainManager.shared.load() {
+            let serialNumber = credentials.serialNumber
+            let alias = credentials.alias
+
+            let blackListCommand = [
+                "command": "blacklist_acquire",
+                "source": "\(alias)",
+                "parameters": [:]
+            ] as [String : Any]
+
+            let whiteListCommand = [
+                "command": "whitelist_acquire",
+                "source": "\(alias)",
+                "parameters": [:]
+            ] as [String : Any]
+
+            if let blackListJsonData = try? JSONSerialization.data(withJSONObject: blackListCommand, options: []),
+               let blackListJsonString = String(data: blackListJsonData, encoding: .utf8) {
+                let filterID = "\(serialNumber)"
+
+                // 블랙리스트 요청 발행
+                print("블랙리스트 요청: \(blackListJsonString)")
+                MQTTService.shared.publish(topic: filterID, message: blackListJsonString)
+            }
+
+            if let whiteListJsonData = try? JSONSerialization.data(withJSONObject: whiteListCommand, options: []),
+               let whiteListJsonString = String(data: whiteListJsonData, encoding: .utf8) {
+                let filterID = "\(serialNumber)"
+
+                // 화이트리스트 요청 발행
+                print("화이트리스트 요청: \(whiteListJsonString)")
+                MQTTService.shared.publish(topic: filterID, message: whiteListJsonString)
+            }
+        }
+    }
+
+
+    // MARK: - UI
     func tvConfig(to tv: UITextView, container: UIView) {
         tv.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         tv.isEditable = false
