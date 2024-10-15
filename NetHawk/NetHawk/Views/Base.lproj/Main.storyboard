@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -863,19 +864,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xlp-qT-ooi">
-                                <rect key="frame" x="16" y="60" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="JrW-FD-7xj"/>
-                                    <constraint firstAttribute="width" constant="30" id="Zhg-56-Vmy"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.backward" catalog="system"/>
-                                <connections>
-                                    <action selector="dissmissBtnTapped:" destination="vlZ-5J-kNo" eventType="touchUpInside" id="ekH-Aq-XAP"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Rn-u1-k59">
                                 <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
                                 <constraints>
@@ -883,10 +871,21 @@
                                     <constraint firstAttribute="height" constant="300" id="trC-V7-oIh"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qi9-Af-Lyg">
-                                <rect key="frame" x="110" y="50" width="155" height="50"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="45t-ua-nTh">
+                                <rect key="frame" x="16" y="123" width="343" height="32"/>
+                                <segments>
+                                    <segment title="">
+                                        <imageReference key="image" image="internaldrive" catalog="system" symbolScale="large"/>
+                                    </segment>
+                                    <segment title="">
+                                        <imageReference key="image" image="externaldrive.fill" catalog="system" symbolScale="large"/>
+                                    </segment>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8g-EB-A37">
+                                <rect key="frame" x="121.33333333333333" y="23" width="132.66666666666669" height="50"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Options">
+                                    <fragment content="Option">
                                         <attributes>
                                             <font key="NSFont" size="36" name="IntelOneMono-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -895,22 +894,59 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-hL-bkY">
+                                <rect key="frame" x="60" y="91" width="256.33333333333331" height="23.666666666666671"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV4-3M-edx">
+                                        <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="23.666666666666668"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Internal">
+                                                <attributes>
+                                                    <font key="NSFont" size="17" name="IntelOneMono-Light"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofp-Kv-kTm">
+                                        <rect key="frame" x="172.66666666666666" y="0.0" width="83.666666666666657" height="23.666666666666668"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="External">
+                                                <attributes>
+                                                    <font key="NSFont" size="17" name="IntelOneMono-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PsQ-U8-sJy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Qi9-Af-Lyg" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="4Dy-k6-TEj"/>
+                            <constraint firstItem="z8g-EB-A37" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="3pf-JA-6MD"/>
                             <constraint firstItem="1Rn-u1-k59" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="5uU-Yh-fTB"/>
-                            <constraint firstItem="Xlp-qT-ooi" firstAttribute="top" secondItem="n3I-PF-Z6P" secondAttribute="topMargin" constant="10" id="EAF-de-l3s"/>
-                            <constraint firstItem="Xlp-qT-ooi" firstAttribute="leading" secondItem="PsQ-U8-sJy" secondAttribute="leading" constant="16" id="Fp7-dJ-LQF"/>
+                            <constraint firstItem="z8g-EB-A37" firstAttribute="top" secondItem="n3I-PF-Z6P" secondAttribute="top" constant="23" id="6Gt-1T-mNR"/>
+                            <constraint firstItem="DDd-hL-bkY" firstAttribute="leading" secondItem="PsQ-U8-sJy" secondAttribute="leading" constant="60" id="Bca-NE-kSr"/>
+                            <constraint firstItem="45t-ua-nTh" firstAttribute="leading" secondItem="PsQ-U8-sJy" secondAttribute="leading" constant="16" id="DU5-SK-pIU"/>
+                            <constraint firstItem="45t-ua-nTh" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="DwC-QU-8vT"/>
                             <constraint firstItem="1Rn-u1-k59" firstAttribute="centerY" secondItem="n3I-PF-Z6P" secondAttribute="centerY" id="ID5-0V-3Ig"/>
-                            <constraint firstItem="Qi9-Af-Lyg" firstAttribute="top" secondItem="PsQ-U8-sJy" secondAttribute="top" id="hta-gU-EtR"/>
+                            <constraint firstItem="45t-ua-nTh" firstAttribute="top" secondItem="z8g-EB-A37" secondAttribute="bottom" constant="50" id="Jfc-3T-DZt"/>
+                            <constraint firstItem="PsQ-U8-sJy" firstAttribute="trailing" secondItem="DDd-hL-bkY" secondAttribute="trailing" constant="58.670000000000002" id="cjz-S1-Gbk"/>
+                            <constraint firstItem="DDd-hL-bkY" firstAttribute="top" secondItem="z8g-EB-A37" secondAttribute="bottom" constant="18" id="daY-QJ-gwM"/>
+                            <constraint firstItem="PsQ-U8-sJy" firstAttribute="trailing" secondItem="45t-ua-nTh" secondAttribute="trailing" constant="16" id="tJY-aa-fas"/>
+                            <constraint firstItem="45t-ua-nTh" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="toM-9e-Hq1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="networkTypeSegmentControl" destination="45t-ua-nTh" id="mYD-f2-6Zk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duE-Z4-ba2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4758" y="68"/>
+            <point key="canvasLocation" x="4757.6000000000004" y="67.980295566502463"/>
         </scene>
     </scenes>
     <resources>
@@ -920,6 +956,8 @@
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="123"/>
         <image name="checkerboard.shield" catalog="system" width="128" height="121"/>
+        <image name="externaldrive.fill" catalog="system" width="128" height="87"/>
+        <image name="internaldrive" catalog="system" width="128" height="88"/>
         <image name="questionmark.app.dashed" catalog="system" width="128" height="114"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="120" height="128"/>
         <systemColor name="labelColor">

@@ -71,11 +71,40 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
                 present(thirdVC, animated: true, completion: nil)
             }
         case 3:
-            // 세 번째 페이지로 이동
+            // 네 번째 페이지로 이동
             if let fourVC = storyboard.instantiateViewController(withIdentifier: "OptionViewController") as? OptionViewController {
-                fourVC.modalPresentationStyle = .fullScreen
+                // 화면 중앙에서 시트처럼 올라오게 설정
+                fourVC.modalPresentationStyle = .pageSheet
+
+                if let sheet = fourVC.sheetPresentationController {
+                    // 시트 크기 설정
+                    sheet.detents = [.large(), .medium()]
+
+                    // 모서리 둥글기 설정
+                    sheet.preferredCornerRadius = 24
+
+                    // 그래버 표시
+                    sheet.prefersGrabberVisible = true
+
+                    // 배경 딤 처리
+                    sheet.largestUndimmedDetentIdentifier = .medium
+
+                    // 스크롤 시 확장 방지
+                    sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+
+                    // 드래그로 닫기 가능
+                    sheet.prefersEdgeAttachedInCompactHeight = true
+
+                    // 상단 여백 설정
+                    sheet.selectedDetentIdentifier = .medium
+                }
+
+                // 모달 스타일 설정
+                fourVC.modalPresentationStyle = .pageSheet
+
                 present(fourVC, animated: true, completion: nil)
             }
+
         default:
             break
         }

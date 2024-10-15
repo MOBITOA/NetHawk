@@ -116,6 +116,7 @@ class ConnectionViewController: UIViewController {
     @IBAction func pairingBtnTapped(_ sender: UIButton) {
         let serialNumber = serialNumberTextField.text ?? ""
         let alias = aliasTextField.text ?? ""
+        
 
         // 키체인에 S/N과 별칭 저장
         KeychainManager.shared.save(serialNumber: serialNumber, alias: alias)
