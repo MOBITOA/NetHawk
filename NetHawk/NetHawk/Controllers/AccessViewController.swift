@@ -12,16 +12,20 @@ class AccessViewController: UIViewController {
     // MARK: - UI Outlets
     
     @IBOutlet weak var titleLogo: UILabel!
+    
+    @IBOutlet weak var whiteListLabel: UILabel!
+    @IBOutlet weak var blackListLabel: UILabel!
+
     @IBOutlet weak var ipLogo: UILabel!
     @IBOutlet weak var ipFrame: UIView!
     @IBOutlet weak var ipTextField: UITextField!
-    @IBOutlet weak var portLogo: UILabel!
-    @IBOutlet weak var portFrame: UIView!
-    @IBOutlet weak var portTextField: UITextField!
+    
+
     @IBOutlet weak var banTextView: UITextView!
     @IBOutlet weak var openTextView: UITextView!
     @IBOutlet weak var banContainer: UIView!
     @IBOutlet weak var openContainer: UIView!
+
 
     @IBOutlet weak var refreshBtn: UIButton!
     @IBOutlet weak var openBtn: UIButton!
@@ -34,27 +38,24 @@ class AccessViewController: UIViewController {
         self.ipFrame.alpha = 0.0
         self.ipTextField.alpha = 0.0
         self.ipTextField.text = ""
-        self.portLogo.alpha = 0.0
-        self.portFrame.alpha = 0.0
-        self.portTextField.alpha = 0.0
-        self.portTextField.text = ""
         self.openBtn.alpha = 0.0
         self.banBtn.alpha = 0.0
         self.banContainer.alpha = 0.0
         self.openContainer.alpha = 0.0
         self.banTextView.alpha = 0.0
         self.openTextView.alpha = 0.0
+        self.whiteListLabel.alpha = 0.0
+        self.blackListLabel.alpha = 0.0
+        self.refreshBtn.alpha = 0.0
         self.openBtn.isEnabled = false
         self.banBtn.isEnabled = false
         
         frameConfig(to: ipFrame)
-        frameConfig(to: portFrame)
         
         tvConfig(to: banTextView, container: banContainer)
         tvConfig(to: openTextView, container: openContainer)
         
         ipTextField.delegate = self
-        portTextField.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -185,18 +186,19 @@ class AccessViewController: UIViewController {
     func applyAnimations() {
         UIView.animate(withDuration: 1, delay: 0.05, options: .curveEaseInOut, animations: {
             self.titleLogo.alpha = 1.0
+            self.refreshBtn.alpha = 1.0
         }, completion: nil)
         
         UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
-            self.ipLogo.alpha = 1.0
-            self.ipFrame.alpha = 1.0
-            self.ipTextField.alpha = 1.0
+            self.whiteListLabel.alpha = 1.0
+            self.blackListLabel.alpha = 1.0
         }, completion: nil)
         
         UIView.animate(withDuration: 1, delay: 0.3, options: .curveEaseInOut, animations: {
-            self.portLogo.alpha = 1.0
-            self.portFrame.alpha = 1.0
-            self.portTextField.alpha = 1.0
+            self.banTextView.alpha = 1.0
+            self.banContainer.alpha = 1.0
+            self.openTextView.alpha = 1.0
+            self.openContainer.alpha = 1.0
         }, completion: nil)
         
         UIView.animate(withDuration: 1, delay: 0.5, options: .curveEaseInOut, animations: {
@@ -205,10 +207,9 @@ class AccessViewController: UIViewController {
         }, completion: nil)
         
         UIView.animate(withDuration: 1, delay: 0.7, options: .curveEaseInOut, animations: {
-            self.banTextView.alpha = 1.0
-            self.banContainer.alpha = 1.0
-            self.openTextView.alpha = 1.0
-            self.openContainer.alpha = 1.0
+            self.ipLogo.alpha = 1.0
+            self.ipFrame.alpha = 1.0
+            self.ipTextField.alpha = 1.0
         }, completion: nil)
     }
     
@@ -224,16 +225,12 @@ extension AccessViewController: UITextFieldDelegate {
         
         // 버튼 활성화 여부 결정
         var ipTextIsEmpty = ipTextField.text?.isEmpty ?? true
-        var portTextIsEmpty = portTextField.text?.isEmpty ?? true
         
         if textField == ipTextField {
             ipTextIsEmpty = updatedText?.isEmpty ?? true
-        } else if textField == portTextField {
-            portTextIsEmpty = updatedText?.isEmpty ?? true
-            
         }
         
-        if !ipTextIsEmpty || !portTextIsEmpty {
+        if !ipTextIsEmpty {
             openBtn.isEnabled = true
             banBtn.isEnabled = true
         } else {
