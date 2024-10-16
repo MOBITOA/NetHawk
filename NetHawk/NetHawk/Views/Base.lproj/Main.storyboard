@@ -486,6 +486,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="openBtnTapped:" destination="KL7-jD-btO" eventType="touchUpInside" id="Daa-uT-LKG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDn-vS-0i2">
                                         <rect key="frame" x="100" y="0.0" width="69" height="36.333333333333336"/>
@@ -504,6 +507,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="banBtnTapped:" destination="KL7-jD-btO" eventType="touchUpInside" id="pgG-DQ-1Jo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

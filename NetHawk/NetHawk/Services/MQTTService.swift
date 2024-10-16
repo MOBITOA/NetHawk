@@ -96,6 +96,40 @@ class MQTTService: CocoaMQTTDelegate {
                 print("Parsed Data : \n\(parsedData)")
                 print("")
 
+                // 블랙리스트, 화이트리스트에 대한 파싱
+                if let command = parsedData["command"] as? String {
+                    print(command)
+
+                    switch command {
+                    case "blacklist_acquire":
+                        if let ipList = parsedData["return"] as? [String] {
+                            print("blacklist_acquire")
+                            handleBlacklistAcquired(ipList: ipList)
+                        }
+                    case "whitelist_acquire":
+                        if let ipList = parsedData["return"] as? [String] {
+                            print("whitelist_acquire")
+                            handleWhitelistAcquired(ipList: ipList)
+                        }
+                    case "blacklist_modify":
+                        if let parameters = parsedData["parameters"] as? [String: Any],
+                           let ipList = parameters["ip_list"] as? [String] {
+                            print("blacklist_modify")
+                            handleBlacklistAcquired(ipList: ipList)
+
+                        }
+                    case "whitelist_modify":
+                        if let parameters = parsedData["parameters"] as? [String: Any],
+                           let ipList = parameters["ip_list"] as? [String] {
+                            print("whitelist_modify")
+                            handleWhitelistAcquired(ipList: ipList)
+                        }
+                    default:
+                        print("알 수 없는 명령어: \(command)")
+                    }
+                }
+
+                // 공격 탐지에 대한 파싱
                 if let type = parsedData["type"] as? String, let data = parsedData["data"] as? [String: Any] {
                     switch type {
                     case "Domain phishing":
@@ -140,6 +174,7 @@ class MQTTService: CocoaMQTTDelegate {
     }
 
     // MARK: - Log 파싱
+
     // 로그 파싱 함수
     func parseMQTTMessage(_ message: String) -> [String: Any]? {
         if let data = message.data(using: .utf8) {
@@ -215,6 +250,24 @@ class MQTTService: CocoaMQTTDelegate {
             print("UDP 플러딩 공격 탐지:")
             print("Time Stamp: \(timestamp)\nVictim Address: \(victimAddress)\nVictim Name: \(victimName)\n-----------------------------\n")
         }
+    }
+
+    // 블랙리스트, 화이트리스트 획득 수신 정보 전달
+    func handleBlacklistAcquired(ipList: [String]) {
+        print("go post")
+        NotificationCenter.default.post(
+            name: NSNotification.Name("UpdateBlacklist"),
+            object: nil,
+            userInfo: ["blacklist": ipList]
+        )
+    }
+
+    func handleWhitelistAcquired(ipList: [String]) {
+        NotificationCenter.default.post(
+            name: NSNotification.Name("UpdateWhitelist"),
+            object: nil,
+            userInfo: ["whitelist": ipList]
+        )
     }
 
     // MARK: - 백그라운드 작업
