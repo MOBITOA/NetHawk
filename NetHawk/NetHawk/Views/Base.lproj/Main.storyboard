@@ -210,7 +210,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gZ-Nf-Y7p">
-                                <rect key="frame" x="119.66666666666669" y="403" width="136" height="23.666666666666686"/>
+                                <rect key="frame" x="119.66666666666669" y="454.33333333333331" width="136" height="23.666666666666686"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Serial Number">
                                         <attributes>
@@ -236,7 +236,7 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4l-PH-87k">
-                                <rect key="frame" x="70" y="429.66666666666669" width="235" height="51"/>
+                                <rect key="frame" x="70" y="481" width="235" height="51"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Enter Device S/N" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JuP-Ph-ZFb" userLabel="Broker IP Text Field">
                                         <rect key="frame" x="8" y="8" width="219" height="35"/>
@@ -255,7 +255,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joW-vH-394">
-                                <rect key="frame" x="124.66666666666669" y="500" width="126" height="24"/>
+                                <rect key="frame" x="125" y="551.33333333333337" width="125.33333333333331" height="23.666666666666629"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Device Alias">
                                         <attributes>
@@ -268,7 +268,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S0G-uv-WfL">
-                                <rect key="frame" x="136.66666666666666" y="638" width="101.66666666666666" height="39"/>
+                                <rect key="frame" x="136.66666666666666" y="689" width="101.66666666666666" height="39"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
@@ -303,7 +303,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vb-c0-UIY">
-                                <rect key="frame" x="70" y="527" width="235" height="50"/>
+                                <rect key="frame" x="70" y="578" width="235" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Enter Own Alias" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L8-40-hZu">
                                         <rect key="frame" x="8" y="8" width="219" height="34"/>
@@ -320,13 +320,24 @@
                                     <constraint firstItem="4L8-40-hZu" firstAttribute="leading" secondItem="3vb-c0-UIY" secondAttribute="leading" constant="8" id="rQZ-7v-Pzj"/>
                                 </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="yWT-ol-Zua">
+                                <rect key="frame" x="145" y="382" width="85" height="32"/>
+                                <segments>
+                                    <segment title="" image="internaldrive" catalog="system"/>
+                                    <segment title="" image="externaldrive.fill" catalog="system"/>
+                                </segments>
+                                <connections>
+                                    <action selector="portSegmentedChanged:" destination="tL9-3I-bNi" eventType="valueChanged" id="u0l-ay-Vah"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sk3-BJ-KVJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6gZ-Nf-Y7p" firstAttribute="top" secondItem="yWT-ol-Zua" secondAttribute="bottom" constant="41.329999999999998" id="16l-IP-K3L"/>
                             <constraint firstItem="joW-vH-394" firstAttribute="centerX" secondItem="X7B-gs-rjh" secondAttribute="centerX" id="304-hN-M40"/>
                             <constraint firstItem="3vb-c0-UIY" firstAttribute="centerX" secondItem="X7B-gs-rjh" secondAttribute="centerX" id="3Hh-aO-uLx"/>
-                            <constraint firstItem="Sk3-BJ-KVJ" firstAttribute="bottom" secondItem="3vb-c0-UIY" secondAttribute="bottom" constant="201" id="649-YR-KoA"/>
+                            <constraint firstItem="Sk3-BJ-KVJ" firstAttribute="bottom" secondItem="3vb-c0-UIY" secondAttribute="bottom" constant="150" id="649-YR-KoA"/>
                             <constraint firstItem="3vb-c0-UIY" firstAttribute="top" secondItem="joW-vH-394" secondAttribute="bottom" constant="3" id="96D-dj-oxu"/>
                             <constraint firstItem="joW-vH-394" firstAttribute="top" secondItem="m4l-PH-87k" secondAttribute="bottom" constant="19.329999999999998" id="Bf6-lh-Trg"/>
                             <constraint firstItem="Sk3-BJ-KVJ" firstAttribute="trailing" secondItem="m4l-PH-87k" secondAttribute="trailing" constant="70" id="CVw-2R-flD"/>
@@ -341,6 +352,7 @@
                             <constraint firstItem="3vb-c0-UIY" firstAttribute="leading" secondItem="Sk3-BJ-KVJ" secondAttribute="leading" constant="70" id="ZTZ-67-no8"/>
                             <constraint firstItem="WTF-tW-eYC" firstAttribute="top" secondItem="Sk3-BJ-KVJ" secondAttribute="top" constant="183" id="fLd-YO-ReK"/>
                             <constraint firstItem="Sk3-BJ-KVJ" firstAttribute="trailing" secondItem="3vb-c0-UIY" secondAttribute="trailing" constant="70" id="hFK-g5-OFd"/>
+                            <constraint firstItem="yWT-ol-Zua" firstAttribute="centerX" secondItem="X7B-gs-rjh" secondAttribute="centerX" id="ubA-Hp-EHu"/>
                             <constraint firstItem="sjm-RR-cbo" firstAttribute="centerX" secondItem="X7B-gs-rjh" secondAttribute="centerX" id="wGa-17-faf"/>
                         </constraints>
                     </view>
@@ -352,6 +364,7 @@
                         <outlet property="logoImageView" destination="sjm-RR-cbo" id="0x4-zv-YKf"/>
                         <outlet property="logoLabel" destination="WTF-tW-eYC" id="VID-Ff-L7A"/>
                         <outlet property="pairingBtn" destination="S0G-uv-WfL" id="OFa-oh-kA9"/>
+                        <outlet property="portSegmentedControl" destination="yWT-ol-Zua" id="a5d-cU-f55"/>
                         <outlet property="serialNumberTextField" destination="JuP-Ph-ZFb" id="7SI-oL-4wl"/>
                         <outlet property="tfFrameOne" destination="m4l-PH-87k" id="ROr-vI-6Ym"/>
                         <outlet property="tfFrameTwo" destination="3vb-c0-UIY" id="9cp-3M-a1h"/>

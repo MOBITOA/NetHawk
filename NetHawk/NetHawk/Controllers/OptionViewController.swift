@@ -26,6 +26,7 @@ class OptionViewController: UIViewController {
     }
 
     @objc private func networkTypeChanged() {
+        MQTTService.shared.connect()
         UserDefaults.standard.set(networkTypeSegmentControl.selectedSegmentIndex, forKey: networkTypeKey)
 
         switch networkTypeSegmentControl.selectedSegmentIndex {

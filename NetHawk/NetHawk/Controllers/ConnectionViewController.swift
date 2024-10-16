@@ -20,7 +20,8 @@ class ConnectionViewController: UIViewController {
     @IBOutlet weak var aliasTextField: UITextField!
     @IBOutlet weak var pairingBtn: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
-
+    @IBOutlet weak var portSegmentedControl: UISegmentedControl!
+    
     // MARK: - LifeCycle and UI Design
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class ConnectionViewController: UIViewController {
         self.tfFrameOne.alpha = 0.0
         self.tfFrameTwo.alpha = 0.0
         self.pairingBtn.alpha = 0.0
+        self.portSegmentedControl.alpha = 0.0
         self.logoImageView.alpha = 0.0
         self.serialNumberTextField.text = ""
         self.aliasTextField.text = ""
@@ -55,6 +57,10 @@ class ConnectionViewController: UIViewController {
                 connectToMQTTBroker(serialNumber: serialNumber, alias: alias)
             }
         }
+
+        // 저장된 네트워크 타입 불러오기
+        let savedNetworkType = UserDefaults.standard.integer(forKey: "SelectedNetworkType")
+        portSegmentedControl.selectedSegmentIndex = savedNetworkType
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +70,17 @@ class ConnectionViewController: UIViewController {
         }
     }
 
+    // MARK: - Port 설정 세그먼트 컨트롤
+    @IBAction func portSegmentedChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            UserDefaults.standard.set(portSegmentedControl.selectedSegmentIndex, forKey: "SelectedNetworkType")
+        case 1:
+            UserDefaults.standard.set(portSegmentedControl.selectedSegmentIndex, forKey: "SelectedNetworkType")
+        default:
+            break
+        }
+    }
     // MARK: - UI 설정 함수들
     func frameConfig(to view: UIView) {
         let cornerRadius: CGFloat = 10
@@ -83,6 +100,10 @@ class ConnectionViewController: UIViewController {
     func applyAnimations() {
         UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
             self.logoLabel.alpha = 1.0
+        }, completion: nil)
+
+        UIView.animate(withDuration: 1, delay: 0.2, options: .curveEaseInOut, animations: {
+            self.portSegmentedControl.alpha = 1.0
         }, completion: nil)
 
         UIView.animate(withDuration: 1, delay: 0.3, options: .curveEaseInOut, animations: {
@@ -117,6 +138,13 @@ class ConnectionViewController: UIViewController {
         let serialNumber = serialNumberTextField.text ?? ""
         let alias = aliasTextField.text ?? ""
         
+        if portSegmentedControl.selectedSegmentIndex == 0 {
+            MQTTService.shared.configure(clientID: alias, host: "203.230.104.207", port: 14025)
+            print("internal")
+        } else {
+            MQTTService.shared.configure(clientID: alias, host: "203.230.104.207", port: 80)
+            print("external")
+        }
 
         // 키체인에 S/N과 별칭 저장
         KeychainManager.shared.save(serialNumber: serialNumber, alias: alias)
@@ -127,7 +155,16 @@ class ConnectionViewController: UIViewController {
     // MQTT 브로커 연결
     func connectToMQTTBroker(serialNumber: String, alias: String) {
         // MQTT 설정
-        MQTTService.shared.configure(clientID: alias, host: "203.230.104.207", port: 14025)
+        let portIndex = UserDefaults.standard.integer(forKey: "SelectedNetworkType")
+        var port = 0
+
+        if portIndex == 0 {
+            port = 14025
+        } else {
+            port = 80
+        }
+
+        MQTTService.shared.configure(clientID: alias, host: "203.230.104.207", port: UInt16(port))
         MQTTService.shared.connect()
 
         MQTTService.shared.onConnectionSuccess = { [weak self] in
