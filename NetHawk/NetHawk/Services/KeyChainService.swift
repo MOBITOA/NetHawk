@@ -66,5 +66,26 @@ class KeychainManager {
 
         return nil
     }
+
+    func clear() {
+        deleteKey(for: "SerialNumber")
+        deleteKey(for: "Alias")
+        print("All Keychain entries cleared.")
+    }
+
+    private func deleteKey(for key: String) {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: key
+        ]
+        let status = SecItemDelete(query as CFDictionary)
+        if status == errSecSuccess {
+            print("Successfully deleted \(key) from Keychain.")
+        } else if status == errSecItemNotFound {
+            print("\(key) not found in Keychain.")
+        } else {
+            print("Failed to delete \(key) from Keychain: \(status)")
+        }
+    }
 }
 

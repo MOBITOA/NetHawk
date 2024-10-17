@@ -11,6 +11,7 @@ class OptionViewController: UIViewController {
 
     @IBOutlet weak var networkTypeSegmentControl: UISegmentedControl!
     @IBOutlet weak var alarmSegmentControl: UISegmentedControl!
+    @IBOutlet weak var changeDeviceBtn: UIButton!
     
     private let networkTypeKey = "SelectedNetworkType"
 
@@ -76,5 +77,18 @@ class OptionViewController: UIViewController {
             MQTTService.shared.connect()
         }
     }
-}
+    @IBAction func changingDeviceBtn(_ sender: UIButton) {
 
+        MQTTService.shared.disconnect()
+
+        KeychainManager.shared.clear()
+
+        if let window = UIApplication.shared.windows.first {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let connectionViewController = storyboard.instantiateViewController(withIdentifier: "ConnectionViewController") as? ConnectionViewController {
+                window.rootViewController = connectionViewController
+                window.makeKeyAndVisible()
+            }
+        }
+    }
+}

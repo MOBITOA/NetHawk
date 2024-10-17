@@ -35,7 +35,7 @@ class SplashViewController: UIViewController {
         }, completion: { finished in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                guard let VC = storyboard.instantiateViewController(identifier: "Main") as? ConnectionViewController else {return}
+                guard let VC = storyboard.instantiateViewController(identifier: "ConnectionViewController") as? ConnectionViewController else {return}
                 VC.modalPresentationStyle = .fullScreen
                 self.present(VC, animated: false, completion: nil)
             }

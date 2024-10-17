@@ -204,7 +204,7 @@
         <!--Connection View Controller-->
         <scene sceneID="gzw-VA-Njq">
             <objects>
-                <viewController storyboardIdentifier="Main" id="tL9-3I-bNi" customClass="ConnectionViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectionViewController" id="tL9-3I-bNi" customClass="ConnectionViewController" customModule="NetHawk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X7B-gs-rjh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -957,6 +957,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right.fill" catalog="system">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="changingDeviceBtn:" destination="vlZ-5J-kNo" eventType="touchUpInside" id="X09-GL-xiH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQD-dj-3qY">
                                 <rect key="frame" x="26.333333333333343" y="317" width="322.66666666666663" height="29"/>
@@ -1009,6 +1012,7 @@
                     </view>
                     <connections>
                         <outlet property="alarmSegmentControl" destination="PxT-jo-Mjh" id="Zmj-Gg-zUw"/>
+                        <outlet property="changeDeviceBtn" destination="plI-EL-Qds" id="J4s-pV-k05"/>
                         <outlet property="networkTypeSegmentControl" destination="45t-ua-nTh" id="mYD-f2-6Zk"/>
                     </connections>
                 </viewController>
