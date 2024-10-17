@@ -22,16 +22,16 @@ class DetectionMessageCell: UITableViewCell {
         if (typeOfAttackLabel.text!) == "Domain Phishing" {
             attackImage.image = #imageLiteral(resourceName: "phishing")
         } else {
-            attackImage.image = #imageLiteral(resourceName: "tcp")
+            attackImage.image = #imageLiteral(resourceName: "flooding")
         }
-        // attackImage.layer.cornerRadius = attackImage.frame.width / 2
-        attackImage.layer.masksToBounds = false
+        attackImage.layer.cornerRadius = 12
+        // attackImage.layer.masksToBounds = false
 
-        // 쉐도우 설정
-        attackImage.layer.shadowColor = UIColor.black.cgColor
-        attackImage.layer.shadowOpacity = 0.3
-        attackImage.layer.shadowOffset = CGSize(width: 3, height: 3)
-        attackImage.layer.shadowRadius = 4.0
+//        // 쉐도우 설정
+//        attackImage.layer.shadowColor = UIColor.black.cgColor
+//        attackImage.layer.shadowOpacity = 0.3
+//        attackImage.layer.shadowOffset = CGSize(width: 3, height: 3)
+//        attackImage.layer.shadowRadius = 40
         // 성능 향상을 위한 렌더링 최적화
         attackImage.layer.shouldRasterize = true
         // 레스터화 해상도 조정
@@ -51,7 +51,7 @@ class DetectionMessageCell: UITableViewCell {
         if log.type == "Domain phishing" {
             attackImage.image = #imageLiteral(resourceName: "phishing")
         } else if log.type == "TCP-Flooding" || log.type == "UDP-Flooding" {
-            attackImage.image = #imageLiteral(resourceName: "tcp")
+            attackImage.image = #imageLiteral(resourceName: "flooding")
         } else {
             attackImage.image = #imageLiteral(resourceName: "Sheep") // 기본 이미지
         }

@@ -891,7 +891,7 @@
                                 </constraints>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="45t-ua-nTh">
-                                <rect key="frame" x="16" y="123" width="343" height="32"/>
+                                <rect key="frame" x="16" y="115" width="343" height="32"/>
                                 <segments>
                                     <segment title="">
                                         <imageReference key="image" image="internaldrive" catalog="system" symbolScale="large"/>
@@ -902,7 +902,7 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8g-EB-A37">
-                                <rect key="frame" x="121.33333333333333" y="23" width="132.66666666666669" height="50"/>
+                                <rect key="frame" x="133" y="23" width="109" height="42"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Option">
                                         <attributes>
@@ -914,10 +914,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-hL-bkY">
-                                <rect key="frame" x="60" y="91" width="256.33333333333331" height="23.666666666666671"/>
+                                <rect key="frame" x="60" y="83" width="256.33333333333331" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV4-3M-edx">
-                                        <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="23.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV4-3M-edx">
+                                        <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="20"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Internal">
                                                 <attributes>
@@ -927,8 +927,8 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofp-Kv-kTm">
-                                        <rect key="frame" x="172.66666666666666" y="0.0" width="83.666666666666657" height="23.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofp-Kv-kTm">
+                                        <rect key="frame" x="194.33333333333334" y="0.0" width="62.000000000000028" height="20"/>
                                         <attributedString key="attributedText">
                                             <fragment content="External">
                                                 <attributes>

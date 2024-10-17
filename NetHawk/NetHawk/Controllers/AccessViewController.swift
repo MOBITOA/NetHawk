@@ -75,6 +75,9 @@ class AccessViewController: UIViewController {
         tvConfig(to: openTextView, container: openContainer)
 
         ipTextField.delegate = self
+
+        // 페이지 진입 시, 리스트 갱신
+        acquireBlackAndWhitelist()
     }
 
     override func viewDidAppear(_ animated: Bool) {
