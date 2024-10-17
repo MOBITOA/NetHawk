@@ -319,6 +319,14 @@ class MQTTService: CocoaMQTTDelegate {
 
     // MARK: - 알림
     func sendLocalNotification(for log: Log) {
+
+        let isNotificationEnabled = UserDefaults.standard.integer(forKey: "notificationEnabled")
+
+        guard isNotificationEnabled == 0 else {
+            print("알림이 비활성화 상태이므로 알림을 보내지 않습니다.")
+            return
+        }
+
         let content = UNMutableNotificationContent()
         content.title = "New Attack Detected."
         content.body = "Type: \(log.type)\nVictim: \(log.victimName)\nAddress: \(log.victimAddress)"

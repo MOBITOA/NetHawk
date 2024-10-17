@@ -883,15 +883,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Rn-u1-k59">
-                                <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.070000011920929001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Rn-u1-k59">
+                                <rect key="frame" x="38" y="581" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="iTG-pO-tfg"/>
                                     <constraint firstAttribute="height" constant="300" id="trC-V7-oIh"/>
                                 </constraints>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="45t-ua-nTh">
-                                <rect key="frame" x="16" y="115" width="343" height="32"/>
+                                <rect key="frame" x="16" y="243.33333333333337" width="343" height="32"/>
                                 <segments>
                                     <segment title="">
                                         <imageReference key="image" image="internaldrive" catalog="system" symbolScale="large"/>
@@ -902,7 +902,7 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8g-EB-A37">
-                                <rect key="frame" x="133" y="23" width="109" height="42"/>
+                                <rect key="frame" x="121.33333333333333" y="23" width="132.66666666666669" height="50"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Option">
                                         <attributes>
@@ -914,10 +914,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="DDd-hL-bkY">
-                                <rect key="frame" x="60" y="83" width="256.33333333333331" height="20"/>
+                                <rect key="frame" x="60" y="207.66666666666666" width="256.33333333333331" height="23.666666666666657"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV4-3M-edx">
-                                        <rect key="frame" x="0.0" y="0.0" width="105.33333333333333" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fV4-3M-edx">
+                                        <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="23.666666666666668"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Internal">
                                                 <attributes>
@@ -927,8 +927,8 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofp-Kv-kTm">
-                                        <rect key="frame" x="194.33333333333334" y="0.0" width="62.000000000000028" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofp-Kv-kTm">
+                                        <rect key="frame" x="172.66666666666666" y="0.0" width="83.666666666666657" height="23.666666666666668"/>
                                         <attributedString key="attributedText">
                                             <fragment content="External">
                                                 <attributes>
@@ -941,25 +941,74 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PxT-jo-Mjh">
+                                <rect key="frame" x="16" y="146.66666666666666" width="343" height="32"/>
+                                <segments>
+                                    <segment title="" image="bell" catalog="system"/>
+                                    <segment title="" image="bell.slash.fill" catalog="system"/>
+                                </segments>
+                                <connections>
+                                    <action selector="alarmTypeChanged:" destination="vlZ-5J-kNo" eventType="valueChanged" id="9v6-pM-uN8"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plI-EL-Qds">
+                                <rect key="frame" x="160.33333333333334" y="366" width="54.333333333333343" height="34.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right.fill" catalog="system">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQD-dj-3qY">
+                                <rect key="frame" x="26.333333333333343" y="317" width="322.66666666666663" height="29"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Want you Changing Device?">
+                                        <attributes>
+                                            <font key="NSFont" size="21" name="IntelOneMono-Medium"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqW-TO-Fah">
+                                <rect key="frame" x="109.33333333333333" y="111" width="156.66666666666669" height="23.666666666666657"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Detection Alarm">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="IntelOneMono-Light"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PsQ-U8-sJy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PxT-jo-Mjh" firstAttribute="leading" secondItem="PsQ-U8-sJy" secondAttribute="leading" constant="16" id="2DN-Bs-lh6"/>
                             <constraint firstItem="z8g-EB-A37" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="3pf-JA-6MD"/>
+                            <constraint firstItem="PsQ-U8-sJy" firstAttribute="trailing" secondItem="PxT-jo-Mjh" secondAttribute="trailing" constant="16" id="4tM-qu-q6v"/>
                             <constraint firstItem="1Rn-u1-k59" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="5uU-Yh-fTB"/>
                             <constraint firstItem="z8g-EB-A37" firstAttribute="top" secondItem="n3I-PF-Z6P" secondAttribute="top" constant="23" id="6Gt-1T-mNR"/>
                             <constraint firstItem="DDd-hL-bkY" firstAttribute="leading" secondItem="PsQ-U8-sJy" secondAttribute="leading" constant="60" id="Bca-NE-kSr"/>
                             <constraint firstItem="45t-ua-nTh" firstAttribute="leading" secondItem="PsQ-U8-sJy" secondAttribute="leading" constant="16" id="DU5-SK-pIU"/>
                             <constraint firstItem="45t-ua-nTh" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="DwC-QU-8vT"/>
                             <constraint firstItem="1Rn-u1-k59" firstAttribute="centerY" secondItem="n3I-PF-Z6P" secondAttribute="centerY" id="ID5-0V-3Ig"/>
-                            <constraint firstItem="45t-ua-nTh" firstAttribute="top" secondItem="z8g-EB-A37" secondAttribute="bottom" constant="50" id="Jfc-3T-DZt"/>
+                            <constraint firstItem="45t-ua-nTh" firstAttribute="top" secondItem="DDd-hL-bkY" secondAttribute="bottom" constant="12" id="Nrp-af-HTc"/>
+                            <constraint firstItem="PxT-jo-Mjh" firstAttribute="top" secondItem="GqW-TO-Fah" secondAttribute="bottom" constant="12" id="Qrx-lW-bh4"/>
+                            <constraint firstItem="DDd-hL-bkY" firstAttribute="top" secondItem="PxT-jo-Mjh" secondAttribute="bottom" constant="30" id="RJl-6k-VAh"/>
                             <constraint firstItem="PsQ-U8-sJy" firstAttribute="trailing" secondItem="DDd-hL-bkY" secondAttribute="trailing" constant="58.670000000000002" id="cjz-S1-Gbk"/>
-                            <constraint firstItem="DDd-hL-bkY" firstAttribute="top" secondItem="z8g-EB-A37" secondAttribute="bottom" constant="18" id="daY-QJ-gwM"/>
+                            <constraint firstItem="plI-EL-Qds" firstAttribute="top" secondItem="GQD-dj-3qY" secondAttribute="bottom" constant="20" id="e9f-3c-CZ5"/>
+                            <constraint firstItem="GQD-dj-3qY" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="erM-FA-Maf"/>
+                            <constraint firstItem="GQD-dj-3qY" firstAttribute="top" secondItem="45t-ua-nTh" secondAttribute="bottom" constant="42.670000000000002" id="fzz-TO-cXV"/>
+                            <constraint firstItem="GqW-TO-Fah" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="gV4-Pe-ygb"/>
+                            <constraint firstItem="plI-EL-Qds" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="oPP-nR-nOi"/>
                             <constraint firstItem="PsQ-U8-sJy" firstAttribute="trailing" secondItem="45t-ua-nTh" secondAttribute="trailing" constant="16" id="tJY-aa-fas"/>
                             <constraint firstItem="45t-ua-nTh" firstAttribute="centerX" secondItem="n3I-PF-Z6P" secondAttribute="centerX" id="toM-9e-Hq1"/>
+                            <constraint firstItem="GqW-TO-Fah" firstAttribute="top" secondItem="z8g-EB-A37" secondAttribute="bottom" constant="38" id="yIG-hd-YHe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alarmSegmentControl" destination="PxT-jo-Mjh" id="Zmj-Gg-zUw"/>
                         <outlet property="networkTypeSegmentControl" destination="45t-ua-nTh" id="mYD-f2-6Zk"/>
                     </connections>
                 </viewController>
@@ -972,12 +1021,15 @@
         <image name="NetHawkLogo.png" width="1024" height="1024"/>
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="113"/>
+        <image name="bell" catalog="system" width="125" height="128"/>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="bell.slash.fill" catalog="system" width="119" height="128"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="123"/>
         <image name="checkerboard.shield" catalog="system" width="128" height="121"/>
         <image name="externaldrive.fill" catalog="system" width="128" height="87"/>
         <image name="internaldrive" catalog="system" width="128" height="88"/>
         <image name="questionmark.app.dashed" catalog="system" width="128" height="114"/>
+        <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
         <image name="square.stack.3d.up.fill" catalog="system" width="120" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

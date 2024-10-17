@@ -22,7 +22,6 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             let itemHeight = itemWidth * 135/155
             self.pagerView.itemSize = CGSize(width: itemWidth, height: itemHeight)
             self.pagerView.interitemSpacing = 50
-
             self.pagerView.isInfinite = true
             self.pagerView.transformer = FSPagerViewTransformer(type: .ferrisWheel)
         }
@@ -87,7 +86,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
                     sheet.prefersGrabberVisible = true
 
                     // 배경 딤 처리
-                    sheet.largestUndimmedDetentIdentifier = .medium
+                    sheet.largestUndimmedDetentIdentifier = nil
 
                     // 스크롤 시 확장 방지
                     sheet.prefersScrollingExpandsWhenScrolledToEdge = true
@@ -137,18 +136,28 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         // MQTTService에서 상태 콜백 등록
         setupMQTTStatusCallbacks()
 
-
-
         // 알림 권한 요청
         requestNotificationAuthorization()
     }
 
+    // TODO: 사용자가 외부에서 알림 권한을 제거한 경우? --> 추후 생각이 필요할듯.
     // 알림 권한 요청
     func requestNotificationAuthorization() {
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if let error = error {
-                print("Notification authorization error: \(error)")
+
+        let alreadyAuthed = UserDefaults.standard.bool(forKey: "alreadyAuthed")
+
+        if !alreadyAuthed {
+            center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                if let error = error {
+                    print("Notification authorization error: \(error)")
+                    // 권한 요청이 실패했거나 거부된 경우
+                    UserDefaults.standard.set(1, forKey: "notificationEnabled")
+                } else {
+                    // 권한 요청이 성공적으로 승인된 경우
+                    UserDefaults.standard.set(0, forKey: "notificationEnabled")
+                }
+                UserDefaults.standard.set(true, forKey: "alreadyAuthed")
             }
         }
     }
