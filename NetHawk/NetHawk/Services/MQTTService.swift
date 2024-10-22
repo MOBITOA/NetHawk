@@ -62,7 +62,7 @@ class MQTTService: CocoaMQTTDelegate {
             onConnectionSuccess?()
 
             // 로그 초기화하기 (임시)
-            LoggingService.shared.clearLogs()
+            // LoggingService.shared.clearLogs()
 
             // 키체인에서 시리얼 넘버와 별칭 로드 & 토픽 구독
             if let credentials = KeychainManager.shared.load() {

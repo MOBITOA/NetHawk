@@ -195,9 +195,8 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
         MQTTService.shared.onDisconnected = { [weak self] in
             DispatchQueue.main.async {
-                print("lets red")
-                self?.statusLabel.text = "Server Offline 🔴"
-                self?.statusLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+                self?.statusLabel.text = "Checking connection... 🟠"
+                self?.statusLabel.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
             }
         }
 
@@ -213,8 +212,8 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             statusLabel.text = "Server Online 🟢"
             statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         } else {
-            statusLabel.text = "Server Offline 🔴"
-            statusLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            statusLabel.text = "Checking connection... 🟠"
+            statusLabel.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         }
     }
 }
