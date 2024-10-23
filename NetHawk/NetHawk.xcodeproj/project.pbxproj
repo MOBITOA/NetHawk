@@ -40,6 +40,8 @@
 		F2AA54272C12015400D5C52C /* KeyChainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AA54262C12015400D5C52C /* KeyChainService.swift */; };
 		F2AA54292C12185300D5C52C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2AA54282C12185300D5C52C /* Splash.storyboard */; };
 		F2B7C1AD2C902312004373A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7C1AC2C902312004373A9 /* MainViewController.swift */; };
+		F2C140702CC7AA6200760C9A /* StatisticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C1406F2CC7AA6200760C9A /* StatisticsService.swift */; };
+		F2C140722CC7BB4200760C9A /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C140712CC7BB4200760C9A /* ChartTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		F2AA54262C12015400D5C52C /* KeyChainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainService.swift; sourceTree = "<group>"; };
 		F2AA54282C12185300D5C52C /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		F2B7C1AC2C902312004373A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F2C1406F2CC7AA6200760C9A /* StatisticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsService.swift; sourceTree = "<group>"; };
+		F2C140712CC7BB4200760C9A /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 			children = (
 				F210D83F2CB4FD8000A99441 /* DetectionMessage.xib */,
 				F210D8412CB5043900A99441 /* DetectionMessageCell.swift */,
+				F2C140712CC7BB4200760C9A /* ChartTableViewCell.swift */,
 				F210D8452CB53DCB00A99441 /* Log.swift */,
 			);
 			path = Models;
@@ -181,6 +186,7 @@
 				F2AA54242C11F7E200D5C52C /* MQTTService.swift */,
 				F2AA54262C12015400D5C52C /* KeyChainService.swift */,
 				F210D8432CB5363B00A99441 /* LoggingService.swift */,
+				F2C1406F2CC7AA6200760C9A /* StatisticsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2AA54272C12015400D5C52C /* KeyChainService.swift in Sources */,
+				F2C140722CC7BB4200760C9A /* ChartTableViewCell.swift in Sources */,
 				F28AF82C2C118C36001290CC /* ConnectionViewController.swift in Sources */,
 				F210D8462CB53DCB00A99441 /* Log.swift in Sources */,
 				F210D8422CB5043900A99441 /* DetectionMessageCell.swift in Sources */,
@@ -371,6 +378,7 @@
 				F211F17A2C0F0375004F40B4 /* AppDelegate.swift in Sources */,
 				F211F19C2C0F22A5004F40B4 /* OptionViewController.swift in Sources */,
 				F211F19A2C0F2298004F40B4 /* StatViewController.swift in Sources */,
+				F2C140702CC7AA6200760C9A /* StatisticsService.swift in Sources */,
 				F211F17C2C0F0375004F40B4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

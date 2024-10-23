@@ -48,7 +48,7 @@ class ConnectionViewController: UIViewController {
         serialNumberTextField.clearButtonMode = .whileEditing
         aliasTextField.clearButtonMode = .whileEditing
 
-//         만약 이미 저장된 정보가 있으면 MQTT 연결 시도
+        // 만약 이미 저장된 정보가 있으면 MQTT 연결 시도
         if let credentials = KeychainManager.shared.load() {
             let serialNumber = credentials.serialNumber
             let alias = credentials.alias

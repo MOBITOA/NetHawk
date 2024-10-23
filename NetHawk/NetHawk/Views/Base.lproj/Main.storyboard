@@ -839,23 +839,42 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA9-dz-E77">
-                                <rect key="frame" x="16" y="60" width="30" height="30"/>
+                                <rect key="frame" x="15.999999999999996" y="60" width="49.666666666666657" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="DyY-UE-7gv"/>
                                     <constraint firstAttribute="height" constant="30" id="Lz8-JZ-Oya"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.backward" catalog="system"/>
                                 <connections>
-                                    <action selector="dissmissBtnTapped:" destination="PbL-RZ-pfR" eventType="touchUpInside" id="nOC-yI-ctc"/>
+                                    <action selector="dismissBtnTapped:" destination="PbL-RZ-pfR" eventType="touchUpInside" id="CR8-Bv-eFo"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="gK5-ca-YCW">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9a0-GU-h8D">
+                                <rect key="frame" x="0.0" y="108" width="375" height="704"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChartCell" id="sqW-fg-ug9" customClass="ChartTableViewCell" customModule="NetHawk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="44.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sqW-fg-ug9" id="djm-vu-7pW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="ChartCell"/>
+                                        <connections>
+                                            <outlet property="chartContainer" destination="djm-vu-7pW" id="heE-bD-bkA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.100000011920929" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="rbX-6O-qG3">
                                 <rect key="frame" x="37.666666666666657" y="256" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="3zn-Y2-0aJ"/>
-                                    <constraint firstAttribute="width" constant="300" id="v8N-Ke-UjY"/>
+                                    <constraint firstAttribute="width" constant="300" id="9ss-Dj-68o"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ZEc-zk-sKm"/>
+                                    <constraint firstAttribute="height" constant="300" id="bFa-a5-CY3"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="qgV-7w-JKS"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -864,16 +883,24 @@
                         <constraints>
                             <constraint firstItem="wA9-dz-E77" firstAttribute="top" secondItem="VN1-YC-QbR" secondAttribute="topMargin" constant="10" id="1do-Ew-tj7"/>
                             <constraint firstItem="wA9-dz-E77" firstAttribute="leading" secondItem="dhB-ut-PDa" secondAttribute="leading" constant="16" id="BX9-ZN-FBl"/>
+                            <constraint firstItem="9a0-GU-h8D" firstAttribute="trailing" secondItem="dhB-ut-PDa" secondAttribute="trailing" id="CRF-tK-Lhk"/>
+                            <constraint firstItem="9a0-GU-h8D" firstAttribute="top" secondItem="W5h-6Z-kzI" secondAttribute="bottom" constant="8" id="OqZ-T0-vtg"/>
+                            <constraint firstItem="rbX-6O-qG3" firstAttribute="centerX" secondItem="VN1-YC-QbR" secondAttribute="centerX" id="RAt-Hm-Jba"/>
                             <constraint firstItem="W5h-6Z-kzI" firstAttribute="centerX" secondItem="VN1-YC-QbR" secondAttribute="centerX" id="Xaw-0Z-QmW"/>
+                            <constraint firstItem="9a0-GU-h8D" firstAttribute="leading" secondItem="dhB-ut-PDa" secondAttribute="leading" id="YMc-Wp-555"/>
+                            <constraint firstItem="rbX-6O-qG3" firstAttribute="centerY" secondItem="VN1-YC-QbR" secondAttribute="centerY" id="cmi-A3-2wW"/>
                             <constraint firstItem="W5h-6Z-kzI" firstAttribute="top" secondItem="dhB-ut-PDa" secondAttribute="top" id="emn-Ka-gcT"/>
-                            <constraint firstItem="gK5-ca-YCW" firstAttribute="centerY" secondItem="VN1-YC-QbR" secondAttribute="centerY" id="pIX-09-Gvb"/>
-                            <constraint firstItem="gK5-ca-YCW" firstAttribute="centerX" secondItem="VN1-YC-QbR" secondAttribute="centerX" id="xOR-VT-fLf"/>
+                            <constraint firstItem="W5h-6Z-kzI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wA9-dz-E77" secondAttribute="trailing" constant="8" symbolic="YES" id="lBn-N7-kUi"/>
+                            <constraint firstAttribute="bottom" secondItem="9a0-GU-h8D" secondAttribute="bottom" id="s2o-6l-NCH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="9a0-GU-h8D" id="syH-l1-81K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJx-mg-j3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3907" y="714"/>
+            <point key="canvasLocation" x="3906.4000000000001" y="713.79310344827593"/>
         </scene>
         <!--OptionViewController-->
         <scene sceneID="S1d-7s-KH8">
