@@ -20,7 +20,7 @@
 ## Screenshots
 ![Alt text](/imgs/appFlow.png)    
 
-`Intro (Splash)` Page
+`Intro (Splash) Page`
 - 앱 진입 초기 화면
   
 `Connection Page`
