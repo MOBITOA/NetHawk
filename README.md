@@ -84,6 +84,8 @@ git clone https://github.com/yourusername/NetHawk.git
 open NetHawk.xcodeproj 
 ~~~
 
+## Third-Party Libs
+- [FSPagerView](https://github.com/WenchaoD/FSPagerView)
 
 ## Code Style Guide
 - [Swift Style Guide](https://github.com/StyleShare/swift-style-guide)
