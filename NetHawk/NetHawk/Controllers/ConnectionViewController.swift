@@ -33,7 +33,7 @@ class ConnectionViewController: UIViewController {
         self.pairingBtn.alpha = 0.0
         self.portSegmentedControl.alpha = 0.0
         self.logoImageView.alpha = 0.0
-        self.serialNumberTextField.text = ""
+        self.serialNumberTextField.text = "8FB18CAE5EDC65C6"
         self.aliasTextField.text = ""
 
         frameConfig(to: tfFrameOne)

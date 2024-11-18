@@ -242,7 +242,7 @@
                                         <rect key="frame" x="8" y="8" width="219" height="35"/>
                                         <color key="backgroundColor" red="0.93584877379999998" green="0.94252150270000001" blue="0.96253968919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <attributedString key="attributedText"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

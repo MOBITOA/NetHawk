@@ -19,7 +19,7 @@ struct PieChartView: View {
 
     var body: some View {
         // 가장 많이 발생한 공격 유형과 횟수 계산
-        let mostDangerousAttack = attackCounts.max { a, b in a.value < b.value }?.key ?? "Unknown"
+        let mostDangerousAttack = attackCounts(target: attackCounts)
 
         VStack(alignment: .leading) {
             HStack {  // 제목을 왼쪽으로 배치
@@ -59,6 +59,13 @@ struct PieChartView: View {
             }
             Text("")
         }
+    }
+    private func attackCounts(target: [String: Int]) -> String {
+        print(target)
+        if target["Domain phishing"] == 0 && target["TCP-Flooding"] == 0 && target["UDP-Flooding"] == 0 {
+            return "Its just Clean 😎"
+        }
+        return target.max { a, b in a.value < b.value }?.key ?? "Unknown"
     }
 }
 
