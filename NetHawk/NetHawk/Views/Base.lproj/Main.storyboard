@@ -9,198 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MainViewController2-->
-        <scene sceneID="tcH-Tv-raZ">
-            <objects>
-                <viewController storyboardIdentifier="MainViewController2" title="MainViewController2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4nf-sv-j8R" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HLn-JB-omt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahQ-PR-RTN">
-                                <rect key="frame" x="0.0" y="50" width="375" height="728"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLf-qd-Cs4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="842"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAV-27-mqN">
-                                                <rect key="frame" x="16" y="0.0" width="117" height="49.333333333333336"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Button">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="NETHAWK">
-                                                            <attributes>
-                                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                <font key="NSFont" size="27" name="IntelOneMono-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEI-r0-0sd">
-                                                <rect key="frame" x="324" y="5.3333333333333321" width="35" height="36.333333333333343"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="aEI-r0-0sd" secondAttribute="height" multiplier="19:20" id="6GZ-kR-Cb3"/>
-                                                    <constraint firstAttribute="width" constant="35" id="mXo-6Q-rAF"/>
-                                                </constraints>
-                                                <color key="tintColor" systemColor="labelColor"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" backgroundImage="bell.fill" catalog="system"/>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4q-dj-EnI">
-                                                <rect key="frame" x="16.000000000000007" y="96" width="104.66666666666669" height="23.666666666666671"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="MY NETWORK">
-                                                        <attributes>
-                                                            <font key="NSFont" size="17" name="IntelOneMono-Medium"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihd-bK-CZH">
-                                                <rect key="frame" x="171" y="215" width="32" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="LOG">
-                                                        <attributes>
-                                                            <font key="NSFont" size="17" name="IntelOneMono-Medium"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQU-UZ-kds">
-                                                <rect key="frame" x="16.000000000000004" y="127" width="41.333333333333343" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1R6-Cz-h5A">
-                                                <rect key="frame" x="117" y="231" width="140" height="140"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <backgroundConfiguration key="background" image="square.stack.3d.up.fill" catalog="system"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="logBtnTapped:" destination="4nf-sv-j8R" eventType="touchUpInside" id="i9f-Hc-f6H"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4EW-1a-VI2">
-                                                <rect key="frame" x="199" y="423" width="147" height="140"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <backgroundConfiguration key="background" image="checkerboard.shield" catalog="system"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="ipBtnTapped:" destination="4nf-sv-j8R" eventType="touchUpInside" id="I7y-ae-tdS"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRQ-TW-WvQ">
-                                                <rect key="frame" x="235" y="397" width="74" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="IP/Port">
-                                                        <attributes>
-                                                            <font key="NSFont" size="17" name="IntelOneMono-Medium"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeI-v5-SYw">
-                                                <rect key="frame" x="84" y="397" width="53" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="STATS">
-                                                        <attributes>
-                                                            <font key="NSFont" size="17" name="IntelOneMono-Medium"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eym-BP-1w8">
-                                                <rect key="frame" x="40" y="423" width="140" height="140"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <backgroundConfiguration key="background" image="chart.pie.fill" catalog="system"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="statBtntapped:" destination="4nf-sv-j8R" eventType="touchUpInside" id="zfm-Qy-T08"/>
-                                                </connections>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NetHawkLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="wRK-Nu-05Y">
-                                                <rect key="frame" x="-301" y="-91" width="1000" height="950"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="CAV-27-mqN" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" id="DuD-yC-cML"/>
-                                            <constraint firstItem="CAV-27-mqN" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="YPZ-qv-LiQ"/>
-                                            <constraint firstItem="cQU-UZ-kds" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="Zn4-XN-DaD"/>
-                                            <constraint firstAttribute="trailing" secondItem="aEI-r0-0sd" secondAttribute="trailing" constant="16" id="aTi-B3-V9V"/>
-                                            <constraint firstItem="G4q-dj-EnI" firstAttribute="top" secondItem="CAV-27-mqN" secondAttribute="bottom" constant="46.670000000000002" id="k3H-cK-lHl"/>
-                                            <constraint firstItem="aEI-r0-0sd" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" constant="5" id="kNe-lN-pG1"/>
-                                            <constraint firstItem="cQU-UZ-kds" firstAttribute="top" secondItem="G4q-dj-EnI" secondAttribute="bottom" constant="7.3300000000000001" id="riz-Vp-SKu"/>
-                                            <constraint firstItem="G4q-dj-EnI" firstAttribute="leading" secondItem="oLf-qd-Cs4" secondAttribute="leading" constant="16" id="uCp-cU-5AL"/>
-                                            <constraint firstAttribute="bottom" secondItem="aEI-r0-0sd" secondAttribute="bottom" constant="800" id="vNi-IQ-MYM"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="height" secondItem="uOw-Bn-Afv" secondAttribute="height" priority="250" id="Gec-Xu-Ua9"/>
-                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="centerX" secondItem="ahQ-PR-RTN" secondAttribute="centerX" id="PZH-rr-FQy"/>
-                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="leading" secondItem="R9p-bB-3ek" secondAttribute="leading" id="U22-Z1-dDa"/>
-                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="bottom" secondItem="R9p-bB-3ek" secondAttribute="bottom" id="dxh-ul-Udk"/>
-                                    <constraint firstItem="oLf-qd-Cs4" firstAttribute="trailing" secondItem="R9p-bB-3ek" secondAttribute="trailing" id="iuB-OZ-9b3"/>
-                                    <constraint firstItem="R9p-bB-3ek" firstAttribute="top" secondItem="oLf-qd-Cs4" secondAttribute="top" id="pKT-dG-4Jv"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="R9p-bB-3ek"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="uOw-Bn-Afv"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Y1C-0i-6XF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Y1C-0i-6XF" firstAttribute="bottom" secondItem="ahQ-PR-RTN" secondAttribute="bottom" id="EAr-85-okZ"/>
-                            <constraint firstItem="ahQ-PR-RTN" firstAttribute="top" secondItem="Y1C-0i-6XF" secondAttribute="top" id="RhE-cK-VSC"/>
-                            <constraint firstItem="Y1C-0i-6XF" firstAttribute="trailing" secondItem="ahQ-PR-RTN" secondAttribute="trailing" id="v9X-QJ-9wu"/>
-                            <constraint firstItem="ahQ-PR-RTN" firstAttribute="leading" secondItem="Y1C-0i-6XF" secondAttribute="leading" id="x4o-6i-oXs"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="5N8-Uh-dYs"/>
-                    <connections>
-                        <outlet property="alertBtn" destination="aEI-r0-0sd" id="Z1G-dR-o6V"/>
-                        <outlet property="ipBtn" destination="4EW-1a-VI2" id="rju-j3-cgf"/>
-                        <outlet property="ipPortLabel" destination="BRQ-TW-WvQ" id="YVR-ig-V3g"/>
-                        <outlet property="logBtn" destination="1R6-Cz-h5A" id="xtf-Ze-JqN"/>
-                        <outlet property="logLabel" destination="Ihd-bK-CZH" id="llj-hO-P23"/>
-                        <outlet property="logo" destination="wRK-Nu-05Y" id="YZH-T7-7ch"/>
-                        <outlet property="statsBtn" destination="Eym-BP-1w8" id="3Sh-DL-t0u"/>
-                        <outlet property="statsLabel" destination="jeI-v5-SYw" id="65v-KW-IAg"/>
-                        <outlet property="titleBtn" destination="CAV-27-mqN" id="zOn-5e-UG0"/>
-                        <outlet property="wifiStatusLabel" destination="cQU-UZ-kds" id="KkY-4d-A6Y"/>
-                        <outlet property="wifiStatusTitle" destination="G4q-dj-EnI" id="kfa-gk-JMD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ke-ca-daB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3092" y="781"/>
-        </scene>
         <!--Connection View Controller-->
         <scene sceneID="gzw-VA-Njq">
             <objects>
@@ -404,7 +212,7 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.backward" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                                 <connections>
                                     <action selector="dissmissBtnTapped:" destination="KL7-jD-btO" eventType="touchUpInside" id="Tvn-XM-s7p"/>
                                 </connections>
@@ -657,7 +465,7 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.backward" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                                 <connections>
                                     <action selector="dismissBtnTapped:" destination="DQj-BR-EHg" eventType="touchUpInside" id="Goj-wl-Kan"/>
                                 </connections>
@@ -839,13 +647,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA9-dz-E77">
-                                <rect key="frame" x="15.999999999999996" y="60" width="49.666666666666657" height="30"/>
+                                <rect key="frame" x="16" y="60" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Lz8-JZ-Oya"/>
+                                    <constraint firstAttribute="width" constant="30" id="fsV-kC-oWf"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.backward" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                                 <connections>
                                     <action selector="dismissBtnTapped:" destination="PbL-RZ-pfR" eventType="touchUpInside" id="CR8-Bv-eFo"/>
                                 </connections>
@@ -1051,17 +860,13 @@
     <resources>
         <image name="NetHawkLogo.png" width="1024" height="1024"/>
         <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
-        <image name="arrow.uturn.backward" catalog="system" width="128" height="113"/>
         <image name="bell" catalog="system" width="125" height="128"/>
-        <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="bell.slash.fill" catalog="system" width="119" height="128"/>
-        <image name="chart.pie.fill" catalog="system" width="128" height="123"/>
-        <image name="checkerboard.shield" catalog="system" width="128" height="121"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="externaldrive.fill" catalog="system" width="128" height="87"/>
         <image name="internaldrive" catalog="system" width="128" height="88"/>
         <image name="questionmark.app.dashed" catalog="system" width="128" height="114"/>
         <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
-        <image name="square.stack.3d.up.fill" catalog="system" width="120" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

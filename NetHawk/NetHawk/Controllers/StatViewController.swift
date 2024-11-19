@@ -60,6 +60,8 @@ struct PieChartView: View {
             Text("")
         }
     }
+
+    // 공격 카운트
     private func attackCounts(target: [String: Int]) -> String {
         print(target)
         if target["Domain phishing"] == 0 && target["TCP-Flooding"] == 0 && target["UDP-Flooding"] == 0 {
