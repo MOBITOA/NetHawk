@@ -116,6 +116,7 @@
                 <outlet property="addressOfInvaderLabel" destination="7EI-BA-I2g" id="94v-fh-0K0"/>
                 <outlet property="addressOfVictimLabel" destination="5Kt-uM-HSb" id="ezM-bW-MdC"/>
                 <outlet property="attackImage" destination="h47-eN-ZcW" id="tEh-N7-QFX"/>
+                <outlet property="invaderTitleLabel" destination="Wxn-ts-2Mn" id="tvt-A7-c9u"/>
                 <outlet property="timeStampLabel" destination="qBv-mT-elx" id="rgx-5Z-Sn5"/>
                 <outlet property="typeOfAttackLabel" destination="odO-fH-cqm" id="otV-IJ-5LV"/>
                 <outlet property="victimDeviceLabel" destination="fTr-fB-G3N" id="N4T-cG-1KH"/>

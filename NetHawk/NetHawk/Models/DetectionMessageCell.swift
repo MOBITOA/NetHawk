@@ -15,7 +15,8 @@ class DetectionMessageCell: UITableViewCell {
     @IBOutlet weak var typeOfAttackLabel: UILabel!
     @IBOutlet weak var addressOfInvaderLabel: UILabel!
     @IBOutlet weak var addressOfVictimLabel: UILabel!
-
+    @IBOutlet weak var invaderTitleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         print(typeOfAttackLabel.text!)
@@ -50,6 +51,7 @@ class DetectionMessageCell: UITableViewCell {
         // 공격 유형에 따라 이미지 설정
         if log.type == "Domain phishing" {
             attackImage.image = #imageLiteral(resourceName: "phishing")
+            invaderTitleLabel.text = "DOMAIN"
         } else if log.type == "TCP-Flooding" || log.type == "UDP-Flooding" {
             attackImage.image = #imageLiteral(resourceName: "flooding")
         } else {
