@@ -136,7 +136,19 @@ class ConnectionViewController: UIViewController {
     func setupUIForDevice() {
         if UIDevice.current.userInterfaceIdiom == .pad {
             // iPad용 UI 설정
+            // 기존 제약 조건 제거
+            if let existingConstraint = view.constraints.first(where: {
+                $0.firstItem as? UIView == logoLabel && $0.firstAttribute == .top
+            }) {
+                view.removeConstraint(existingConstraint)
+            }
 
+            // 새로운 제약 조건 추가
+            logoLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                logoLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 300),
+                logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
             // portSegmentedControl 크기 조정
             portSegmentedControl.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
 
@@ -162,7 +174,6 @@ class ConnectionViewController: UIViewController {
 
                 // 특정 고정 너비 설정 (선택 사항)
                 serialNumberTextField.widthAnchor.constraint(equalToConstant: 300),
-                logoLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 300),
             ])
 
             // 버튼 크기 조정 (커스텀 폰트 적용)
@@ -248,6 +259,50 @@ class ConnectionViewController: UIViewController {
             }
         }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        let keyboardHeight = keyboardFrame.height
+
+        UIView.animate(withDuration: 0.3) {
+            self.logoLabel.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+            self.inputLabelOne.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+            self.inputLabelTwo.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+            self.tfFrameOne.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+            self.tfFrameTwo.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+//            self.serialNumberTextField.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+//            self.aliasTextField.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+            self.pairingBtn.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+            self.portSegmentedControl.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight / 2)
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            self.logoLabel.transform = .identity
+            self.inputLabelOne.transform = .identity
+            self.inputLabelTwo.transform = .identity
+            self.tfFrameOne.transform = .identity
+            self.tfFrameTwo.transform = .identity
+            self.serialNumberTextField.transform = .identity
+            self.aliasTextField.transform = .identity
+            self.pairingBtn.transform = .identity
+            self.portSegmentedControl.transform = .identity
+        }
+    }
+
 }
 
 // UITextFieldDelegate 확장
