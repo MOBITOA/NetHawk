@@ -26,11 +26,11 @@ class SplashViewController: UIViewController {
         logoImageView.layer.shadowRadius = 4
         
         // 애니메이션 효과 추가
-        UIView.animate(withDuration: 2, delay: 0.1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
             self.logoImageView.alpha = 1.0
         }, completion: nil)
         
-        UIView.animate(withDuration: 2, delay: 0.1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut, animations: {
             self.developedLabel.alpha = 1.0
         }, completion: { finished in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {

@@ -21,10 +21,11 @@ class ConnectionViewController: UIViewController {
     @IBOutlet weak var pairingBtn: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var portSegmentedControl: UISegmentedControl!
-    
+
     // MARK: - LifeCycle and UI Design
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUIForDevice()
         self.logoLabel.alpha = 0.0
         self.inputLabelOne.alpha = 0.0
         self.inputLabelTwo.alpha = 0.0
@@ -132,12 +133,57 @@ class ConnectionViewController: UIViewController {
         }, completion: nil)
     }
 
+    func setupUIForDevice() {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // iPad용 UI 설정
+
+            // portSegmentedControl 크기 조정
+            portSegmentedControl.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+
+            // inputLabel 크기 조정 (커스텀 폰트 적용)
+            if let customFont = inputLabelOne.font {
+                inputLabelOne.font = customFont.withSize(22)
+                inputLabelTwo.font = customFont.withSize(22)
+            }
+
+            // 텍스트 필드 크기 조정 (커스텀 폰트 적용)
+            if let customFont = serialNumberTextField.font {
+                serialNumberTextField.font = customFont.withSize(20)
+                aliasTextField.font = customFont.withSize(20)
+            }
+
+            // Auto Layout 제약 조건으로 길이 동기화
+            serialNumberTextField.translatesAutoresizingMaskIntoConstraints = false
+            aliasTextField.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                // 텍스트 필드의 동일한 너비
+                serialNumberTextField.widthAnchor.constraint(equalTo: aliasTextField.widthAnchor),
+
+                // 특정 고정 너비 설정 (선택 사항)
+                serialNumberTextField.widthAnchor.constraint(equalToConstant: 300),
+                logoLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 300),
+            ])
+
+            // 버튼 크기 조정 (커스텀 폰트 적용)
+            if let customFont = pairingBtn.titleLabel?.font {
+                pairingBtn.titleLabel?.font = customFont.withSize(80)
+            }
+            pairingBtn.layer.cornerRadius = 12
+
+            // 이미지 크기 조정
+            logoImageView.contentMode = .scaleAspectFit
+            logoImageView.transform = CGAffineTransform(scaleX: 3.5, y: 3.5)
+        }
+    }
+
+
     // MARK: - MQTT 연결 및 관련 메서드
 
     @IBAction func pairingBtnTapped(_ sender: UIButton) {
         let serialNumber = serialNumberTextField.text ?? ""
         let alias = aliasTextField.text ?? ""
-        
+
         if portSegmentedControl.selectedSegmentIndex == 0 {
             MQTTService.shared.configure(clientID: alias, host: "203.230.104.207", port: 14025)
             print("internal")
