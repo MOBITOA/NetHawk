@@ -17,15 +17,24 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
 
             // 화면 크기에 비례한 아이템 크기 설정
-            let screenWidth = UIScreen.main.bounds.width
-            let itemWidth = screenWidth * 0.65
-            let itemHeight = itemWidth * 135/155
-            self.pagerView.itemSize = CGSize(width: itemWidth, height: itemHeight)
-            self.pagerView.interitemSpacing = 50
-            self.pagerView.isInfinite = true
-            self.pagerView.transformer = FSPagerViewTransformer(type: .ferrisWheel)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                let screenWidth = UIScreen.main.bounds.width
+                let itemWidth = screenWidth * 0.4
+                let itemHeight = itemWidth * 135/155
+                self.pagerView.itemSize = CGSize(width: itemWidth, height: itemHeight)
+                self.pagerView.interitemSpacing = 80
+                self.pagerView.isInfinite = true
+                self.pagerView.transformer = FSPagerViewTransformer(type: .overlap)
+            } else {
+                let screenWidth = UIScreen.main.bounds.width
+                let itemWidth = screenWidth * 0.65
+                let itemHeight = itemWidth * 135/155
+                self.pagerView.itemSize = CGSize(width: itemWidth, height: itemHeight)
+                self.pagerView.interitemSpacing = 50
+                self.pagerView.isInfinite = true
+                self.pagerView.transformer = FSPagerViewTransformer(type: .ferrisWheel)
+            }
         }
-
     }
 
     func numberOfItems(in pagerView: FSPagerView) -> Int {
@@ -39,7 +48,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         if let imageView = cell.imageView {
             imageView.image = UIImage(named: images[index])
             imageView.contentMode = .scaleAspectFill
-            imageView.layer.cornerRadius = 8 // 이미지도 모서리를 둥글게
+            imageView.layer.cornerRadius = 24 // 이미지도 모서리를 둥글게
             imageView.layer.masksToBounds = true
         }
 
@@ -118,6 +127,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
     // MARK: - UI
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUIForDevice()
         self.pagerView.dataSource = self
         self.pagerView.delegate = self
 
@@ -125,11 +135,12 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             // let serialNumber = credentials.serialNumber
             let alias = credentials.alias
 
-            deviceLabel.text = "My Device : \(alias)"
+            deviceLabel.text = "\(alias)"
+
         }
 
         frameConfig(to: statusView)
-        
+
         // MQTT 초기 상태 업데이트
         updateStatusLabel()
 
@@ -176,6 +187,45 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         view.layer.shadowOffset = shadowOffset
         view.layer.shadowRadius = shadowRadius
     }
+
+    func setupUIForDevice() {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // statusView 크기 조정
+            statusView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                statusView.heightAnchor.constraint(equalToConstant: 120),
+                statusView.widthAnchor.constraint(equalToConstant: 350),
+            ])
+
+            // deviceLabel 크기 및 폰트 조정
+            deviceLabel.font = deviceLabel.font.withSize(30)
+            deviceLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                deviceLabel.heightAnchor.constraint(equalToConstant: 50),
+            ])
+
+            // statusLabel 크기 및 폰트 조정
+            statusLabel.font = statusLabel.font.withSize(20)
+            statusLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                statusLabel.heightAnchor.constraint(equalToConstant: 40),
+            ])
+
+            if let spacingConstraint = view.constraints.first(where: {
+                 ($0.firstItem as? UIView == pagerView && $0.secondItem as? UIView == statusView && $0.firstAttribute == .top && $0.secondAttribute == .bottom)
+             }) {
+                 spacingConstraint.constant = 80 // 새로운 간격 값 설정
+             } else {
+                 // 제약 조건이 없으면 새로 추가
+                 pagerView.translatesAutoresizingMaskIntoConstraints = false
+                 statusView.translatesAutoresizingMaskIntoConstraints = false
+                 NSLayoutConstraint.activate([
+                     pagerView.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: 80) // 원하는 간격 설정
+                 ])
+             }
+        }
+    }
+
 
     // MARK: - MQTT 상태 설정
     func setupMQTTStatusCallbacks() {
