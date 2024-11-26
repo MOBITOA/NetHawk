@@ -170,7 +170,7 @@ class MQTTService: CocoaMQTTDelegate {
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         print("MQTT disconnected: \(err?.localizedDescription ?? "")")
         onDisconnected?()
-        onConnectionFailure?()
+        // onConnectionFailure?()
     }
 
     // MARK: - Log 파싱
@@ -302,20 +302,20 @@ class MQTTService: CocoaMQTTDelegate {
     }
 
 
-
-    // 포그라운드 복귀 시 MQTT 연결 상태 확인
     func checkConnection() {
         guard let mqttClient = mqtt else { return }
 
-        if ((onDisconnected?()) != nil) {
+        if mqttClient.connState != .connected {
             print("-----------------------------")
             print("MQTT 연결이 끊어졌습니다. 재연결 시도 중...")
-            mqttClient.connect()  // 연결이 끊겼으면 다시 연결
+            mqttClient.connect()
+            onDisconnected?() // 명확한 연결 상태 처리
         } else {
             print("-----------------------------")
             print("MQTT 연결이 유지되고 있습니다.")
         }
     }
+
 
     // MARK: - 알림
     func sendLocalNotification(for log: Log) {

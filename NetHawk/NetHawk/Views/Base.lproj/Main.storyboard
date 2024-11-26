@@ -516,22 +516,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1032" height="1376"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dgd-Nt-K1P">
-                                <rect key="frame" x="16" y="24" width="117" height="49.5"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="NETHAWK">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="27" name="IntelOneMono-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQS-Wu-44D" customClass="FSPagerView" customModule="FSPagerView">
                                 <rect key="frame" x="0.0" y="303.5" width="1032" height="1022.5"/>
                                 <subviews>
@@ -550,6 +534,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1S-9B-F95">
                                         <rect key="frame" x="12" y="12" width="210" height="25"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <attributedString key="attributedText">
                                             <fragment content="My">
                                                 <attributes>
@@ -598,7 +583,6 @@
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
-                                        <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHP-WA-8rj">
                                         <rect key="frame" x="64.5" y="45" width="105" height="23"/>
@@ -622,7 +606,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="e1S-9B-F95" firstAttribute="leading" secondItem="I1T-Ov-FEN" secondAttribute="leading" constant="12" id="4WV-79-AxN"/>
                                     <constraint firstItem="tHP-WA-8rj" firstAttribute="centerX" secondItem="I1T-Ov-FEN" secondAttribute="centerX" id="4Yo-qh-5Ek"/>
@@ -646,18 +630,29 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="questionmark.app.dashed" catalog="system"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izS-Gv-RlE">
+                                <rect key="frame" x="16" y="26" width="117" height="37.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="NETHAWK">
+                                        <attributes>
+                                            <font key="NSFont" size="27" name="IntelOneMono-Bold"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zOz-Es-Ru7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zOz-Es-Ru7" firstAttribute="trailing" secondItem="9fb-HJ-PKZ" secondAttribute="trailing" constant="16" id="5F6-ba-CsN"/>
                             <constraint firstItem="I1T-Ov-FEN" firstAttribute="centerX" secondItem="07i-yv-2MM" secondAttribute="centerX" id="5nc-qI-eCN"/>
-                            <constraint firstItem="Dgd-Nt-K1P" firstAttribute="top" secondItem="zOz-Es-Ru7" secondAttribute="top" id="6Y1-F5-uet"/>
                             <constraint firstItem="oQS-Wu-44D" firstAttribute="leading" secondItem="zOz-Es-Ru7" secondAttribute="leading" id="KVS-ar-mqI"/>
                             <constraint firstItem="oQS-Wu-44D" firstAttribute="trailing" secondItem="zOz-Es-Ru7" secondAttribute="trailing" id="UM6-rf-kDg"/>
-                            <constraint firstItem="Dgd-Nt-K1P" firstAttribute="leading" secondItem="zOz-Es-Ru7" secondAttribute="leading" constant="16" id="ag4-8q-df6"/>
-                            <constraint firstItem="oQS-Wu-44D" firstAttribute="top" secondItem="Dgd-Nt-K1P" secondAttribute="bottom" constant="230" id="dxO-KH-q5p"/>
+                            <constraint firstItem="izS-Gv-RlE" firstAttribute="leading" secondItem="zOz-Es-Ru7" secondAttribute="leading" constant="16" id="aA2-AZ-wY8"/>
+                            <constraint firstItem="oQS-Wu-44D" firstAttribute="top" secondItem="izS-Gv-RlE" secondAttribute="bottom" constant="240" id="dxO-KH-q5p"/>
                             <constraint firstItem="oQS-Wu-44D" firstAttribute="top" secondItem="9fb-HJ-PKZ" secondAttribute="bottom" constant="235" id="eHv-XX-t7m"/>
+                            <constraint firstItem="izS-Gv-RlE" firstAttribute="top" secondItem="zOz-Es-Ru7" secondAttribute="top" constant="2" id="efH-vS-sSK"/>
                             <constraint firstItem="oQS-Wu-44D" firstAttribute="bottom" secondItem="zOz-Es-Ru7" secondAttribute="bottom" constant="-30" id="rah-WN-C2Q"/>
                             <constraint firstItem="oQS-Wu-44D" firstAttribute="top" secondItem="I1T-Ov-FEN" secondAttribute="bottom" constant="130.66999999999999" id="tKZ-ot-qWW"/>
                             <constraint firstItem="zOz-Es-Ru7" firstAttribute="trailing" secondItem="9fb-HJ-PKZ" secondAttribute="trailing" constant="16" id="tpF-1s-yNA"/>
@@ -839,7 +834,7 @@
                                 <rect key="frame" x="489" y="365.5" width="54" height="34"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right.fill" catalog="system">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="changingDeviceBtn:" destination="vlZ-5J-kNo" eventType="touchUpInside" id="X09-GL-xiH"/>

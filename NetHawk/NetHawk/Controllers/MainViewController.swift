@@ -175,18 +175,37 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
     func frameConfig(to view: UIView) {
         let cornerRadius: CGFloat = 10
-        let shadowColor: UIColor = .black
+        let shadowColor: UIColor = UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor.gray : UIColor.black
+        }
         let shadowOpacity: Float = 0.3
         let shadowOffset: CGSize = CGSize(width: 0, height: 2)
         let shadowRadius: CGFloat = 4
 
+        // 기본 그림자 설정
         view.layer.cornerRadius = cornerRadius
         view.layer.masksToBounds = false
         view.layer.shadowColor = shadowColor.cgColor
         view.layer.shadowOpacity = shadowOpacity
         view.layer.shadowOffset = shadowOffset
         view.layer.shadowRadius = shadowRadius
+
+        // 다크모드일 때 Glow 효과 추가
+        if traitCollection.userInterfaceStyle == .dark {
+            let glowLayer = CALayer()
+            glowLayer.frame = view.bounds
+            glowLayer.cornerRadius = cornerRadius
+            glowLayer.shadowColor = UIColor.white.withAlphaComponent(0.5).cgColor
+            glowLayer.shadowOpacity = 1.0
+            glowLayer.shadowRadius = 30 // Glow 크기
+            glowLayer.shadowOffset = CGSize.zero
+            glowLayer.backgroundColor = UIColor.label.cgColor
+            // Glow Layer를 레이어 맨 위에 추가
+            view.layer.insertSublayer(glowLayer, at: 0)
+        }
     }
+
+
 
     func setupUIForDevice() {
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -199,6 +218,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
             // deviceLabel 크기 및 폰트 조정
             deviceLabel.font = deviceLabel.font.withSize(22)
+            deviceLabel.textColor = .black
             deviceLabel.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 deviceLabel.heightAnchor.constraint(equalToConstant: 50),
@@ -212,58 +232,137 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             ])
 
             if let spacingConstraint = view.constraints.first(where: {
-                 ($0.firstItem as? UIView == pagerView && $0.secondItem as? UIView == statusView && $0.firstAttribute == .top && $0.secondAttribute == .bottom)
-             }) {
-                 spacingConstraint.constant = 80 // 새로운 간격 값 설정
-             } else {
-                 // 제약 조건이 없으면 새로 추가
-                 pagerView.translatesAutoresizingMaskIntoConstraints = false
-                 statusView.translatesAutoresizingMaskIntoConstraints = false
-                 NSLayoutConstraint.activate([
-                     pagerView.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: 80) // 원하는 간격 설정
-                 ])
-             }
+                ($0.firstItem as? UIView == pagerView && $0.secondItem as? UIView == statusView && $0.firstAttribute == .top && $0.secondAttribute == .bottom)
+            }) {
+                spacingConstraint.constant = 80 // 새로운 간격 값 설정
+            } else {
+                // 제약 조건이 없으면 새로 추가
+                pagerView.translatesAutoresizingMaskIntoConstraints = false
+                statusView.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    pagerView.topAnchor.constraint(equalTo: statusView.bottomAnchor, constant: 80) // 원하는 간격 설정
+                ])
+            }
         }
     }
 
 
     // MARK: - MQTT 상태 설정
     func setupMQTTStatusCallbacks() {
-        MQTTService.shared.onPingReceived = { [weak self] in
-            DispatchQueue.main.async {
-                self?.statusLabel.text = "Checking connection..."
-                self?.statusLabel.textColor = .gray
-            }
-        }
+        //        MQTTService.shared.onPingReceived = { [weak self] in
+        //            DispatchQueue.main.async {
+        //                self?.animateStatusViewExpansion()
+        //                self?.statusLabel.text = "Checking connection..."
+        //                self?.statusLabel.textColor = .gray
+        //            }
+        //        }
 
         MQTTService.shared.onPongReceived = { [weak self] in
             DispatchQueue.main.async {
-                self?.statusLabel.text = "Server Online 🟢"
-                self?.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    self?.animateStatusViewCollapse()
+                } else {
+                    self?.statusLabel.text = "Server Online 🟢"
+                    self?.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                }
             }
         }
 
         MQTTService.shared.onDisconnected = { [weak self] in
             DispatchQueue.main.async {
-                self?.statusLabel.text = "Checking connection... 🟠"
-                self?.statusLabel.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    self?.animateStatusViewExpansion()
+                } else {
+                    self?.statusLabel.text = "Checking connection... 🟠"
+                    self?.statusLabel.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+                }
             }
         }
 
         MQTTService.shared.onConnectionSuccess = { [weak self] in
             DispatchQueue.main.async {
-                self?.statusLabel.text = "Server Online 🟢"
-                self?.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    self?.animateStatusViewCollapse()
+                } else {
+                    self?.statusLabel.text = "Server Online 🟢"
+                    self?.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                }
             }}
     }
 
     func updateStatusLabel() {
         if MQTTService.shared.isConnected() {
-            statusLabel.text = "Server Online 🟢"
-            statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                self.animateStatusViewCollapse()
+            } else {
+                self.statusLabel.text = "Server Online 🟢"
+                self.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            }
         } else {
-            statusLabel.text = "Checking connection... 🟠"
-            statusLabel.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                self.animateStatusViewExpansion()
+            } else {
+                self.statusLabel.text = "Checking connection... 🟠"
+                self.statusLabel.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+            }
         }
+    }
+
+    func animateStatusViewExpansion() {
+
+        // 기존 width 제약 조건 제거
+        if let existingWidthConstraint = statusView.constraints.first(where: { $0.firstAttribute == .width }) {
+            NSLayoutConstraint.deactivate([existingWidthConstraint])
+        }
+
+        // 새로운 width 제약 조건 추가
+        statusView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statusView.widthAnchor.constraint(equalToConstant: 350) // 확장 크기 설정
+        ])
+
+        // 스프링 애니메이션 사용
+        UIView.animate(
+            withDuration: 0.6, // 애니메이션 지속 시간
+            delay: 0, // 지연 시간
+            usingSpringWithDamping: 0.7, // 탄성 효과 조정
+            initialSpringVelocity: 1.0, // 초기 속도
+            options: [], // 추가 옵션 없음
+            animations: {
+                self.view.layoutIfNeeded() // 레이아웃 변경
+            }, completion: { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+                    self.statusLabel.text = "Checking connection... 🟠"
+                    self.statusLabel.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+                }
+            }
+        )
+    }
+
+    func animateStatusViewCollapse() {
+        // 기존 width 제약 조건 제거
+        if let existingWidthConstraint = statusView.constraints.first(where: { $0.firstAttribute == .width }) {
+            NSLayoutConstraint.deactivate([existingWidthConstraint])
+        }
+
+        // 새로운 width 제약 조건 추가
+        statusView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statusView.widthAnchor.constraint(equalToConstant: 234) // 축소 크기 설정
+        ])
+
+        // 스프링 애니메이션 사용
+        UIView.animate(
+            withDuration: 0.6, // 애니메이션 지속 시간
+            delay: 0, // 지연 시간
+            usingSpringWithDamping: 0.7, // 탄성 효과 조정
+            initialSpringVelocity: 1.0, // 초기 속도
+            options: [], // 추가 옵션 없음
+            animations: {
+                self.view.layoutIfNeeded() // 레이아웃 변경
+                self.statusLabel.text = "Server Online 🟢"
+                self.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+            }, completion: nil
+        )
     }
 }
