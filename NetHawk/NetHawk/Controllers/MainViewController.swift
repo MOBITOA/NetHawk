@@ -198,7 +198,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             ])
 
             // deviceLabel 크기 및 폰트 조정
-            deviceLabel.font = deviceLabel.font.withSize(30)
+            deviceLabel.font = deviceLabel.font.withSize(22)
             deviceLabel.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 deviceLabel.heightAnchor.constraint(equalToConstant: 50),
@@ -208,7 +208,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             statusLabel.font = statusLabel.font.withSize(20)
             statusLabel.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                statusLabel.heightAnchor.constraint(equalToConstant: 40),
+                statusLabel.heightAnchor.constraint(equalToConstant: 20),
             ])
 
             if let spacingConstraint = view.constraints.first(where: {

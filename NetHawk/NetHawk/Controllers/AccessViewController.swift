@@ -38,6 +38,13 @@ class AccessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 스와이프 제스처 추가
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeGesture.direction = .right // 오른쪽으로 스와이프하면 닫힘
+        self.view.addGestureRecognizer(swipeGesture)
+
+        setupUIForDevice()
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateBlacklist(notification:)),
@@ -95,13 +102,51 @@ class AccessViewController: UIViewController {
 
     @IBAction func banBtnTapped(_ sender: UIButton) {
         blackList.append(ipTextField.text!)
+
+        guard let ipToAdd = ipTextField.text, !ipToAdd.isEmpty else { return }
+
+        // Ban 리스트에 추가
+        if !blackList.contains(ipToAdd) {
+            blackList.append(ipToAdd)
+        }
+
+        // Open 리스트에서 제거
+        if let index = whiteList.firstIndex(of: ipToAdd) {
+            whiteList.remove(at: index)
+        }
+
         modifyBlackAndWhiteList(for: "black")
+
+        updateTextViews()
+        ipTextField.text = ""
     }
 
     @IBAction func openBtnTapped(_ sender: UIButton) {
         whiteList.append(ipTextField.text!)
+
+        guard let ipToAdd = ipTextField.text, !ipToAdd.isEmpty else { return }
+
+        // Open 리스트에 추가
+        if !whiteList.contains(ipToAdd) {
+            whiteList.append(ipToAdd)
+        }
+
+        // Ban 리스트에서 제거
+        if let index = blackList.firstIndex(of: ipToAdd) {
+            blackList.remove(at: index)
+        }
+
         modifyBlackAndWhiteList(for: "white")
+
+        updateTextViews()
+        ipTextField.text = ""
     }
+
+    func updateTextViews() {
+        banTextView.text = blackList.joined(separator: "\n")
+        openTextView.text = whiteList.joined(separator: "\n")
+    }
+
 
 
     /*
@@ -179,12 +224,12 @@ class AccessViewController: UIViewController {
             case "black":
                 list = blackList
                 command = [
-                        "command": "blacklist_modify",
-                        "source": alias,
-                        "parameters": [
-                            "ip_list": list
-                        ]
+                    "command": "blacklist_modify",
+                    "source": alias,
+                    "parameters": [
+                        "ip_list": list
                     ]
+                ]
             case "white":
                 list = whiteList
                 command = [
@@ -304,8 +349,85 @@ class AccessViewController: UIViewController {
         }, completion: nil)
     }
 
+    // 조정대상 whiteListLabel, blackListLabel, ipLogo, ipFrame, iptextField, banTextView, openTextView, banContainer, openContainer
+    func setupUIForDevice() {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // whiteListLabel의 Top 제약 조건 수정
+
+            if let whiteListTopConstraint = view.constraints.first(where: {
+                $0.firstItem as? UIView == whiteListLabel && $0.firstAttribute == .top
+            }) {
+                whiteListTopConstraint.constant = 100
+            }
+
+            // 기존 높이 제약 조건 제거
+            if let existingHeightConstraint = banContainer.constraints.first(where: { $0.firstAttribute == .height }) {
+                NSLayoutConstraint.deactivate([existingHeightConstraint])
+            }
+            if let existingHeightConstraint = openContainer.constraints.first(where: { $0.firstAttribute == .height }) {
+                NSLayoutConstraint.deactivate([existingHeightConstraint])
+            }
+
+            // banTextView와 openTextView의 기존 높이 제약 조건 제거
+            NSLayoutConstraint.deactivate(banTextView.constraints.filter { $0.firstAttribute == .height })
+            NSLayoutConstraint.deactivate(openTextView.constraints.filter { $0.firstAttribute == .height })
+
+
+            // 새로운 높이 제약 조건 추가
+            banContainer.translatesAutoresizingMaskIntoConstraints = false
+            openContainer.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                banContainer.heightAnchor.constraint(equalToConstant: 250),
+                openContainer.heightAnchor.constraint(equalToConstant: 250)
+            ])
+
+            openTextView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                openTextView.topAnchor.constraint(equalTo: openContainer.topAnchor),
+                openTextView.bottomAnchor.constraint(equalTo: openContainer.bottomAnchor),
+                openTextView.leadingAnchor.constraint(equalTo: openContainer.leadingAnchor),
+                openTextView.trailingAnchor.constraint(equalTo: openContainer.trailingAnchor)
+            ])
+
+            banTextView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                banTextView.topAnchor.constraint(equalTo: banContainer.topAnchor),
+                banTextView.bottomAnchor.constraint(equalTo: banContainer.bottomAnchor),
+                banTextView.leadingAnchor.constraint(equalTo: banContainer.leadingAnchor),
+                banTextView.trailingAnchor.constraint(equalTo: banContainer.trailingAnchor)
+            ])
+
+            // 레이아웃 강제 업데이트
+            view.layoutIfNeeded()
+
+
+            if let topSpacingConstraint = view.constraints.first(where: {
+                ($0.firstItem as? UIView == ipFrame && $0.secondItem as? UIView == ipLogo && $0.firstAttribute == .top && $0.secondAttribute == .bottom)
+            }) {
+                topSpacingConstraint.constant = 15 // ipFrame과 ipLogo 간의 간격
+            }
+
+            if let customFont = whiteListLabel.font {
+                whiteListLabel.font = customFont.withSize(33)
+                blackListLabel.font = customFont.withSize(33)
+                banTextView.font = customFont.withSize(30)
+                openTextView.font = customFont.withSize(30)
+                ipLogo.font = customFont.withSize(28)
+                ipFrame.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                banBtn.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                openBtn.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }
+        }
+    }
+
     @IBAction func dissmissBtnTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+
+    @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+        // 현재 모달 화면 닫기
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

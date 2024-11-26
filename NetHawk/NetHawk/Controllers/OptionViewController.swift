@@ -18,6 +18,11 @@ class OptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 스와이프 제스처 추가
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeGesture.direction = .right // 오른쪽으로 스와이프하면 닫힘
+        self.view.addGestureRecognizer(swipeGesture)
+
         // 저장된 알람 타입 불러오기
         let savedAlarmType = UserDefaults.standard.integer(forKey: "notificationEnabled")
         alarmSegmentControl.selectedSegmentIndex = savedAlarmType
@@ -90,5 +95,10 @@ class OptionViewController: UIViewController {
                 window.makeKeyAndVisible()
             }
         }
+    }
+
+    @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+        // 현재 모달 화면 닫기
+        self.dismiss(animated: true, completion: nil)
     }
 }

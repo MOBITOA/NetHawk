@@ -16,6 +16,11 @@ class LogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 스와이프 제스처 추가
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeGesture.direction = .right // 오른쪽으로 스와이프하면 닫힘
+        self.view.addGestureRecognizer(swipeGesture)
+
         let myTableViewCellNib = UINib(nibName: "DetectionMessage", bundle: nil)
         self.logTableView.register(myTableViewCellNib, forCellReuseIdentifier: "DetectionMessageCell")
         self.logTableView.rowHeight = UITableView.automaticDimension
@@ -48,6 +53,11 @@ class LogViewController: UIViewController {
 
     @IBAction func dismissBtnTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+
+    @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+        // 현재 모달 화면 닫기
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

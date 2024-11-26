@@ -159,7 +159,12 @@ class StatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // 스와이프 제스처 추가
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeGesture.direction = .right // 오른쪽으로 스와이프하면 닫힘
+        self.view.addGestureRecognizer(swipeGesture)
+
         // 테이블뷰 설정
         tableView.delegate = self
         tableView.dataSource = self
@@ -199,5 +204,10 @@ class StatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let chartData = chartsData[indexPath.row]
         cell.configure(with: chartData)
         return cell
+    }
+
+    @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
+        // 현재 모달 화면 닫기
+        self.dismiss(animated: true, completion: nil)
     }
 }
