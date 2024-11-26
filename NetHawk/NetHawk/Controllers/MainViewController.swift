@@ -228,7 +228,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
             statusLabel.font = statusLabel.font.withSize(20)
             statusLabel.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                statusLabel.heightAnchor.constraint(equalToConstant: 20),
+                statusLabel.heightAnchor.constraint(equalToConstant: 25),
             ])
 
             if let spacingConstraint = view.constraints.first(where: {

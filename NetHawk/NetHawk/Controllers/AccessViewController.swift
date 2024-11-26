@@ -71,6 +71,7 @@ class AccessViewController: UIViewController {
         self.banTextView.alpha = 0.0
         self.openTextView.alpha = 0.0
         self.whiteListLabel.alpha = 0.0
+        self.whiteListLabel.textColor = .label
         self.blackListLabel.alpha = 0.0
         self.refreshBtn.alpha = 0.0
         self.openBtn.isEnabled = false
@@ -94,6 +95,7 @@ class AccessViewController: UIViewController {
             self.applyAnimations()
         }
     }
+
     // MARK: - B/W functions
 
     @IBAction func refreshBtnTapped(_ sender: UIButton) {
@@ -306,17 +308,31 @@ class AccessViewController: UIViewController {
 
     func frameConfig(to view: UIView) {
         let cornerRadius: CGFloat = 10
-        let shadowColor: UIColor = .black
+        let shadowColor: UIColor = UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor.gray : UIColor.black
+        }
         let shadowOpacity: Float = 0.3
         let shadowOffset: CGSize = CGSize(width: 0, height: 2)
         let shadowRadius: CGFloat = 4
 
+        // 기본 그림자 설정
         view.layer.cornerRadius = cornerRadius
         view.layer.masksToBounds = false
         view.layer.shadowColor = shadowColor.cgColor
         view.layer.shadowOpacity = shadowOpacity
         view.layer.shadowOffset = shadowOffset
         view.layer.shadowRadius = shadowRadius
+
+        let glowLayer = CALayer()
+        glowLayer.frame = view.bounds
+        glowLayer.cornerRadius = cornerRadius
+        glowLayer.shadowColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        glowLayer.shadowOpacity = 1.0
+        glowLayer.shadowRadius = 30 // Glow 크기
+        glowLayer.shadowOffset = CGSize.zero
+        glowLayer.backgroundColor = UIColor.label.cgColor
+        // Glow Layer를 레이어 맨 위에 추가
+        view.layer.insertSublayer(glowLayer, at: 0)
     }
 
     func applyAnimations() {

@@ -257,7 +257,9 @@
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise.circle" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise.circle" catalog="system">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="refreshBtnTapped:" destination="KL7-jD-btO" eventType="touchUpInside" id="WO8-Ce-xvy"/>
                                 </connections>
@@ -612,7 +614,7 @@
                                     <constraint firstItem="tHP-WA-8rj" firstAttribute="centerX" secondItem="I1T-Ov-FEN" secondAttribute="centerX" id="4Yo-qh-5Ek"/>
                                     <constraint firstAttribute="width" constant="234" id="LxZ-Uz-abh"/>
                                     <constraint firstAttribute="trailing" secondItem="e1S-9B-F95" secondAttribute="trailing" constant="12" id="NCz-Il-C8q"/>
-                                    <constraint firstItem="tHP-WA-8rj" firstAttribute="top" secondItem="e1S-9B-F95" secondAttribute="bottom" constant="8" symbolic="YES" id="Omd-0x-Fmq"/>
+                                    <constraint firstItem="tHP-WA-8rj" firstAttribute="top" secondItem="e1S-9B-F95" secondAttribute="bottom" constant="8" id="Omd-0x-Fmq"/>
                                     <constraint firstAttribute="bottom" secondItem="tHP-WA-8rj" secondAttribute="bottom" constant="12" id="W8e-Tq-HVU"/>
                                     <constraint firstItem="e1S-9B-F95" firstAttribute="top" secondItem="I1T-Ov-FEN" secondAttribute="top" constant="12" id="hl4-Jz-r9N"/>
                                     <constraint firstAttribute="height" constant="80" id="mgF-rh-4K4"/>
