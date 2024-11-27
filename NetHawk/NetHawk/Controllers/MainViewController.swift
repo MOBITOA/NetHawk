@@ -368,9 +368,18 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
     // MARK: - 이스터에그
 
     private var infoButtonTapCount = 0
+    private let maxScale: CGFloat = 1.4 // 버튼이 커질 최대 크기
+    private let minScale: CGFloat = 1.0 // 버튼의 기본 크기
+
 
     @IBAction func infoBtn(_ sender: UIButton) {
         infoButtonTapCount += 1
+
+        // 버튼 흔들림 애니메이션 추가
+        shakeButton(sender)
+
+        // 버튼 크기 변화 애니메이션 추가
+        animateButtonScaling(sender)
 
         if infoButtonTapCount == 5 {
             showEmojiCelebration()
@@ -388,15 +397,24 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         messageLabel.backgroundColor = UIColor.clear.withAlphaComponent(0.7)
         messageLabel.layer.cornerRadius = 12
         messageLabel.layer.masksToBounds = true
-        messageLabel.frame = CGRect(x: 40, y: view.bounds.height / 2 - 50, width: view.bounds.width - 80, height: 100)
+        messageLabel.alpha = 0 // 초기 투명도
+        messageLabel.transform = CGAffineTransform(scaleX: 0.2, y: 0.2) // 작아진 상태로 시작
+        messageLabel.frame = CGRect(x: 40, y: view.bounds.height / 2 - 50, width: view.bounds.width - 100, height: 20)
 
         view.addSubview(messageLabel)
 
-        UIView.animate(withDuration: 3, delay: 2, options: .curveEaseInOut, animations: {
-            messageLabel.alpha = 0
-        }) { _ in
-            messageLabel.removeFromSuperview()
-        }
+        // 애니메이션: 확대하면서 페이드 인
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            messageLabel.alpha = 1 // 점점 투명도가 사라짐
+            messageLabel.transform = CGAffineTransform.identity // 원래 크기로 확대
+        }, completion: { _ in
+            // 일정 시간 후 페이드 아웃
+            UIView.animate(withDuration: 3, delay: 2, options: .curveEaseInOut, animations: {
+                messageLabel.alpha = 0 // 투명하게 사라짐
+            }) { _ in
+                messageLabel.removeFromSuperview() // 애니메이션 종료 후 제거
+            }
+        })
     }
 
 
@@ -408,14 +426,14 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
         // 폭죽 이모지 셀
         let fireworkCell = CAEmitterCell()
-        fireworkCell.contents = "🎆".image().cgImage
+        fireworkCell.contents = "🎉".image().cgImage
         fireworkCell.birthRate = 3
         fireworkCell.lifetime = 5.0
         fireworkCell.velocity = 200
         fireworkCell.velocityRange = 50
         fireworkCell.emissionLongitude = .pi
         fireworkCell.yAcceleration = 100
-        fireworkCell.scale = 0.2
+        fireworkCell.scale = 0.7
         fireworkCell.scaleRange = 0.05
         fireworkCell.alphaRange = 0.8
 
@@ -428,7 +446,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         clapCell.velocityRange = 50
         clapCell.emissionLongitude = .pi
         clapCell.yAcceleration = 100
-        clapCell.scale = 0.2
+        clapCell.scale = 0.7
         clapCell.scaleRange = 0.05
         clapCell.alphaRange = 0.8
 
@@ -441,6 +459,34 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
         }
     }
 
+    // 버튼 크기 변화 애니메이션
+    private func animateButtonScaling(_ button: UIButton) {
+        // 현재 버튼의 크기 확인
+        let currentScale = button.transform.a
+        let newScale: CGFloat
+
+        if currentScale >= maxScale {
+            // 최대 크기에 도달하면 다시 기본 크기로
+            newScale = minScale
+        } else {
+            // 버튼 크기를 조금씩 키움
+            newScale = currentScale + 0.1
+        }
+
+        // 애니메이션 적용
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 2.0, options: [], animations: {
+            button.transform = CGAffineTransform(scaleX: newScale, y: newScale)
+        }, completion: nil)
+    }
+
+    // 버튼 흔들림 애니메이션
+    private func shakeButton(_ button: UIButton) {
+        let shake = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        shake.timingFunction = CAMediaTimingFunction(name: .linear)
+        shake.values = [-10, 10, -7, 7, -5, 5, -2, 2, 0] // 흔들림 강도와 패턴
+        shake.duration = 0.4
+        button.layer.add(shake, forKey: "shake")
+    }
 }
 
 extension String {
