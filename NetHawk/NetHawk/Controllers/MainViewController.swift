@@ -121,7 +121,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var deviceLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-
+    
     let images = ["loger", "stat", "bw", "option"]
 
     // MARK: - UI
@@ -364,5 +364,97 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
                 self.statusLabel.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
             }, completion: nil
         )
+    }
+    // MARK: - 이스터에그
+
+    private var infoButtonTapCount = 0
+
+    @IBAction func infoBtn(_ sender: UIButton) {
+        infoButtonTapCount += 1
+
+        if infoButtonTapCount == 5 {
+            showEmojiCelebration()
+            showGraduationMessage()
+            infoButtonTapCount = 0 // 초기화
+        }
+    }
+
+    func showGraduationMessage() {
+        let messageLabel = UILabel()
+        messageLabel.text = "🎉 교수님 그동안 감사했습니다. 다들 졸업 축하해! 🎉"
+        messageLabel.font = UIFont.boldSystemFont(ofSize: 28)
+        messageLabel.textColor = .white
+        messageLabel.textAlignment = .center
+        messageLabel.backgroundColor = UIColor.clear.withAlphaComponent(0.7)
+        messageLabel.layer.cornerRadius = 12
+        messageLabel.layer.masksToBounds = true
+        messageLabel.frame = CGRect(x: 40, y: view.bounds.height / 2 - 50, width: view.bounds.width - 80, height: 100)
+
+        view.addSubview(messageLabel)
+
+        UIView.animate(withDuration: 3, delay: 2, options: .curveEaseInOut, animations: {
+            messageLabel.alpha = 0
+        }) { _ in
+            messageLabel.removeFromSuperview()
+        }
+    }
+
+
+    func showEmojiCelebration() {
+        let emojiEmitter = CAEmitterLayer()
+        emojiEmitter.emitterPosition = CGPoint(x: view.bounds.width / 2, y: -50) // 화면 위에서 시작
+        emojiEmitter.emitterSize = CGSize(width: view.bounds.width, height: 1) // 가로로 퍼짐
+        emojiEmitter.emitterShape = .line
+
+        // 폭죽 이모지 셀
+        let fireworkCell = CAEmitterCell()
+        fireworkCell.contents = "🎆".image().cgImage
+        fireworkCell.birthRate = 3
+        fireworkCell.lifetime = 5.0
+        fireworkCell.velocity = 200
+        fireworkCell.velocityRange = 50
+        fireworkCell.emissionLongitude = .pi
+        fireworkCell.yAcceleration = 100
+        fireworkCell.scale = 0.2
+        fireworkCell.scaleRange = 0.05
+        fireworkCell.alphaRange = 0.8
+
+        // 손뼉 이모지 셀
+        let clapCell = CAEmitterCell()
+        clapCell.contents = "👏".image().cgImage
+        clapCell.birthRate = 5
+        clapCell.lifetime = 5.0
+        clapCell.velocity = 150
+        clapCell.velocityRange = 50
+        clapCell.emissionLongitude = .pi
+        clapCell.yAcceleration = 100
+        clapCell.scale = 0.2
+        clapCell.scaleRange = 0.05
+        clapCell.alphaRange = 0.8
+
+        emojiEmitter.emitterCells = [fireworkCell, clapCell]
+        view.layer.addSublayer(emojiEmitter)
+
+        // 5초 후 애니메이션 제거
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            emojiEmitter.removeFromSuperlayer()
+        }
+    }
+
+}
+
+extension String {
+    func image(fontSize: CGFloat = 40) -> UIImage {
+        let label = UILabel()
+        label.text = self
+        label.font = UIFont.systemFont(ofSize: fontSize)
+        label.sizeToFit()
+
+        UIGraphicsBeginImageContextWithOptions(label.bounds.size, false, 0)
+        label.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return image
     }
 }

@@ -59,11 +59,19 @@ class AccessViewController: UIViewController {
             object: nil
         )
 
+        // 키보드 이벤트 옵저버 등록
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+
         self.titleLogo.alpha = 0.0
         self.ipLogo.alpha = 0.0
         self.ipFrame.alpha = 0.0
         self.ipTextField.alpha = 0.0
         self.ipTextField.text = ""
+        self.ipTextField.textColor = .black
         self.openBtn.alpha = 0.0
         self.banBtn.alpha = 0.0
         self.banContainer.alpha = 0.0
@@ -88,6 +96,12 @@ class AccessViewController: UIViewController {
         acquireBlackAndWhitelist()
     }
 
+    deinit {
+        // 키보드 옵저버 제거
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // 1초 지연 후에 애니메이션 시작
@@ -96,6 +110,27 @@ class AccessViewController: UIViewController {
         }
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        // 다크모드 상태 변화 감지 시 업데이트
+        if previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle {
+            // 특정 UI 요소를 업데이트
+            // 예: banContainer 및 openContainer를 새로 적용
+            tvConfig(to: banTextView, container: banContainer)
+            tvConfig(to: openTextView, container: openContainer)
+            frameConfig(to: ipFrame)
+
+            let placeholderColor = UIColor { traitCollection in
+                return traitCollection.userInterfaceStyle == .dark ? UIColor.lightGray : UIColor.darkGray
+            }
+
+            ipTextField.attributedPlaceholder = NSAttributedString(
+                string: "ex. 192.168.0.1 ..",
+                attributes: [NSAttributedString.Key.foregroundColor: placeholderColor]
+            )
+        }
+    }
     // MARK: - B/W functions
 
     @IBAction func refreshBtnTapped(_ sender: UIButton) {
@@ -298,8 +333,12 @@ class AccessViewController: UIViewController {
         tv.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         tv.isEditable = false
 
+        let shadowColor: UIColor = UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor.white : UIColor.black
+        }
+
         container.layer.cornerRadius = 10
-        container.layer.shadowColor = UIColor.black.cgColor
+        container.layer.shadowColor = shadowColor.cgColor
         container.layer.shadowOpacity = 0.3
         container.layer.shadowOffset = CGSize(width: 0, height: 2)
         container.layer.shadowRadius = 4
@@ -307,6 +346,12 @@ class AccessViewController: UIViewController {
     }
 
     func frameConfig(to view: UIView) {
+
+        // 기존 glowLayer 제거
+        if let existingGlowLayer = view.layer.sublayers?.first(where: { $0.name == "GlowLayer" }) {
+            existingGlowLayer.removeFromSuperlayer()
+        }
+
         let cornerRadius: CGFloat = 10
         let shadowColor: UIColor = UIColor { traitCollection in
             return traitCollection.userInterfaceStyle == .dark ? UIColor.gray : UIColor.black
@@ -325,12 +370,13 @@ class AccessViewController: UIViewController {
 
         let glowLayer = CALayer()
         glowLayer.frame = view.bounds
+        glowLayer.name = "GlowLayer"
         glowLayer.cornerRadius = cornerRadius
-        glowLayer.shadowColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        glowLayer.shadowColor = UIColor.white.withAlphaComponent(0.8).cgColor
         glowLayer.shadowOpacity = 1.0
-        glowLayer.shadowRadius = 30 // Glow 크기
+        glowLayer.shadowRadius = 8// Glow 크기
         glowLayer.shadowOffset = CGSize.zero
-        glowLayer.backgroundColor = UIColor.label.cgColor
+        glowLayer.backgroundColor = UIColor.white.cgColor
         // Glow Layer를 레이어 맨 위에 추가
         view.layer.insertSublayer(glowLayer, at: 0)
     }
@@ -444,6 +490,35 @@ class AccessViewController: UIViewController {
     @objc func handleSwipe(_ gesture: UISwipeGestureRecognizer) {
         // 현재 모달 화면 닫기
         self.dismiss(animated: true, completion: nil)
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
+            return
+        }
+
+        // 키보드 높이만큼 뷰를 이동
+        UIView.animate(withDuration: animationDuration) {
+            let keyboardHeight = keyboardFrame.height
+            self.view.frame.origin.y = -keyboardHeight / 1.8 // 필요한 높이만큼 조정
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
+            return
+        }
+
+        UIView.animate(withDuration: animationDuration) {
+            self.view.frame.origin.y = 0 // 원래 위치로 복원
+        }
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

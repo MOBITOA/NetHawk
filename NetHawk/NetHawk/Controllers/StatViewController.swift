@@ -21,6 +21,8 @@ struct PieChartView: View {
         // 가장 많이 발생한 공격 유형과 횟수 계산
         let mostDangerousAttack = attackCounts(target: attackCounts)
 
+
+
         VStack(alignment: .leading) {
             HStack {  // 제목을 왼쪽으로 배치
                 Text("Attack Distribution")
@@ -182,6 +184,7 @@ class StatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // 1. 공격 유형별 발생 비율 Pie Chart
         let attackCounts = StatisticsService.shared.getAttackTypeCounts(from: logs)
+        print(attackCounts)
         chartsData.append(ChartData(title: "공격 유형별 발생 비율", chartView: AnyView(PieChartView(attackCounts: attackCounts))))
 
         // 2. 피해자별 공격 횟수 Bar Chart
