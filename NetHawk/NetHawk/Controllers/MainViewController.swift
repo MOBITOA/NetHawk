@@ -390,7 +390,7 @@ class MainViewController: UIViewController, FSPagerViewDataSource, FSPagerViewDe
 
     func showGraduationMessage() {
         let messageLabel = UILabel()
-        messageLabel.text = "🎉 교수님 그동안 감사했습니다. 다들 졸업 축하해! 🎉"
+        messageLabel.text = "🎉 교수님 그동안 감사했습니다. 다들 졸업 축하합니다! 🎉"
         messageLabel.font = UIFont.boldSystemFont(ofSize: 28)
         messageLabel.textColor = .white
         messageLabel.textAlignment = .center
